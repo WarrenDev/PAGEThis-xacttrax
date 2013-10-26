@@ -808,20 +808,28 @@ int eval_packet(void)
 						switch (g_rx[7])
 						{
 							case 'S':
-							case 'V':	
-								//This is stored in order to restore the mode once the status packet is sent out.
-								PREV_Mode = g_config.Mode;
-								g_config.Mode = (g_rx[7] == 'S')? SERVER_STATUS_REQ : SERVER_STATUS_REQ_V;
-								DumpMessage("Valid Status request Packet.. Sending Back Ack\r\n");
+							case 'V':
+								if(g_config.Mode != SERVER_STATUS_REQ && g_config.Mode != SERVER_STATUS_REQ_V)
+								{
+									//This is stored in order to restore the mode once the status packet is sent out.
+									PREV_Mode = g_config.Mode;
+									g_config.Mode = (g_rx[7] == 'S')? SERVER_STATUS_REQ : SERVER_STATUS_REQ_V;
+									DumpMessage("Valid Status request Packet.. Sending Back Ack\r\n");
 
-								wm_sprintf(g_traceBuf, "phone number = %s\r\n", SMS_PHN_NUM);
-								DumpMessage(g_traceBuf);
+									wm_sprintf(g_traceBuf, "phone number = %s\r\n", SMS_PHN_NUM);
+									DumpMessage(g_traceBuf);
 
-								sReturn = adl_smsSend(g_smsHandle, SMS_PHN_NUM, (char *)"OK", ADL_SMS_MODE_TEXT);
-								if (sReturn < 0)
-									DisplayErrorCode("adl_smsSend", __FILE__, __LINE__, sReturn);
+									sReturn = adl_smsSend(g_smsHandle, SMS_PHN_NUM, (char *)"OK", ADL_SMS_MODE_TEXT);
+									if (sReturn < 0)
+										DisplayErrorCode("adl_smsSend", __FILE__, __LINE__, sReturn);
+									else
+										DumpMessage("ACK SMS transmitted successfully\r\n");
+								}
 								else
-									DumpMessage("ACK SMS transmitted successfully\r\n");							
+								{
+									DumpMessage("Request Rejected - Already in Status Req Mode\r\n");
+									DumpMessageUSB("Request Rejected - Already in Status Req Mode\r\n",1);
+								}
 								break;
 							case 'I':
 								DumpMessage("I packet request received\r\n");

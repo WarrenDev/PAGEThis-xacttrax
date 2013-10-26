@@ -71,7 +71,7 @@ char g_IMEI[15];
 char const CONFIG_STR[] = "AT+WHCNF=0,0";
 const ascii adl_InitApplicationName[]    = "04.08";
 const ascii adl_InitCompanyName[]        = "Tempo Cases";
-const ascii adl_InitApplicationVersion[] = "2.03";
+const ascii adl_InitApplicationVersion[] = "2.04";
 
 //Externs
 extern AGPS_DATA g_AGPSData;
