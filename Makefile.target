@@ -1,0 +1,217 @@
+ifeq ($(ADS),)
+CC=arm-elf-gcc
+COMPILERNAME=gcc
+else
+ifeq ($(NOTHUMB),)
+CC=tcc
+else
+CC=armcc
+endif
+COMPILERNAME=ads
+endif
+OSTYPE=$(shell uname | sed 's/_.*//g')
+
+
+ifeq ($(ADS),)
+#CFLAGS+=-fshort-enums -mapcs -mno-apcs-stack-check -msoft-float -mfpu=fpa -fdollars-in-identifiers -fomit-frame-pointer -march=armv5te -mthumb-interwork
+CFLAGS+=-fshort-enums -mapcs -msoft-float -mfpu=fpa -fdollars-in-identifiers -fomit-frame-pointer -march=armv5te -mthumb-interwork
+ifeq ($(NOTHUMB),)
+CFLAGS+=-mthumb
+endif
+#CFLAGS+=-Ilibc/include
+CFLAGS+=-I/cygdrive/c/OpenAT/IDE/GCC/$(OAT_GCC_VERSION)/lib/gcc/arm-elf/$(GCC_VERSION)/include
+else
+CFLAGS+=-cpu 5te -apcs /interwork
+endif
+CFLAGS+=-I/cygdrive/c/OpenAT/OS/$(OAT_OS_VERSION)/ADL/itf
+CFLAGS+=-I/cygdrive/c/OpenAT/OS/$(OAT_OS_VERSION)/ADL/basic
+CFLAGS+=-D__OAT_API_VERSION__=$(OAT_API_VERSION) -D__DEBUG_APP__ -D__arm -D__GNU_GCC__
+
+ifeq ($(ADS),)
+LDFLAGS+=-lm -nostartfiles --verbose -Wl,--script,outscript.ld,--print-map,--nmagic,-Map,$(TARGET).map -Wl,-\( -lm
+#LDFLAGS+=--verbose -lm #outscript.ld -Map,$(TARGET).map -nostartfiles --nmagic 
+#LDFLAGS+=-fshort-enums -mapcs -mthumb -mthumb-interwork -mno-apcs-stack-check -msoft-float -mfpu=fpa -fdollars-in-identifiers -fomit-frame-pointer -march=armv5te  -nostartfiles #-nodefaultlibs
+#LDFLAGS+=-Wl,#--script,outscript.ld,--print-map,--nmagic,-Map,$(TARGET).map
+#LDFLAGS+=-Wl,-\( #--verbose
+#LDFLAGS+=-lm
+#LDFLAGS+=lib/libz.a
+endif
+LDFLAGS+=/cygdrive/c/OpenAT/OS/$(OAT_OS_VERSION)/ADL/$(COMPILERNAME)_wmadl_$(OAT_OS_VERSION).0.0.lib
+
+ifneq ($(SECURITY),)
+CFLAGS+=-I/cygdrive/c/OpenAT/Plug-ins/Security/$(SECURITY)/Security/itf
+LDFLAGS+=$(wildcard /cygdrive/c/OpenAT/Plug-ins/Security/$(SECURITY)/Security/$(COMPILERNAME)_wmwipssl_*.lib)
+LDFLAGS+=$(wildcard /cygdrive/c/OpenAT/Plug-ins/Security/$(SECURITY)/Security/$(COMPILERNAME)_wmjam_*.lib)
+endif
+
+ifneq ($(WIP),)
+CFLAGS+=-I/cygdrive/c/OpenAT/Plug-ins/WIP/$(WIP)/WIP/itf
+LDFLAGS+=$(wildcard /cygdrive/c/OpenAT/Plug-ins/WIP/$(WIP)/WIP/$(COMPILERNAME)_wmwip_*.lib)
+endif
+
+ifneq ($(CGPS),)
+CFLAGS+=-I/cygdrive/c/OpenAT/Plug-ins/C-GPS$(CGPS_VARIANT)/$(CGPS)/C-GPS$(CGPS_VARIANT)/itf -D__CGPS_PLUGIN_VERSION__=$(CGPS_PLUGIN_VERSION)
+LDFLAGS+=$(wildcard /cygdrive/c/OpenAT/Plug-ins/C-GPS$(CGPS_VARIANT)/$(CGPS)/C-GPS$(CGPS_VARIANT)/$(COMPILERNAME)_CGPS_*.lib)
+endif
+
+ifneq ($(CGPS_OPUS_I),)
+CFLAGS+=-I/cygdrive/c/OpenAT/Plug-ins/C-GPS-OPUS-I/$(CGPS_OPUS_I)/C-GPS-OPUS-I/itf -D__CGPS_PLUGIN_VERSION__=$(CGPS_PLUGIN_VERSION)
+LDFLAGS+=$(wildcard /cygdrive/c/OpenAT/Plug-ins/C-GPS-OPUS-I/$(CGPS_OPUS_I)/C-GPS-OPUS-I/$(COMPILERNAME)_CGPS_*.lib)
+endif
+
+ifneq ($(CGPS_OPUS_III),)
+CFLAGS+=-I/cygdrive/c/OpenAT/Plug-ins/C-GPS-OPUS-III/$(CGPS_OPUS_III)/C-GPS-OPUS-III/itf -D__CGPS_PLUGIN_VERSION__=$(CGPS_PLUGIN_VERSION)
+LDFLAGS+=$(wildcard /cygdrive/c/OpenAT/Plug-ins/C-GPS-OPUS-III/$(CGPS_OPUS_III)/C-GPS-OPUS-III/$(COMPILERNAME)_CGPS_*.lib)
+endif
+
+ifneq ($(LUA),)
+CFLAGS+=-I/cygdrive/c/OpenAT/Plug-ins/LUA/$(LUA)/LUA/itf
+LDFLAGS+=$(wildcard /cygdrive/c/OpenAT/Plug-ins/LUA/$(LUA)/LUA/$(COMPILERNAME)_wmlua_*.lib)
+endif
+
+ifneq ($(GR),)
+CFLAGS+=-I/cygdrive/c/OpenAT/Plug-ins/GR/$(GR)/Q64/itf
+LDFLAGS+=$(wildcard /cygdrive/c/OpenAT/Plug-ins/GR/$(GR)/Q64/$(COMPILERNAME)_wmq64_*.lib)
+endif
+
+ifeq ($(ADS),)
+LDFLAGS+=-Wl,-\)
+endif
+
+CFLAGS+=-std=gnu99 -Wall -Wextra -Werror  -Winline
+#CFLAGS+=-std=gnu99 -Wall -Wextra -Wredundant-decls -Wunreachable-code -Winline -pedantic
+
+ifeq ($(BUILD),debug)
+CFLAGS+=-DDEBUG
+ifeq ($(ADS),)
+CFLAGS+=-g3 -O0
+else
+CFLAGS+=-g -O0
+endif
+else
+ifeq ($(ADS),)
+
+CFLAGS+=-O1 -fthread-jumps -falign-loops -fcrossjumping -fcse-follow-jumps  -fcse-skip-blocks -fdelete-null-pointer-checks -fexpensive-optimizations -fgcse  -fgcse-lm -foptimize-sibling-calls -fpeephole2 -fregmove -frerun-cse-after-loop  -fsched-interblock  -fsched-spec -fstrict-aliasing -fstrict-overflow -ftree-vrp
+
+# these are the optiosn that are pulled in by O2
+#           -fthread-jumps -falign-functions  -falign-jumps -falign-loops  -falign-labels -fcaller-saves -fcrossjumping 
+#          -fcse-follow-jumps  -fcse-skip-blocks -fdelete-null-pointer-checks -fexpensive-optimizations -fgcse  -fgcse-lm  -finline-small-functions 
+#          -findirect-inlining -fipa-sra -foptimize-sibling-calls -fpeephole2 -fregmove -freorder-blocks  -freorder-functions -frerun-cse-after-loop  
+#          -fsched-interblock  -fsched-spec -fschedule-insns  -fschedule-insns2 -fstrict-aliasing -fstrict-overflow -ftree-switch-conversion 
+#          -ftree-pre -ftree-vrp
+#
+# these are the options that Os takes out
+#          -falign-functions  -falign-jumps  -falign-loops 
+#          -falign-labels  -freorder-blocks  -freorder-blocks-and-partition 
+#          -fprefetch-loop-arrays  -ftree-vect-loop-version
+
+else
+CFLAGS+=-O0 #-Ospace
+endif
+endif
+
+OBJECTS=$(SOURCES:.c=.o)
+NOCLEAN_OBJECTS+=$(NOCLEAN_SOURCES:.c=.o)
+
+ifeq ($(LIB),)
+default: tags $(TARGET).dwl $(TARGET).wpb.dwl
+else
+default: tags $(TARGET).a
+endif
+
+tags: $(SOURCES) Makefile
+	rm -f tags
+#	ctags -a $(SOURCES)
+	etags -a `find . -name '*.[ch]'`
+#	for flag in $(CFLAGS); do echo $$flag | grep "^-I" | sed 's/^..//g'; done | xargs ctags -aR --c-kinds=+p
+#	ls $(SOURCES) | sed 's:[^/]*$$::g' | sort -u | xargs ctags -aR --c-kinds=+p
+
+$(TARGET).elf: $(OBJECTS) $(NOCLEAN_OBJECTS) mos_header.o outscript.ld
+	$(CC) -o $@ $(CFLAGS) $(OBJECTS) $(NOCLEAN_OBJECTS) $(LDFLAGS)
+
+$(TARGET).a: $(OBJECTS)
+	rm -f $@
+	arm-elf-ar rs $@ $(OBJECTS)
+
+%.bin: %.elf
+	arm-elf-objcopy --strip-all --strip-debug --strip-unneeded --discard-all --weaken --output-target binary $< $@
+	echo "import os;x = -(os.stat('$@').st_size % -4)" > temp.py
+	echo "if x: file('$@','ab').write(chr(0)*x)" >> temp.py
+	python temp.py
+	rm temp.py
+	/cygdrive/c/OpenAT/IDE/IDE/$(OAT_IDE_VERSION)/sgt/tools/cygwin/addchk.exe $@
+
+%.wpb: %.bin
+	/cygdrive/c/OpenAT/IDE/IDE/$(OAT_IDE_VERSION)/sgt/tools/cygwin/wzpacker.exe -b 0x00220000 $< $@
+	
+%.dwl: %.bin
+ifeq ($(OSTYPE),CYGWIN)
+	echo "cygwin build path"
+	python /cygdrive/c/OpenAT/IDE/IDE/$(OAT_IDE_VERSION)/sgt/tools/scripts/gendwl.py --bin=$< --dwl=$@ --header=BINARY --addr 0x00220000
+	echo "done gen"
+else
+	echo "linux build path"
+	/cygdrive/c/OpenAT/IDE/IDE/$(OAT_IDE_VERSION)/sgt/tools/cygwin/python/python.exe /cygdrive/c/OpenAT/IDE/IDE/$(OAT_IDE_VERSION)/sgt/tools/scripts/gendwl.py --bin=$< --dwl=$@ --header=BINARY --addr 0x00220000
+#	python /cygdrive/c/OpenAT/IDE/IDE/$(OAT_IDE_VERSION)/sgt/tools/scripts/gendwl.py --bin=$< --dwl=$@ --header=BINARY --addr 0x00220000
+endif
+
+%.wpb.dwl: %.wpb
+ifeq ($(OSTYPE),CYGWIN)
+	echo "cygwin build path"
+	python /cygdrive/c/OpenAT/IDE/IDE/$(OAT_IDE_VERSION)/sgt/tools/scripts/gendwl.py --bin=$< --dwl=$@ --header=COMPBIN --addr 0x00220000
+	cp Xact.wpb Xact2.wpb
+	echo "done gen 2"
+else
+	echo "linux build path"
+	/cygdrive/c/OpenAT/IDE/IDE/$(OAT_IDE_VERSION)/sgt/tools/cygwin/python/python.exe /cygdrive/c/OpenAT/IDE/IDE/$(OAT_IDE_VERSION)/sgt/tools/scripts/gendwl.py --bin=$< --dwl=$@ --header=COMPBIN --addr 0x00220000
+endif
+#	python /cygdrive/c/OpenAT/IDE/IDE/$(OAT_IDE_VERSION)/sgt/tools/scripts/gendwl.py --bin=$< --dwl=$@ --header=COMPBIN --addr 0x00220000
+
+mos_header.o: /cygdrive/c/OpenAT/OS/$(OAT_OS_VERSION)/ADL/gcc_wmadl_$(OAT_OS_VERSION).0.0.lib
+	arm-elf-ar x /cygdrive/c/OpenAT/OS/$(OAT_OS_VERSION)/ADL/gcc_wmadl_$(OAT_OS_VERSION).0.0.lib mos_header.o
+	
+clean:
+	echo "clean"
+	rm -f $(TARGET).* mos_header.o $(OBJECTS)
+	echo "clean 2"
+
+clean-all:
+	cd $$(git rev-parse --show-cdup) && git clean -df
+
+debug: default
+	echo file $(TARGET).elf > .gdbinit
+	echo target remote 10.35.1.123:2331 >> .gdbinit
+ifeq ($(DISPLAY),)
+	arm-elf-gdb -tui
+else
+	ddd --debugger arm-elf-gdb
+endif
+	rm .gdbinit
+
+LESS_OPTIMIZE+=$(CFLAGS)
+LESS_OPTIMIZE+=-O1
+SIZE_OPTIMIZE+=$(CFLAGS)
+SIZE_OPTIMIZE+=-O0 #-Os
+
+release:
+	git diff | grep . >/dev/null && echo There are uncommitted changes && exit 1 || true
+	echo Cleaning build dir.
+	cd ../sc_bootstrap/ && $(MAKE)
+	$(MAKE) clean-all
+	# Removing BUILD=debug from Makefile
+	fgrep -v BUILD=debug Makefile > Makefile2 && \
+	mv Makefile2 Makefile
+	# Adding current rev ID to _ADL/release.h
+	echo \#define GIT_RELEASE \"$$(git rev-parse HEAD)\" > _ADL/release.h
+	# Building
+	echo Building...
+	$(MAKE) CFLAGS="$(SIZE_OPTIMIZE)" HCG=$(HCG) ZIGBEE=$(ZIGBEE) $(TARGET).wpb.dwl &&\
+	echo remove socketHelper,BootLoader and rebuilt it with differnt optimize options...
+	rm scUtilities/src/socketHelper.o 
+	rm bootStrap.o 
+	$(MAKE) CFLAGS="$(LESS_OPTIMIZE)" HCG=$(HCG) ZIGBEE=$(ZIGBEE) $(TARGET).wpb.dwl &&\
+	cp $(TARGET).wpb.dwl release_$(TARGET).wpb.dwl
+	./addCRC.out release_$(TARGET).wpb.dwl
+	git checkout -- _ADL/release.h Makefile
+
+.PHONY: release debug

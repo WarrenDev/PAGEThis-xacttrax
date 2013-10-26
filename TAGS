@@ -1,0 +1,3687 @@
+
+flash_src/atmel_flashDriver.c,1914
+#define CONT_ARRAY_READ 48,1791
+#define BLOCK_ERASE 49,1882
+#define SECTOR_ERASE 50,1963
+#define BUFFER1_WRITE 51,2045
+#define BUFFER2_WRITE 52,2129
+#define BUFFER1_TO_MEMORY 53,2213
+#define BUFFER2_TO_MEMORY 54,2301
+#define PAGE_TO_BUFFER1 55,2389
+#define PAGE_TO_BUFFER2 56,2475
+#define BUFFER1_TO_PAGE_COMPARE 57,2561
+#define BUFFER2_TO_PAGE_COMPARE 58,2655
+#define READ_MNFG_CODE 59,2749
+#define FULL_FLASH_ERASE 60,2840
+#define FULL_FLASH_ERASE_OPCODE 61,2930
+#define MEMORY_PAGE_READ 62,3024
+#define BUFFER1_READ 63,3103
+#define BUFFER2_READ 64,3186
+#define STATUS_REGISTER_READ 65,3268
+#define PAGECOUNT 68,3389
+#define PAGESIZE 69,3465
+#define High 70,3556
+#define Low 71,3637
+#define SIF_SPI_INIT 74,3753
+#define SIF_FLASH_INIT 75,3840
+#define SIF_BUFFER_INIT 76,3925
+#define SPI_OPCODE_SIZE 79,4045
+#define SPI_ADDRESS_SIZE 80,4121
+#define DELAY_READ_STATUS_CNT 83,4217
+#define ENTRY_TRACE(89,4563
+#define EXIT_TRACE(90,4587
+struct Sector_s95,4742
+	u32 Page;97,4762
+	u32 Location;98,4841
+typedef struct Sector_s type_Sector;100,4936
+const adl_busSPISettings_t spi1Settings 105,5143
+Buffers ActiveBuffer;120,5860
+s32 spi1Handle;121,5944
+u8 SPI_InitFlags 122,6033
+u32 BuffersPage[BuffersPage123,6127
+u32 SectorSize 124,6235
+u32 SectorCount 125,6307
+u32 SectorPerPage 126,6379
+u32 ExtraPageDataStart 127,6464
+int SPI_Error 128,6547
+int sf_MediaInit(176,8341
+int sf_readSector(256,10576
+int sf_writeSector(332,13191
+void GetPageFromSector(451,17038
+s32 writeSPI1(492,18336
+s32 readSPI1(614,21796
+s32 FLASHReadyForCommand(747,25680
+int spi_subSPI1(845,28264
+int readMnfgCode(934,31009
+int spi_EraseChip(978,32217
+int spi_WriteBuffer(1020,33714
+int spi_ReadBuffer(1075,35819
+int spi_BufferToMemory(1133,37630
+int spi_ReadPage(1196,39691
+int spi_ComparePageToBuffer(1241,41073
+int spi_ReadPageToBuffer(1323,43497
+int spi_ConfigOpAddrSize(1373,45081
+
+flash_src/sst_flashDriver.c,1642
+#define OP_32_BIT(22,493
+#define OP_8_BIT(24,565
+#define OP_READ 26,629
+#define OP_HI_SPEED_READ 27,685
+#define OP_SECTOR_ERASE 28,741
+#define OP_CHIP_ERASE 29,797
+#define OP_PAGE_PROGRAM 30,853
+#define OP_READ_STATUS_REGISTER 31,909
+#define OP_WRITE_ENABLE 32,965
+#define OP_ENABLE_WRITE_STATUS_REGISTER 33,1021
+#define OP_WRITE_STATUS_REGISTER 34,1077
+#define OP_READ_ID 35,1133
+#define STATUS_BUSY 37,1191
+#define STATUS_WRITE_ENABLED 38,1239
+#define STATUS_BLOCK_WRITE_PROTECTION_0 39,1287
+#define STATUS_BLOCK_WRITE_PROTECTION_1 40,1335
+#define STATUS_BLOCK_WRITE_PROTECTION_2 41,1383
+#define STATUS_BLOCK_WRITE_PROTECTION_3 42,1431
+#define STATUS_SECURITY_IS_STATUS 43,1479
+#define STATUS_PROTECTION_TYPE 44,1527
+#define STATUS_NO_WRITE_PROTECTION 46,1577
+#define PAGE_SIZE 48,1757
+#define SECTOR_SIZE 49,1782
+#define MAX_BITS(51,1827
+#define ADDRESS_BITS 53,1891
+#define ADDRESS_PAD_RIGHT(54,1919
+#define FLASH_RESET_GPIO 56,1983
+DEBUG_TRACE_STORAGE;58,2014
+static s32 spi_bus_handle 60,2038
+static void set_size(63,2132
+#define VALID_BUFFER(70,2294
+#define NOUSE_BUFFER(71,2375
+static void spi_bus_read(73,2458
+static void spi_bus_write(87,2829
+static unsigned char get_status(103,3431
+static void wait_for_device_ready(114,3625
+static void spiFlash_Init(129,3854
+static void spiFlash_Read(174,5310
+static int spiFlash_Program(189,5901
+static int spiFlash_Erase_Sector(224,6744
+int spiFlash_EraseChip(262,7644
+void spiFlash_ReadID(311,8678
+int sf_MediaInit(326,9160
+#define PAGE_TO_OFFSET(356,10053
+#define PAGES_PER_SECTOR 357,10105
+int sf_writePage(368,10537
+int sf_readPage(400,11581
+
+inc/Accelerometer.h,148
+#define _ACCELEROMETER_H__2,28
+#define ACCEL_CS_GPIO 7,105
+	int irq_high_slow_idle;11,155
+	int threshold_bad;12,181
+} ACCEL_ERROR_STATE;13,202
+
+inc/adc.h,92
+#define ADC_H_2,22
+enum IginitionStatus4,40
+	Ign_Off 6,65
+	Ign_On 7,83
+	Ign_Idle 8,100
+
+inc/adl_shoring.h,429
+#define _ADL_SHORING_H_2,25
+#define _ADL_ARG_MAX(6,75
+#define ADL_CMD_MIN_ARGS(7,142
+#define ADL_CMD_MAX_ARGS(8,198
+#define ADL_P2U8P(12,308
+#define ADL_CCP2U8P(14,359
+#define ADL_CCP2CP(15,422
+#define ADL_CVP2U8P(17,476
+typedef s32 ws8;21,628
+typedef s32 ws16;22,646
+typedef u32 wu8;24,667
+typedef u32 wu16;25,685
+#define widen_s8(27,706
+#define widen_s16(28,742
+#define widen_u8(30,781
+#define widen_u16(31,817
+
+inc/airplane_mode.h,31
+#define __AIRPLANE_MODE__2,27
+
+inc/alarm_suppress.h,224
+#define __alarm_suppress__2,28
+	GPS_ALARM_SUP 6,75
+	GSM_ALARM_SUP,7,96
+	BAT_ALARM_SUP,8,113
+	ACC_ALARM_SUP9,130
+} ALARM_SUPPRESS_TYPE;10,146
+	ALARM_EXPIRED,14,189
+	ALARM_NOT_EXPIRED,15,206
+} ALARM_EXP_STATUS;16,227
+
+inc/anolclient.h,148
+#define __ANOL_CLIENT_H__2,27
+	PC_USB_SRC,6,73
+	GPRS_SRC7,87
+} AGPS_REQ_SRC;8,98
+	AGPS_NOT_USED,12,134
+	AGPS_USED13,151
+} AGPS_STATUS;14,163
+
+inc/atmel_flashDriver.h,618
+#define __spiflash_H_4,56
+#define SUCCESS 26,688
+#define SPI_RESPONSE_BASE 27,779
+#define SPI_UNKNOWN_ERROR 28,909
+#define SPI_SECTOR_OUT_OF_RANGE 29,1011
+#define SPI_FLASH_NOT_INITIALIZED 30,1122
+#define SPI_SUBSCRIBE_ERROR 31,1247
+#define SPI_UNKNOWN_OPCODE 32,1368
+#define SPI_Opcode_SIZE_ERROR 33,1479
+#define SPI_ADDRESS_SIZE_ERROR 34,1586
+#define SPI_INVALID_PARAM 35,1694
+#define SPI_READ_ERROR 36,1819
+#define SPI_WRITE_ERROR 37,1932
+enum Buffers_e41,2124
+	Buffer1 43,2143
+	Buffer2 44,2206
+typedef enum Buffers_e Buffers;47,2275
+#define SECTOR_SIZE 49,2356
+#define NUMBER_OF_SECTORS 50,2393
+
+inc/bele.h,1744
+#define BELE_H_96,5033
+#define LOW8(106,5153
+#define HIGH8(107,5205
+#define LOW16(109,5284
+#define HIGH16(110,5337
+#define BYTE32_3(112,5416
+#define BYTE32_2(113,5493
+#define BYTE32_1(114,5570
+#define BYTE32_0(115,5646
+#define MAKE16(121,5778
+#define MAKE32(122,5908
+#define MAKE64(123,6039
+#define MAKE32_4(125,6180
+#define StoreWE16(131,6296
+#define LoadWE16(133,6355
+#define StoreWE32(135,6410
+#define LoadWE32(140,6640
+#define LoadLE16(147,6804
+#define LoadLE32(148,6901
+#define StoreLE16(151,7133
+#define StoreLE32(156,7312
+#define LoadBE16(163,7611
+#define LoadBE32(164,7708
+#define StoreBE16(168,7942
+#define StoreBE32(173,8118
+#define bele_SWAP16(188,8728
+#define bele_SWAP32(189,8787
+#define TO_LE32(196,9117
+#define TO_LE16(197,9158
+#define FROM_LE32(198,9199
+#define FROM_LE16(199,9240
+#define TO_BE32(201,9283
+#define TO_BE16(202,9337
+#define FROM_BE32(203,9391
+#define FROM_BE16(204,9445
+#define TO_WE32(206,9501
+#define TO_WE16(207,9542
+#define FROM_WE32(208,9583
+#define FROM_WE16(209,9624
+#define WE16cpy(212,9730
+#define LoadNative16(214,9797
+#define LoadNative32(215,9850
+#define StoreNative16(216,9903
+#define StoreNative32(217,9960
+#define TO_LE32(223,10101
+#define TO_LE16(224,10143
+#define FROM_LE32(225,10185
+#define FROM_LE16(226,10227
+#define TO_BE32(228,10271
+#define TO_BE16(229,10300
+#define FROM_BE32(230,10329
+#define FROM_BE16(231,10358
+#define TO_WE32(233,10389
+#define TO_WE16(234,10468
+#define FROM_WE32(235,10497
+#define FROM_WE16(236,10576
+#define LoadNative16(241,10733
+#define LoadNative32(242,10786
+#define StoreNative16(243,10839
+#define StoreNative32(244,10896
+#define UNCACHED(251,11174
+#define DCACHED(252,11226
+#define ICACHED(253,11293
+
+inc/button.h,23
+#define BUTTON_H_2,25
+
+inc/CallbackMethods.h,40
+#define __CALLBACK_METHODS__H__25,1285
+
+inc/CommandHandlerXACT.h,36
+#define __CommandHandlerXACT__2,32
+
+inc/common.h,2964
+#define _COMMON_H_2,20
+#define HINT_FUNC_FORMAT(8,111
+#define HINT_FUNC_DEPRECATED 9,226
+#define HINT_FUNC_MALLOC_RETURN 10,299
+#define HINT_FUNC_NON_NULL 11,368
+#define HINT_FUNC_NON_NULL_ARGS(12,438
+#define HINT_FUNC_NO_RETURN 13,517
+#define HINT_FUNC_CONST 14,588
+#define HINT_FUNC_PURE 15,656
+#define HINT_FUNC_CALLED_FREQUENTLY 16,723
+#define HINT_FUNC_CALLED_INFREQUENTLY 17,789
+#define HINT_FUNC_DISCARD_IF_UNUSED 18,856
+#define HINT_FUNC_KEEP_IF_UNUSED 19,925
+#define HINT_FUNC_WARN_IF_RESULT_UNUSED 20,992
+#define HINT_FUNC_WEAK 21,1073
+#define HINT_VAR_DEPRECATED 23,1142
+#define HINT_VAR_DISCARD_IF_UNUSED 24,1215
+#define HINT_VAR_KEEP_IF_UNUSED 25,1284
+#define HINT_VAR_WEAK 26,1351
+#define HINT_FUNC_FORMAT(28,1425
+#define HINT_FUNC_DEPRECATED29,1482
+#define HINT_FUNC_MALLOC_RETURN30,1512
+#define HINT_FUNC_NON_NULL31,1545
+#define HINT_FUNC_NON_NULL_ARGS(32,1573
+#define HINT_FUNC_NO_RETURN33,1611
+#define HINT_FUNC_CONST34,1640
+#define HINT_FUNC_PURE35,1665
+#define HINT_FUNC_CALLED_FREQUENTLY36,1689
+#define HINT_FUNC_CALLED_INFREQUENTLY37,1726
+#define HINT_FUNC_DISCARD_IF_UNUSED38,1765
+#define HINT_FUNC_KEEP_IF_UNUSED39,1802
+#define HINT_FUNC_WARN_IF_RESULT_UNUSED40,1836
+#define HINT_FUNC_WEAK41,1877
+#define HINT_VAR_DEPRECATED43,1903
+#define HINT_VAR_DISCARD_IF_UNUSED44,1932
+#define HINT_VAR_KEEP_IF_UNUSED45,1968
+#define HINT_VAR_WEAK46,2001
+#define HINT_STRUCT_PACKED 51,2193
+#define VALUE_TO_STRING(53,2254
+#define MACRO_TO_STRING(54,2299
+#define _COMBINE(56,2361
+#define COMBINE(57,2403
+#define UNUSED_VARIABLE(59,2456
+#define UNUSED_PARAMETER(60,2503
+#define MAKE_TAG(62,2561
+#define INLINE_PROTOTYPE_(66,2709
+#define INLINE_DEFINITION(67,2793
+typedef unsigned int bool32_t;71,3041
+#define IntToBool(73,3075
+#define BoolToInt(74,3114
+#define hours_per_day 77,3172
+#define minutes_per_hour 78,3216
+#define seconds_per_minute 79,3260
+#define milliseconds_per_second 80,3304
+#define microseconds_per_millisecond 81,3350
+#define microseconds_to_milliseconds(83,3398
+#define seconds_to_milliseconds(84,3481
+#define minutes_to_milliseconds(85,3558
+#define minutes_to_seconds(87,3652
+#define hours_to_seconds(88,3724
+#define hours_to_minutes(90,3811
+#define days_to_minutes(91,3881
+#define milliseconds_to_ticks(93,3963
+#define seconds_to_ticks(94,4031
+#define minutes_to_ticks(95,4097
+#define hours_to_ticks(96,4164
+#define bytes_per_kibibyte 99,4262
+#define bytes_to_kibibytes(101,4300
+#define kibibytes_to_bytes(102,4364
+#define ElementCount(105,4442
+#define ASCIIZ_strlen(106,4512
+#define StringIsEmpty(107,4575
+#define CRLF 109,4634
+#define round_up(112,4675
+#define round_down(113,4725
+#define RECAST(117,4840
+#define UNCONST(118,4887
+#define BIT(121,4954
+#define BitIsSet(122,4998
+#define BitIsClear(123,5055
+#define SetBit(125,5115
+#define ClearBit(126,5162
+#define BIT32(128,5212
+#define LOW4(130,5258
+#define HIGH4(131,5304
+#define MAKE8(133,5355
+
+inc/COMMR572.h,684
+#define _COMMR572_H_5,43
+#define NA 11,116
+typedef enum _COMMR572_CMND_ID13,135
+    MODEL_CODE,15,170
+    TEMPERATURE_INPUT_1,16,187
+    TEMPERATURE_INPUT_2,17,213
+    ALARM_STATUS,18,239
+    TEMPERATURE_INPUT_3,19,258
+    HUMIDITY_SENSOR,20,284
+    HEAT_START_TEMP,21,306
+    HEAT_END_TEMP,22,328
+    COOLING_START_TEMP,23,348
+    COOLING_END_TEMP,24,373
+    INPUT_VOLTAGE_COUNTS,25,397
+    BATTERY_LEVEL_PERCENT,26,424
+    N_OF_COMMR572_CMND_IDS 28,492
+}COMMR572_CMND_ID;COMMR572_CMND_ID29,521
+typedef struct _COMMR572_CMND31,543
+    COMMR572_CMND_ID cmnd_id;33,577
+    int write_command;34,608
+    int read_command;35,632
+}COMMR572_CMND;COMMR572_CMND36,655
+
+inc/ConfigSettings.h,3487
+#define __CONFIGSETTINGS__2,28
+#define SECONDS_IN_DAY 11,179
+#define SECONDS_IN_HOUR 12,218
+#define SECONDS_IN_WEEK 13,256
+#define WAYPOINTS_PER_PKT 14,296
+#define MAX_PHNUM_LEN 15,331
+#define NUM_DIAG_COMMANDS 17,425
+	NO_CHANGE_MODE,21,485
+	DOG_PARK_MODE,22,503
+	TRACK_MODE,23,520
+	WALK_MODE,24,534
+	SERVER_NO_SLEEP,25,547
+	SERVER_STATUS_REQ,26,566
+	SERVER_STATUS_REQ_V,27,587
+	FULL_TRACK_MODE,28,610
+	LP_FULL_TRACK_MODE,29,629
+	ALARM_MODE30,651
+} MODES;31,664
+	DISABLE_SOS,35,693
+	ENABLE_SOS,36,708
+	ACK_SOS37,722
+} SOS_CTL;38,732
+	NO_DOWNLOAD,42,763
+	HOUR1_DATA,43,778
+	HOUR8_DATA,44,792
+	HOUR24_DATA,45,806
+	HOUR72_DATA,46,821
+	WEEK1_DATA,47,836
+	ALL_DATA48,850
+} WAYPOINT_DL;49,861
+	SMS_ROAMING 53,896
+	GPRS_UDP_ROAMING,54,915
+	GPRS_TCP_ROAMING,55,935
+	GPRS_UDP_FALLBACK_ROAMING,56,955
+	GPRS_TCP_FALLBACK_ROAMING,57,984
+	SMS_NO_ROAMING,58,1013
+	GPRS_UDP_NO_ROAMING,59,1031
+	GPRS_TCP_NO_ROAMING,60,1054
+	GPRS_UDP_FALLBACK_NO_ROAMING,61,1077
+	GPRS_TCP_FALLBACK_NO_ROAMING62,1109
+} SMS_GPRS_MODE;63,1140
+	GPS_ALERT_ON_OTA_AGPS_ON 67,1177
+	GPS_ALERT_ON_OTA_AGPS_OFF,68,1209
+	GPS_ALERT_OFF_OTA_AGPS_ON,69,1238
+	GPS_ALERT_OFF_OTA_AGPS_OFF70,1267
+} GPS_ALERT_SETTING;71,1296
+	BATT_ALERT_OFF_SHUTDOWN_ALERT_OFF 75,1337
+	BATT_LEVEL_1_SHUTDOWN_ALERT_OFF,76,1378
+	BATT_LEVEL_2_SHUTDOWN_ALERT_OFF,77,1413
+	BATT_LEVEL_1_SHUTDOWN_ALERT_ON,78,1448
+	BATT_LEVEL_2_SHUTDOWN_ALERT_ON,79,1482
+	BATT_ALERT_OFF_SHUTDOWN_ALERT_ON80,1516
+} BATT_ALERT_SETTING;81,1551
+	UINT8 SMSorGPRS;87,1723
+	UINT32 WaypointInterval;88,1742
+	UINT8 TrackingInterval;89,1769
+	UINT8 MotionAlarmThresh;90,1795
+	UINT8 AccelThreshWake;91,1822
+	UINT32 AccelDurationWake;92,1847
+	UINT32 AccelDurationSleep;93,1875
+	ENDISABLE BreadCrumbMode;94,1904
+	MODES Mode;95,1932
+	UINT8 NumFences;96,1946
+	GPS_ALERT_SETTING GPSAlert;97,1965
+	UINT8 GSMAlertThresh;98,1995
+	BATT_ALERT_SETTING BattAlert;99,2019
+	ENDISABLE PowerDiscAlert;100,2051
+	UINT8 OverSpeedAlertThresh;101,2079
+	UINT8 FirmwareRevNum;102,2109
+	UINT8 HardwareRevNum;103,2133
+	ENDISABLE PowerDownDisable;104,2157
+	UINT8 VibrationMotorPattern;105,2187
+	ENDISABLE VibrationMotorDelayEn;106,2218
+	ENDISABLE ServerVibMotorOverride;107,2253
+	SOS_CTL SOSAlert;108,2289
+	WAYPOINT_DL WaypointDLData;109,2309
+	UINT8 LEDPattern;110,2339
+	UINT8 LEDEn[LEDEn111,2359
+	ENDISABLE ServerLEDOverride;112,2384
+	UINT32 TimedWakeup;113,2415
+	UINT8 FencesActive[FencesActive114,2437
+	ENDISABLE InvisibleOp;115,2471
+	ENDISABLE MagneticSnsEn;116,2496
+	UINT8 CriticalConfirm;117,2523
+	ascii ServerPhoneNum[ServerPhoneNum118,2548
+	ascii ServerIPAddr[ServerIPAddr119,2587
+	UINT16 ServerPortNum;120,2613
+	UINT32 TrackingModeDuration;121,2637
+	BOOL ConfigPktRxProperly;122,2668
+	BOOL MotionAlarmIndep;123,2696
+} CONFIG;124,2721
+	UINT8 ATCmdRepeatCount;130,2781
+	UINT8 ATCmdRepeatInterval;131,2807
+	ascii ATCommand[ATCommand132,2836
+	BOOL IsCommandValid;133,2890
+}DIAG_CONFIG;DIAG_CONFIG134,2978
+	UINT8  UseCaseNum;140,3052
+	UINT8  Mode;141,3073
+	UINT16 AnalogThreshold;142,3088
+	UINT8  SampleCount;143,3114
+	UINT8  GPIO5Config;144,3136
+	UINT8  GPIO7Config;145,3158
+	UINT8  I2CDataLen;146,3180
+	UINT8  TxPattern;147,3201
+	BOOL   PktRxdProperly;148,3221
+	UINT8  GPSTimeout;149,3246
+}MODE_CONFIG;MODE_CONFIG150,3267
+	u32 LastReqTimeStamp;154,3303
+	char AGPSData[AGPSData155,3327
+	u32 datalen;156,3361
+	u8 WaitTimeout;157,3376
+	u8 PowerOffTimeout;158,3394
+}AGPS_DATA;AGPS_DATA159,3416
+
+inc/diagnose.h,466
+#define __diagnose_h__2,24
+#define DUMP_USB(4,50
+	DIAGNOSE_OFF,8,145
+	DIAGNOSE_ON9,161
+} DIAGNOSE_MODE;10,175
+	LED1,14,212
+	LED2,15,220
+	LED3,16,228
+	LED4,17,236
+	LED5,18,244
+	LED6,19,252
+	VM,20,260
+	IND_OFF,21,266
+	IND_ON,22,277
+	SENSE23,287
+} INDICATOR;24,295
+	AB,28,328
+	PB,29,334
+	MS,30,340
+	AC,31,346
+	LED1_SRC,32,352
+	LED2_SRC,33,364
+	LED3_SRC,34,376
+	LED4_SRC,35,388
+	LED5_SRC,36,400
+	LED6_SRC,37,412
+	VM_SRC38,424
+} SOURCE;39,433
+
+inc/dogwalk.h,171
+#define DOGWALK_H_2,26
+    DOGWALK_DISABLED 6,65
+    DOGWALK_ENABLED7,92
+} dogwalk_t;8,113
+    DOGPARK_DISABLED 12,146
+    DOGPARK_ENABLED13,173
+} dogpark_t;14,194
+
+inc/DOTAOperation.h,59
+#define __DOTAOPERATION_H__2,29
+#define SEND_OK_USB(4,60
+
+inc/fence.h,192
+#define FENCE_H2,17
+#define NUM_FENCES 13,471
+#define NUM_POSTS_PER_FENCE 16,550
+#define DOG_PARK_DISTANCE 19,627
+	GPS_FIX_REASON,23,683
+	MOTION_ALARM_REASON24,701
+} EVAL_REASON;25,723
+
+inc/FlashTest.h,126
+#define __H_FLASHTEST_H__16,739
+#define MAX_NUM_FLASH_IDS 34,1247
+#define FLASH_ID 35,1285
+#define FENCEFLASHSIZE 36,1322
+
+inc/gpioTest.h,265
+#define __GPIOTEST_H__2,24
+#define GPIO_TRACE_LEVEL 8,196
+#define DOG_PARK_THRESH 9,273
+#define DOG_WALK_THRESH 10,370
+#define DOG_WALK_THRESH_MS 11,467
+#define SOS_THRESH 14,666
+#define IGN_THRESH 15,778
+#define GPIO_IGN_GPIO	19,833
+#define GPIO_7	20,862
+
+inc/GPRS.h,245
+#define __GRPS_H__2,20
+#define CONFIG_PKT_SIZE_TCP 6,62
+	TCP_NOT_INIT,10,117
+	TCP_CANT_CONNECT,11,133
+	TCP_TRYING,12,153
+	TCP_CONNECT13,167
+} TCP_STATUS;14,181
+	TCP_CONNECTION_TYPE,18,215
+	UDP_CONNECTION_TYPE19,238
+} TCP_OR_UDP;20,260
+
+inc/gps.h,1129
+#define _GPS_H2,16
+	SINT32 lat_32;16,477
+	SINT32 long_32;17,494
+} COORD;18,512
+	INCLUSIVE,23,574
+	EXCLUSIVE24,587
+} INEXC;25,599
+	SAFE_FENCE 30,658
+	ALARM_LEAVE,31,676
+	ALARM_ENTER,32,691
+	ALARM_BOTH,33,706
+	ALARM_MOTION34,720
+} ALARM_DIRECTION;35,735
+	ALL_DAYS 40,799
+	MON_WED_FRI,41,815
+	TUES_THURS,42,830
+	MON_THRU_FRI,43,844
+	SAT_SUN,44,860
+	MON,45,871
+	TUES,46,878
+	WED,47,886
+	THURS,48,893
+	FRI,49,902
+	SAT,50,909
+	SUN51,916
+} ACTIVE_DAY;52,922
+	unsigned char start_time;57,984
+	unsigned char stop_time;58,1012
+} ACTIVE_TIME;59,1039
+	DISABLE,64,1104
+	ENABLE65,1115
+} ENDISABLE;66,1124
+	COORD posts[posts71,1182
+	ALARM_DIRECTION alarm_dir;72,1200
+	ACTIVE_DAY days;73,1229
+	ACTIVE_TIME time;74,1248
+	ENDISABLE enable;75,1268
+} GEOFENCE;76,1288
+	SINT16 lat_16;81,1359
+	SINT16 long_16;82,1376
+} COORD16;83,1394
+#define BIT_PACKED_STRUCT 86,1425
+#define BIT_PACKED_STRUCT88,1487
+struct GPS_POS_STRUCT92,1564
+	UINT8 utc[utc94,1590
+	UINT8 lat[lat95,1606
+	UINT8 longi[longi96,1622
+	UINT8 epe[epe97,1640
+BIT_PACKED_STRUCT;99,1670
+typedef struct GPS_POS_STRUCT GPS_POS;101,1692
+
+inc/GPSCtrl.h,519
+#define __GPSCTRL_H__2,23
+#define GPS_WAYPOINT_SHUTDOWN_INTERVAL 4,48
+#define NUM_SECONDS_TO_TRACK 5,163
+#define KM_IN_MILES 7,298
+#define METERS_IN_KM 8,386
+	TRACKING_MODE_REQ_ACTIVE,12,455
+	TRACKING_MODE_REQ_RELEASE13,483
+} TRACKING_MODE_REQ;14,511
+	TRACKING_MODE_OFF,18,552
+	ACCEL_TRIG_TRACKING_MODE,19,573
+	SERVER_TRIG_TRACKING_MODE,20,601
+	DOG_PARK_TRACKING_MODE,21,630
+	TIMED_WAKE_TRACKING_MODE22,656
+} TRACKING_MODE;23,683
+	NEVER_HAD_FIX,27,720
+	HAD_3D_FIX28,737
+} POWER_CYCLE_FIX_STATUS;29,750
+
+inc/GpsInterface.h,498
+#define __GPS_INTERFACE__H__25,1266
+#define NMEA_STR_SZ 35,1682
+	FIX_NONE,39,1731
+	FIX_2D,40,1743
+	FIX_3D41,1753
+} FIX_QUALITY;42,1762
+struct structGGAInformation44,1780
+	u32 Time;46,1812
+	s32 Latitude;47,1824
+	s32 Longitude;48,1840
+	FIX_QUALITY FixQuality;49,1857
+	u8 NumberOfSatillites;50,1883
+	u8 HDOP;51,1908
+struct structVTGInformation54,1925
+	u32 Course;56,1957
+	u32 Speed;57,1971
+	int GGAErrors;62,2009
+	int RMCErrors;63,2026
+	int GSVErrors;64,2043
+} NMEA_ERRORS;65,2060
+
+inc/haversine.h,29
+#define __HAVERSINE_H__2,25
+
+inc/i2c.h,83
+#define _I2C_H_24,483
+typedef int fixed1616;54,1641
+#define I2C_POLLGPS 58,1747
+
+inc/i2c_accelerometer.h,466
+#define I2C_ACCELEROMETER_H25,1175
+#define I2C_ACCELEROMETER_MAX_TIMEOUT 30,1247
+#define I2C_ACCELEROMETER_MAX_RETRIES 31,1294
+	int x_10_bit;35,1362
+	int y_10_bit;36,1378
+	int z_10_bit;37,1394
+	int x_8_bit;38,1410
+	int y_8_bit;39,1425
+	int z_8_bit;40,1440
+	int x_offset_value;41,1455
+	int y_offset_value;42,1477
+	int z_offset_value;43,1499
+} ACCEL_CALIBRATION_DATA;44,1521
+typedef void (*NaAccelerometerCallbackFn_t)NaAccelerometerCallbackFn_t51,1751
+
+inc/InternalFlash.h,397
+#define __INTERNAL_FLASH_H__2,30
+	BAND_FIRST 9,134
+	BAND_MONO_850 10,152
+	BAND_MONO_900E,11,173
+	BAND_MONO_1800,12,191
+	BAND_MONO_1900,13,209
+	BAND_DUAL_850_1900,14,227
+	BAND_DUAL_900E_1800,15,249
+	BAND_DUAL_900E_1900,16,272
+	BAND_LAST17,295
+} BAND_SETTING;18,307
+	MODES mode;22,345
+	unsigned int track_dur_rem;23,359
+	GEOFENCE DogParkFence;24,389
+} MODE_NONVOLATILE_STORAGE;25,414
+
+inc/LED.h,1518
+#define __LED_H__24,485
+#define LED_ON_INTERVAL 28,533
+#define DOG_WALK_INTERVAL 29,629
+#define DOG_PARK_INTERVAL 30,743
+#define SHUTDOWN_INTERVAL 31,857
+#define NORMAL_MODE_INTERVAL 32,896
+#define SHUTDOWN_THRESH 34,1010
+#define MAX_ON_OFF_LED 36,1107
+#define MAX_PATTERNS 37,1147
+#define NUM_LEDS 38,1186
+#define POWER_LED_RED 41,1281
+#define POWER_LED_GREEN 42,1345
+#define GSM_LED_RED 43,1409
+#define GSM_LED_GREEN 44,1473
+#define GPS_LED_RED 45,1537
+#define GPS_LED_GREEN 46,1601
+#define SKIP_ON 48,1667
+#define PATTERN_OFF 51,1734
+#define PATTERN_NORMAL 52,1773
+#define PATTERN_WALK 53,1812
+#define PATTERN_PARK 54,1851
+#define PATTERN_SHUTDOWN 55,1890
+#define PATTERN_SOS 56,1929
+#define DONE 58,1970
+#define SOS_DURATION 59,2009
+#define LED_ON_DURATION_NORMAL 60,2102
+#define LED_OFF_DURATION_NORMAL 61,2195
+#define LED_OFF_DURATION_WALK 62,2289
+#define LED_OFF_DURATION_PARK 63,2383
+#define LED_STATE_MASK 66,2494
+#define POWER_STATUS_MSK 67,2592
+#define GSM_STATUS_MSK 68,2695
+#define GPS_STATUS_MSK 69,2796
+#define LED_OFF_MSK 70,2897
+#define POWER_STATUS_MSK_GREEN 71,2945
+#define GPS_STATUS_MSK_GREEN 72,3028
+#define SOS_BLINK_TIME 74,3111
+	DOG_WALK_STATE_LED_OFF,78,3231
+	NORMAL_STATE_LED_OFF,79,3257
+	NORMAL_STATE_LED_ON,80,3281
+	DOG_PARK_STATE_LED_OFF,81,3304
+	SHUTDOWN_STATE_LED_ON,82,3330
+	SHUTDOWN_STATE_LED_OFF83,3355
+} ledState;84,3380
+	FIX_3D_LED,88,3412
+	FIX_BAD_LED,89,3445
+	FIX_2D_LED,90,3487
+	SATS_VISIBLE_LED 91,3520
+} GPS_LED_STATUS;92,3563
+
+inc/ota_at.h,26
+#define __OTA_AT_H__2,22
+
+inc/pistd.h,984
+#define PISTD_H2,17
+typedef signed char SINT8;13,468
+typedef signed short SINT16;14,536
+typedef signed long SINT32;15,605
+typedef unsigned char UINT8;17,676
+typedef unsigned short UINT16;18,746
+typedef unsigned long UINT32;19,817
+typedef volatile UINT8 UINT8V;21,890
+typedef volatile UINT16 UINT16V;22,952
+typedef volatile UINT32 UINT32V;23,1015
+typedef volatile SINT8 SINT8V;25,1080
+typedef volatile SINT16 SINT16V;26,1142
+typedef volatile SINT32 SINT32V;27,1205
+typedef unsigned int boolean;29,1270
+	TRUE1 33,1320
+	FALSE1 34,1385
+	ON 35,1399
+	OFF 36,1409
+	YES 37,1420
+	NO 38,1431
+	PASS 39,1441
+	FAIL 40,1453
+} BOOL;41,1464
+#define  NULL 48,1686
+#define  NULLPTR 51,1737
+#define  NIL 52,1770
+#define  NILPTR 53,1802
+#define  FOREVER 55,1846
+#define  MAX(57,1880
+#define  MIN(58,1931
+#define  KB 60,1984
+#define  MB 61,2008
+#define  KHZ 63,2037
+#define  MHZ 64,2061
+#define  COMB_8_16(67,2131
+#define  COMB_16_32(68,2235
+#define  FLD_DISP(77,2630
+
+inc/PowerCtrl.h,235
+#define __POWERCTRL_H__2,25
+#define FAST_IDLE_ACCEL_LEVEL 4,52
+	FAST_IDLE_REQ_ACTIVE,8,110
+	FAST_IDLE_REQ_RELEASE9,134
+} FAST_IDLE_REQ;10,158
+	SMS,14,195
+	GPRS15,202
+} TRANSMIT_MODE;16,209
+#define TIMED_WAKEUP_DURATION 19,286
+
+inc/protocol.h,4775
+#define PROTOCOL_H8,98
+#define CONFIG_PKT_SIZE 22,615
+#define STATUS_PKT_SIZE 23,660
+#define WAYPOINT_PKT_SIZE 24,716
+#define MODE_CONFIG_PKT_SIZE 25,761
+#define IO_STATUS_PKT_SIZE 26,805
+#define TC_ALERT_PKT_SIZE	29,872
+#define PKT_FLAG1 33,940
+#define PKT_FLAG2 34,985
+#define PKT_TYPE 35,1030
+#define PKT_WAY_PKT_NUM 38,1128
+#define PKT_WAY_DATA 39,1173
+#define PKT_BATT_LVL 42,1265
+#define PKT_SYS_FAIL 43,1310
+#define PKT_GPS_STATE 44,1357
+#define PKT_GPS_SIG1 45,1404
+#define PKT_GPS_SIG2 46,1451
+#define PKT_NUM_BIRDS 47,1498
+#define PKT_GSM_STATE 48,1545
+#define PKT_GSM_SIG 49,1592
+#define PKT_CELL_ID 50,1640
+#define PKT_LOC_AREA 51,1688
+#define PKT_VALID_ACCESS_CNT 52,1736
+#define PKT_BAD_ACCESS_CNT 53,1784
+#define PKT_STATUS_NUM_FENCE 54,1832
+#define PKT_STATUS_MODE 55,1880
+#define PKT_SOS_ALARM 56,1928
+#define PKT_GPS_ALARM 57,1976
+#define PKT_BATT_ALARM 58,2024
+#define PKT_GSM_ALARM 59,2072
+#define PKT_FENCE_ALARM 60,2120
+#define PKT_CUR_FENCE 61,2168
+#define PKT_REBOOT_ALARM 62,2216
+#define PKT_OVER_SPD_ALARM 63,2264
+#define PKT_MOTION_ALARM 64,2312
+#define PKT_PWR_DISCON_ALARM 65,2360
+#define PKT_FIX1_TIME 66,2408
+#define PKT_FIX1_LAT 67,2456
+#define PKT_FIX1_LONG 68,2504
+#define PKT_FIX1_EPE 69,2552
+#define PKT_FIX1_SPEED 70,2600
+#define PKT_FIX2_TIME 71,2648
+#define PKT_FIX2_LAT 72,2696
+#define PKT_FIX2_LONG 73,2744
+#define PKT_FIX2_EPE 74,2792
+#define PKT_FIX2_SPEED 75,2840
+#define PKT_FIX3_TIME 76,2888
+#define PKT_FIX3_LAT 77,2937
+#define PKT_FIX3_LONG 78,2986
+#define PKT_FIX3_EPE 79,3035
+#define PKT_FIX3_SPEED 80,3084
+#define RTC_TIME_START	81,3133
+#define RTC_TIME_END	82,3169
+#define SIERRA_VER_START	83,3203
+#define SIERRA_VER_END	84,3240
+#define AGPS_STAT	85,3276
+#define PKT_CONFIG_ACK 89,3359
+#define PKT_FENCE_NUM 90,3404
+#define PKT_SMS_OR_GPRS 91,3449
+#define PKT_WAYPOINT_INT 92,3494
+#define PKT_TRACKING_INT 93,3539
+#define PKT_MOTION_ALARM_THRS 94,3585
+#define PKT_ACC_THRS_WAKE 95,3631
+#define PKT_ACC_DUR_WAKE 96,3677
+#define PKT_ACC_DUR_SLEEP 97,3723
+#define PKT_BREAD_MODE 98,3769
+#define PKT_MODE 99,3815
+#define PKT_NUM_FENCE 100,3861
+#define PKT_GPS_ALERT_EN 101,3907
+#define PKT_GSM_ALERT_THRS 102,3953
+#define PKT_BATT_ALERT_THRS 103,3999
+#define PKT_PWR_DISCON_ALERT_EN 104,4045
+#define PKT_OVER_SPD_ALERT_THRS 105,4091
+#define PKT_FW_REV 106,4137
+#define PKT_HW_REV 107,4183
+#define PKT_RESERVED 108,4229
+#define PKT_PWR_DOWN_DIS 109,4275
+#define PKT_TRACKING_MODE_DURATION 110,4321
+#define PKT_VIB_MOTOR_PATT 111,4367
+#define PKT_VIB_MOTOR_DELAY_EN 112,4413
+#define PKT_SOS_ALERT_EN 113,4459
+#define PKT_WAYPOINT_DL 114,4505
+#define PKT_LED_PATT 115,4551
+#define PKT_LED_EN 116,4597
+#define PKT_TIME_WAKEUP 117,4643
+#define PKT_FENCE_ACT 118,4689
+#define PKT_INVISIBLE_OP_EN 119,4735
+#define PKT_MAG_EN 120,4781
+#define PKT_CRIT_CONF 121,4827
+#define PKT_PHONE_NUM 122,4873
+#define PKT_IP_ADDR 123,4919
+#define PKT_PORT_NUM 124,4965
+#define PKT_EXCLUSIVE 125,5011
+#define PKT_POST1_LAT 126,5057
+#define PKT_POST1_LONG 127,5103
+#define PKT_POST2_LAT 128,5150
+#define PKT_POST2_LONG 129,5197
+#define PKT_POST3_LAT 130,5244
+#define PKT_POST3_LONG 131,5291
+#define PKT_POST4_LAT 132,5338
+#define PKT_POST4_LONG 133,5385
+#define PKT_FNC_START_TIME 134,5432
+#define PKT_FNC_STOP_TIME 135,5479
+#define IO_RTC_TIME_STAMP 139,5589
+#define PANIC 140,5634
+#define I2C_SENSOR 141,5680
+#define GPIO5_STATUS 142,5726
+#define GPIO7_STATUS 143,5772
+#define ANALOG_VALUE 144,5818
+#define BATTERY_VLTG 145,5864
+#define MAGENTIC_SENSOR 146,5910
+#define ACCELEROMETER 147,5956
+#define BOARD_TEMP 148,6002
+#define IGN_STATUS 149,6048
+#define ENG_ON_TIME 150,6094
+#define ENG_OFF_TIME 151,6140
+#define RUN_TIME 152,6192
+#define I_PKT_LENGHT 153,6241
+#define M_ACK 158,6409
+#define USE_CASE 159,6454
+#define MODE 160,6499
+#define ANA_THRESHOLD 161,6544
+#define SAMPLE_COUNT 162,6589
+#define GPIO_FIVE 163,6635
+#define GPIO_SEVEN 164,6681
+#define I2C_DATA_LEN 165,6727
+#define TX_PATTERN 166,6773
+#define TC_ALERT_NIBBLE_3	170,6888
+#define TC_ALERT_NIBBLE_2	171,6921
+#define TC_ALERT_NIBBLE_1	172,6954
+#define TC_ALERT_NIBBLE_0	173,6987
+#define TC_CNTR_NIBBLE_1	175,7021
+#define TC_CNTR_NIBBLE_0	176,7053
+#define TC_VOLTPCT_NIBBLE_1	178,7086
+#define TC_VOLTPCT_NIBBLE_0	179,7121
+#define TC_PKT_GPS_STATE	181,7158
+#define TC_PKT_GPS_SIG1	182,7191
+#define TC_PKT_GPS_SIG2	183,7224
+#define TC_PKT_NUM_BIRDS	184,7257
+#define TC_PKT_FIX1_TIME	185,7290
+#define TC_RTC_TIME_START	186,7323
+#define TC_RTC_TIME_END	187,7372
+	int packet_num;195,7609
+	WAYPOINT waypoint1;196,7627
+	WAYPOINT waypoint2;197,7649
+	WAYPOINT waypoint3;198,7671
+	WAYPOINT waypoint4;199,7693
+} SMS_WAYPOINT_PAYLOAD;200,7715
+
+inc/SimOperations.h,38
+#define __H_SIMOPERATIONS_H__25,1194
+
+inc/SMShandling.h,736
+#define __H_SMSHANDLING_H__2,29
+#define NUM_SERVER_FR 30,1129
+#define SMS_SIZE 32,1290
+	SMS_OK,40,1593
+	SMS_OK, SMS_TIMEOUT,40,1593
+	SMS_OK, SMS_TIMEOUT, SMS_WEAK_SIG,40,1593
+	SMS_OK, SMS_TIMEOUT, SMS_WEAK_SIG, SMS_ERROR,40,1593
+	SMS_OK, SMS_TIMEOUT, SMS_WEAK_SIG, SMS_ERROR, SMS_NOSVC40,1593
+} e_smsStatus;41,1651
+	NO_SMS_IN,44,1684
+	NO_SMS_IN, SMS_IN,44,1684
+	NO_SMS_IN, SMS_IN, SMS_IN_ERR44,1684
+} e_smsRecStatus;45,1716
+#define C_SIZE 67,2481
+#define S_SIZE 68,2510
+#define L_SIZE 69,2539
+#define W_SIZE 70,2568
+#define S_SIZE_GPRS 72,2599
+#define L_SIZE_GPRS 73,2633
+#define W_SIZE_GPRS 74,2667
+#define C_SIZE_GPRS 75,2701
+#define M_SIZE_GPRS 76,2735
+#define I_SIZE_GPRS 77,2769
+#define A_SIZE_GPRS	78,2803
+
+inc/SocketDescriptor.h,736
+#define _SOCKETDESCRIPTOR_H26,683
+#define SOCKET_INITIALIZED 94,3328
+#define SOCKET_BOUND 95,3366
+#define SOCKET_ERR 96,3404
+#define SOCKET_READABLE 97,3442
+#define SOCKET_WRITEABLE 98,3480
+#define SOCKET_PEER_CLOSED 99,3518
+#define SOCKET_BLOCKING 100,3556
+#define SOCKET_SERVER 101,3594
+struct zigbeeSocket_s103,3634
+	struct zbs_context *context;context105,3660
+enum commPort_e108,3697
+	UART1_COM_ENUM=110,3717
+	UART2_COM_ENUM,111,3737
+	USB_COM_ENUM112,3755
+typedef enum commPort_e commPort_type;115,3776
+struct commSocket_s117,3818
+	commPort_type portType;119,3842
+	u8 socketFlags;120,3868
+	s8 FCM_Handle;136,4854
+	char            *rcvData;rcvData137,4871
+	int rcvDataSize;138,4899
+	s8 DownloadFlag;139,4918
+
+inc/socketHelper.h,1958
+#define _SOCKETHELPER_H2,24
+#define MAX_ADDR_LEN 7,114
+typedef unsigned long u_long;12,190
+typedef unsigned char u_char;13,220
+typedef unsigned short u_short;14,250
+#define USING_UNIX_DEFS 21,449
+	struct sockaddr{sockaddr23,500
+		short int sa_family;24,518
+		char sa_data[sa_data25,575
+	struct in_addr 28,648
+		unsigned long int	s_addr;29,666
+	struct sockaddr_in 32,699
+		short int	sin_family;33,721
+		unsigned short int	sin_port;34,745
+		struct in_addr	sin_addr;35,776
+	struct sockaddr_un 38,808
+		short int	sun_family;39,830
+		char		sun_path[sun_path40,854
+#define USB_COMM_PORT 47,929
+#define UART1_COMM_PORT 48,958
+#define UART2_COMM_PORT 49,990
+	#define in_addr_t 52,1048
+	typedef u_long in_addr_t;54,1080
+	SHUT_RD,61,1193
+	SHUT_WR,62,1203
+	SHUT_RDWR63,1213
+struct servent{servent67,1306
+	char *s_name;s_name68,1322
+	char **s_aliases;s_aliases69,1337
+	int s_port;70,1356
+	char *s_proto;s_proto71,1369
+struct hostent{hostent74,1389
+	char *h_name;h_name75,1405
+	char **h_aliases;h_aliases76,1420
+	int h_addrtype;77,1439
+	int h_length;78,1456
+	char **h_addr_list;h_addr_list79,1471
+	char *h_addr;h_addr80,1492
+struct protoent{protoent83,1511
+	char *p_name;p_name84,1528
+	char **p_aliases;p_aliases85,1543
+	int p_proto;86,1562
+#define IN_CLASSA_NSHIFT 89,1650
+#define IN_LOOPBACKNET 90,1678
+struct sockCall_s{sockCall_s94,1799
+	int sc_domain;95,1818
+	int sc_type;96,1834
+	int sc_protocol;97,1848
+	int sc_returnCode;98,1866
+	int sc_socketCount;99,1886
+struct bincon_s{bincon_s104,2011
+	int bc_socket;105,2028
+	struct sockaddr *bc_address;bc_address106,2044
+	int bc_address_len;107,2074
+	int bc_returnCode;108,2095
+typedef struct sockCall_s socketBuffer;111,2119
+typedef struct bincon_s bindConnectBuffer;112,2159
+#define  SOCKET_MSG_ID 114,2203
+#define  TCPSERV_MSG_ID 115,2282
+#define  CONNECT_MSG_ID 116,2359
+#define  UDPSERV_MSG_ID 117,2439
+#define  INIT_SEM_OFFSET 119,2602
+
+inc/sst_flashDriver.h,142
+#define SST_FLASH_DRIVER_H_2,35
+#define PAGE_SIZE 6,89
+#define MAXIMUM_ADDRESS 7,122
+#define NUMBER_OF_PAGES 8,160
+#define SUCCESS 9,219
+
+inc/status.h,1286
+#define __STATUS__2,20
+#define MAX_NUM_LOG_PKT 10,155
+	UINT8 BattLevel;16,335
+	char SystemFailure;17,354
+	char GPSStatus;18,376
+	UINT8 GPSSignalStrength1;19,394
+	UINT8 GPSSignalStrength2;20,422
+	UINT8 NumBirds;21,450
+	char GSMStatus;22,468
+	char GSMSignalStrength;23,486
+	UINT8 CellID[CellID24,512
+	UINT8 LocationArea[LocationArea25,531
+	char ValidAccessCnt;26,556
+	char BadAccessCnt;27,579
+	UINT8 NumFences;28,600
+	MODES Mode;29,619
+	char SOSAlarm;30,633
+	char GPSAlarm;31,650
+	char BattAlarm;32,667
+	char GSMAlarm;33,685
+	char FenceAlarm;34,702
+	char OverSpeedAlarm;35,721
+	UINT8 CurrentFenceIn;36,744
+	char RebootAlarm;37,768
+	char MotionAlarm;38,788
+	char PowerDisconnAlarm;39,808
+	UINT8 NumLogPktToSend;40,834
+	UINT8 LogPktToSendLatest;41,859
+} STATUS;42,887
+	UINT8 NumFences;46,919
+	char RebootAlarm;47,938
+	UINT8 NumLogPktToSend;48,958
+	UINT8 LogPktToSendLatest;49,983
+} NON_VOLATILE_STATUS;50,1011
+	GSM_NOT_WORKING,54,1054
+	GSM_WORKING55,1073
+} GSM_STATUS;56,1087
+	RESET_REASON_WATCHDOG_APP_RESET 60,1121
+	RESET_REASON_GSM_WATCH 61,1162
+	RESET_REASON_COMM_MODE_CHANGE 62,1194
+	RESET_REASON_SOFTWARE_UPDATE 63,1233
+	RESET_REASON_DIAGNOSE_MODE 64,1271
+	RESET_REASON_UNKNOWN 65,1307
+	RESET_REASON_ACCEL 66,1337
+} RESET_REASON;67,1364
+
+inc/support.h,203
+#define SUPPORT_H2,19
+#define VA_LIST_IS_ARRAY8,133
+#define SET_MASK(12,193
+#define CLR_MASK(13,238
+#define SET_BIT(14,284
+#define CLR_BIT(15,345
+#define TEST_MASK(16,406
+#define TEST_BIT(17,454
+
+inc/TempoCasesTask.h,1035
+#define _TEMPO_CASES_TASK_H_5,59
+#define TC_UART	7,91
+#define TC_DEBUG_UART	8,125
+#define PARAM_STR_LEN 10,163
+#define MAX_VOLTAGE 12,195
+#define MIN_VOLTAGE 13,232
+typedef enum _TC_ATMEL_STATE 20,379
+	ATMEL_READ_STATUS 21,411
+	ATMEL_STATUS_PENDING,22,436
+	ATMEL_READ_VOLTAGE,23,460
+	ATMEL_VOLTAGE_PENDING24,482
+} TC_ATMEL_STATE;25,506
+typedef enum _ALERT_BIT_ID27,527
+    SENSOR_1_ERROR,29,558
+    SENSOR_2_ERROR,30,579
+    SENSOR_DIFF_ERROR,31,600
+    LOW_BATTERY,32,624
+    CURRENT_LIMITING,33,642
+    FAN_1_INTERIOR_ERROR,34,665
+    SENSOR_3_ERROR,35,692
+    SINK_OVER_TEMP,36,713
+    ROOM_HIGH,37,734
+    FAN_2_EXTERIOR_ERROR,38,750
+    HUMIDITY_OUT_OF_RANGE,39,778
+    BOARD_SENSOR_OVERTEMP,40,806
+    AUTOSAFE_SHUTOFF_ALERT,41,834
+    TEMP_SYSTEM_FAIL,42,863
+    IN_STANDBY,43,886
+    N_OF_ALERT_BIT_IDS 45,943
+ALERT_BIT_ID;47,971
+typedef struct _ALERT_BITS_MINUTES49,988
+    ALERT_BIT_ID bit_id;51,1027
+    unsigned int bit;52,1053
+    unsigned int timeout;53,1076
+ALERT_BITS_MINUTES;55,1139
+
+inc/Timers.h,30
+#define __H_TIMERS_H__24,953
+
+inc/Traces.h,2078
+#define _TRACES_H_2,20
+	PRINTF_TRACE_LEVEL 9,103
+	DEFAULT_TRACE_LEVEL,10,176
+	ERROR_TRACE_LEVEL,11,251
+	SPI_FLASH_DEBUG_TRACE,12,319
+	SPI_FLASH_ERROR_TRACE,13,344
+	SPI_FLASH_STATUS_TRACE,14,369
+	I2C_TRACE_LEVEL,15,395
+} eTraceLevels;16,414
+#define DEFAULT_OUTPUT_TRACE_LEVEL 18,433
+#define HEAP_TRACE_LEVEL 19,476
+void trace_printf_(22,660
+#define HAVE_TRACING25,996
+#define RELEASE_TRACE_LEVEL_PUTS(27,1046
+#define RELEASE_TRACE_LEVEL_PRINTF(28,1096
+#define RELEASE_TRACE_LEVEL_PUTS(33,1216
+#define RELEASE_TRACE_LEVEL_PRINTF(37,1403
+#define RELEASE_TRACE_LEVEL_DUMP(42,1600
+#define RELEASE_TRACE_PUTS(46,1770
+#define RELEASE_TRACE_PRINTF(50,1945
+#define RELEASE_TRACE_DUMP(54,2122
+#define ON_FALSE_DO_(56,2247
+#define FAILURE_MESSAGE_(62,2453
+#define breakpoint(73,2686
+#define ON_ASSERT_DO_(78,2785
+#define DEBUG_TRACE_LEVEL_PUTS(86,3045
+#define DEBUG_TRACE_LEVEL_PRINTF(92,3254
+#define DEBUG_TRACE_PUTS(98,3456
+#define DEBUG_TRACE_PRINTF(104,3641
+#define DEBUG_TRACE_LEVEL_DUMP(110,3839
+#define DEBUG_TRACE_DUMP(116,4029
+#define ON_ASSERT_DO_(120,4129
+#define DEBUG_TRACE_LEVEL_PUTS(124,4234
+#define DEBUG_TRACE_LEVEL_PRINTF(125,4282
+#define DEBUG_TRACE_PUTS(127,4338
+#define DEBUG_TRACE_PRINTF(128,4373
+#define DEBUG_TRACE_LEVEL_DUMP(130,4416
+#define DEBUG_TRACE_DUMP(131,4468
+#define ON_ASSERT_PUTS_DO_(135,4519
+#define ON_ASSERT_PRINTF_DO_(138,4682
+#define ASSERT(147,5018
+#define ASSERT_PUTS(156,5270
+#define ASSERT_PRINTF(163,5574
+#define ASSERT_ERRNO_GOTO(170,5924
+#define ASSERT_GOTO(179,6359
+#define ASSERT_PUTS_GOTO(188,6720
+#define ASSERT_PRINTF_GOTO(195,7121
+#define INSIST(202,7478
+#define FILENAME_STORAGE_ 208,7673
+#define DEBUG_TRACE_STORAGE 209,7774
+#define trace_hex_dump(215,8068
+#define trace(216,8114
+#define trace_hex_dump(218,8161
+#define trace(219,8271
+#define BUILD_TAG(223,8423
+#define VALID_TAGGED_PTR(225,8483
+#define STATIC_ASSIGN_TAG(226,8581
+#define DYNAMIC_ASSIGN_TAG(227,8650
+#define VALID_TAGGED_PTR(229,8732
+#define STATIC_ASSIGN_TAG(230,8793
+#define DYNAMIC_ASSIGN_TAG(231,8826
+
+inc/ublox.h,89
+#define UBLOX_H16,648
+#define GPS_UART 18,667
+#define MAX_NMEA_SENTENCE_LENGTH 19,719
+
+inc/ubx.h,41858
+#define __PROTO_UBX_STRUCT_DEF_H_10174BF8_39D22F9A43,1512
+typedef signed int I;48,1632
+typedef unsigned int U;49,1684
+typedef unsigned long BL;50,1736
+typedef signed char I1;51,1809
+typedef signed short I2;52,1878
+typedef signed int I4;53,1947
+typedef signed long long int I8;54,2016
+typedef unsigned char U1;55,2085
+typedef unsigned char X1;56,2156
+typedef unsigned short U2;57,2257
+typedef unsigned short X2;58,2328
+typedef unsigned int U4;59,2429
+typedef unsigned int X4;60,2500
+typedef unsigned long long int U8;61,2601
+typedef float R4;62,2672
+typedef double R8;63,2741
+typedef char CH;64,2810
+typedef unsigned char L1;65,2873
+typedef unsigned short L2;66,2956
+typedef unsigned int L4;67,3039
+typedef unsigned int L;68,3122
+#define TRUE 71,3221
+#define FALSE 74,3267
+typedef struct GPS_UBX_HEAD_s78,3325
+	U2 prefix;80,3359
+	U1 classId;81,3425
+	U1 msgId;82,3473
+	U2 size;83,3523
+} GPS_UBX_HEAD_t, *GPS_UBX_HEAD_pt;GPS_UBX_HEAD_pt84,3571
+#define GPS_UBX_SYNC_CHAR_1 86,3610
+#define GPS_UBX_SYNC_CHAR_2 87,3748
+#define GPS_UBX_PREFIX 88,3887
+#define GPS_UBX_PREFIX_SIZE 89,3997
+#define GPS_UBX_CHKSUM_SIZE 90,4121
+#define GPS_UBX_HEAD_SIZE 92,4249
+#define GPS_UBX_FRAME_SIZE 93,4365
+typedef struct GPS_UBX_NAV_POSECEF_s107,4757
+	U4 iTOW;109,4798
+	I4 ecefX;110,4866
+	I4 ecefY;111,4923
+	I4 ecefZ;112,4980
+	U4 pAcc;113,5037
+} GPS_UBX_NAV_POSECEF_t, *GPS_UBX_NAV_POSECEF_pt;GPS_UBX_NAV_POSECEF_pt114,5103
+#define UBXID_NAV_POSECEF 116,5156
+typedef struct GPS_UBX_NAV_POSLLH_s130,5682
+	U4 iTOW;132,5722
+	I4 lon;133,5790
+	I4 lat;134,5839
+	I4 height;135,5887
+	I4 hMSL;136,5949
+	U4 hAcc;137,6016
+	U4 vAcc;138,6084
+} GPS_UBX_NAV_POSLLH_t, *GPS_UBX_NAV_POSLLH_pt;GPS_UBX_NAV_POSLLH_pt139,6150
+#define UBXID_NAV_POSLLH 141,6201
+typedef struct GPS_UBX_NAV_STATUS_s155,6541
+	U4 iTOW;157,6581
+	U1 gpsFix;158,6649
+	X1 flags;159,6700
+	X1 diffStat;160,6763
+	U1 res;161,6822
+	U4 ttff;162,6870
+	U4 msss;163,6950
+} GPS_UBX_NAV_STATUS_t, *GPS_UBX_NAV_STATUS_pt;GPS_UBX_NAV_STATUS_pt164,7024
+#define GPS_UBX_NAV_STATUS_FLAGS_GPSFIXOK_MASK 168,7141
+#define GPS_UBX_NAV_STATUS_FLAGS_GPSFIXOK_GET(169,7304
+#define GPS_UBX_NAV_STATUS_FLAGS_DIFFSOLN_MASK 170,7458
+#define GPS_UBX_NAV_STATUS_FLAGS_DIFFSOLN_GET(171,7621
+#define GPS_UBX_NAV_STATUS_FLAGS_WKNSET_MASK 172,7775
+#define GPS_UBX_NAV_STATUS_FLAGS_WKNSET_GET(173,7936
+#define GPS_UBX_NAV_STATUS_FLAGS_TOWSET_MASK 174,8088
+#define GPS_UBX_NAV_STATUS_FLAGS_TOWSET_GET(175,8249
+#define GPS_UBX_NAV_STATUS_DIFFSTAT_DGPSISTAT_MASK 180,8478
+#define GPS_UBX_NAV_STATUS_DIFFSTAT_DGPSISTAT_GET(181,8653
+#define UBXID_NAV_STATUS 185,8829
+typedef struct GPS_UBX_NAV_DOP_s200,9325
+	U4 iTOW;202,9362
+	U2 gDOP;203,9430
+	U2 pDOP;204,9483
+	U2 tDOP;205,9535
+	U2 vDOP;206,9583
+	U2 hDOP;207,9635
+	U2 nDOP;208,9689
+	U2 eDOP;209,9741
+} GPS_UBX_NAV_DOP_t, *GPS_UBX_NAV_DOP_pt;GPS_UBX_NAV_DOP_pt210,9792
+#define UBXID_NAV_DOP 212,9837
+typedef struct GPS_UBX_NAV_SOL_s226,10265
+	U4 iTOW;228,10302
+	I4 fTOW;229,10370
+	I2 week;230,10487
+	U1 gpsFix;231,10546
+	X1 flags;232,10609
+	I4 ecefX;233,10665
+	I4 ecefY;234,10722
+	I4 ecefZ;235,10779
+	U4 pAcc;236,10836
+	I4 ecefVX;237,10905
+	I4 ecefVY;238,10960
+	I4 ecefVZ;239,11015
+	U4 sAcc;240,11070
+	U2 pDOP;241,11133
+	U1 res1;242,11185
+	U1 numSV;243,11233
+	U4 res2;244,11307
+} GPS_UBX_NAV_SOL_t, *GPS_UBX_NAV_SOL_pt;GPS_UBX_NAV_SOL_pt245,11355
+#define GPS_UBX_NAV_SOL_FLAGS_GPSFIXOK_MASK 249,11463
+#define GPS_UBX_NAV_SOL_FLAGS_GPSFIXOK_GET(250,11618
+#define GPS_UBX_NAV_SOL_FLAGS_DIFFSOLN_MASK 251,11764
+#define GPS_UBX_NAV_SOL_FLAGS_DIFFSOLN_GET(252,11919
+#define GPS_UBX_NAV_SOL_FLAGS_WKNSET_MASK 253,12065
+#define GPS_UBX_NAV_SOL_FLAGS_WKNSET_GET(254,12218
+#define GPS_UBX_NAV_SOL_FLAGS_TOWSET_MASK 255,12362
+#define GPS_UBX_NAV_SOL_FLAGS_TOWSET_GET(256,12515
+#define UBXID_NAV_SOL 260,12669
+typedef struct GPS_UBX_NAV_VELECEF_s274,13004
+	U4 iTOW;276,13045
+	I4 ecefVX;277,13113
+	I4 ecefVY;278,13168
+	I4 ecefVZ;279,13223
+	U4 sAcc;280,13278
+} GPS_UBX_NAV_VELECEF_t, *GPS_UBX_NAV_VELECEF_pt;GPS_UBX_NAV_VELECEF_pt281,13341
+#define UBXID_NAV_VELECEF 283,13394
+typedef struct GPS_UBX_NAV_VELNED_s297,13734
+	U4 iTOW;299,13774
+	I4 velN;300,13842
+	I4 velE;301,13900
+	I4 velD;302,13957
+	U4 speed;303,14014
+	U4 gSpeed;304,14065
+	I4 heading;305,14123
+	U4 sAcc;306,14174
+	U4 cAcc;307,14237
+} GPS_UBX_NAV_VELNED_t, *GPS_UBX_NAV_VELNED_pt;GPS_UBX_NAV_VELNED_pt308,14311
+#define UBXID_NAV_VELNED 310,14362
+typedef struct GPS_UBX_NAV_TIMEGPS_s324,14695
+	U4 iTOW;326,14736
+	I4 fTOW;327,14804
+	I2 week;328,14921
+	I1 leapS;329,14980
+	X1 valid;330,15042
+	U4 tAcc;331,15096
+} GPS_UBX_NAV_TIMEGPS_t, *GPS_UBX_NAV_TIMEGPS_pt;GPS_UBX_NAV_TIMEGPS_pt332,15158
+#define GPS_UBX_NAV_TIMEGPS_VALID_TOW_MASK 336,15278
+#define GPS_UBX_NAV_TIMEGPS_VALID_TOW_GET(337,15428
+#define GPS_UBX_NAV_TIMEGPS_VALID_WEEK_MASK 338,15569
+#define GPS_UBX_NAV_TIMEGPS_VALID_WEEK_GET(339,15720
+#define GPS_UBX_NAV_TIMEGPS_VALID_UTC_MASK 340,15862
+#define GPS_UBX_NAV_TIMEGPS_VALID_UTC_GET(341,16012
+#define UBXID_NAV_TIMEGPS 345,16163
+typedef struct GPS_UBX_NAV_TIMEUTC_s359,16498
+	U4 iTOW;361,16539
+	U4 tAcc;362,16607
+	I4 nano;363,16669
+	U2 year;364,16767
+	U1 month;365,16835
+	U1 day;366,16899
+	U1 hour;367,16970
+	U1 min;368,17040
+	U1 sec;369,17113
+	X1 valid;370,17189
+} GPS_UBX_NAV_TIMEUTC_t, *GPS_UBX_NAV_TIMEUTC_pt;GPS_UBX_NAV_TIMEUTC_pt371,17243
+#define GPS_UBX_NAV_TIMEUTC_VALID_VALIDTOW_MASK 375,17363
+#define GPS_UBX_NAV_TIMEUTC_VALID_VALIDTOW_GET(376,17526
+#define GPS_UBX_NAV_TIMEUTC_VALID_VALIDWKN_MASK 377,17680
+#define GPS_UBX_NAV_TIMEUTC_VALID_VALIDWKN_GET(378,17843
+#define GPS_UBX_NAV_TIMEUTC_VALID_VALIDUTC_MASK 379,17997
+#define GPS_UBX_NAV_TIMEUTC_VALID_VALIDUTC_GET(380,18160
+#define UBXID_NAV_TIMEUTC 384,18324
+typedef struct GPS_UBX_NAV_CLOCK_s398,18652
+	U4 iTOW;400,18691
+	I4 clkB;401,18759
+	I4 clkD;402,18824
+	U4 tAcc;403,18901
+	U4 fAcc;404,18963
+} GPS_UBX_NAV_CLOCK_t, *GPS_UBX_NAV_CLOCK_pt;GPS_UBX_NAV_CLOCK_pt405,19030
+#define UBXID_NAV_CLOCK 407,19079
+typedef struct GPS_UBX_NAV_SVINFO_s421,19416
+	U4 iTOW;423,19456
+	U1 numCh;424,19524
+	X1 globalFlags;425,19582
+	U2 res2;426,19629
+} GPS_UBX_NAV_SVINFO_t, *GPS_UBX_NAV_SVINFO_pt;GPS_UBX_NAV_SVINFO_pt428,19730
+#define GPS_UBX_NAV_SVINFO_GLOBALFLAGS_ISU5_MASK 432,19853
+#define GPS_UBX_NAV_SVINFO_GLOBALFLAGS_ISU5_GET(433,20022
+typedef struct GPS_UBX_NAV_SVINFO_CHN_s438,20245
+	U1 chn;440,20289
+	U1 svid;441,20343
+	X1 flags;442,20395
+	X1 quality;443,20442
+	U1 cno;444,20490
+	I1 elev;445,20570
+	I2 azim;446,20638
+	I4 prRes;447,20704
+} GPS_UBX_NAV_SVINFO_CHN_t, *GPS_UBX_NAV_SVINFO_CHN_pt;GPS_UBX_NAV_SVINFO_CHN_pt448,20780
+#define GPS_UBX_NAV_SVINFO_CHN_FLAGS_SVUSED_MASK 452,20909
+#define GPS_UBX_NAV_SVINFO_CHN_FLAGS_SVUSED_GET(453,21082
+#define GPS_UBX_NAV_SVINFO_CHN_FLAGS_DIFFCORR_MASK 454,21246
+#define GPS_UBX_NAV_SVINFO_CHN_FLAGS_DIFFCORR_GET(455,21421
+#define GPS_UBX_NAV_SVINFO_CHN_FLAGS_ORBITAVAIL_MASK 456,21587
+#define GPS_UBX_NAV_SVINFO_CHN_FLAGS_ORBITAVAIL_GET(457,21764
+#define GPS_UBX_NAV_SVINFO_CHN_FLAGS_ORBITEPH_MASK 458,21932
+#define GPS_UBX_NAV_SVINFO_CHN_FLAGS_ORBITEPH_GET(459,22107
+#define GPS_UBX_NAV_SVINFO_CHN_FLAGS_UNHEALTHY_MASK 460,22273
+#define GPS_UBX_NAV_SVINFO_CHN_FLAGS_UNHEALTHY_GET(461,22449
+#define GPS_UBX_NAV_SVINFO_CHN_FLAGS_ORBITALM_MASK 462,22616
+#define GPS_UBX_NAV_SVINFO_CHN_FLAGS_ORBITALM_GET(463,22791
+#define GPS_UBX_NAV_SVINFO_CHN_QUALITY_QUALITYIND_MASK 468,23037
+#define GPS_UBX_NAV_SVINFO_CHN_QUALITY_QUALITYIND_GET(469,23220
+#define UBXID_NAV_SVINFO 473,23404
+typedef struct GPS_UBX_NAV_SBAS_s487,23783
+	U4 iTOW;489,23821
+	U1 geo;490,23889
+	U1 mode;491,23999
+	I1 sys;492,24048
+	X1 service;493,24116
+	U1 cnt;494,24179
+	U1 res[res495,24246
+} GPS_UBX_NAV_SBAS_t, *GPS_UBX_NAV_SBAS_pt;GPS_UBX_NAV_SBAS_pt497,24344
+#define GPS_UBX_NAV_SBAS_SERVICE_RANGING_MASK 501,24457
+#define GPS_UBX_NAV_SBAS_SERVICE_RANGING_GET(502,24629
+#define GPS_UBX_NAV_SBAS_SERVICE_CORRECTIONS_MASK 503,24792
+#define GPS_UBX_NAV_SBAS_SERVICE_CORRECTIONS_GET(504,24968
+#define GPS_UBX_NAV_SBAS_SERVICE_INTEGRITY_MASK 505,25135
+#define GPS_UBX_NAV_SBAS_SERVICE_INTEGRITY_GET(506,25309
+#define GPS_UBX_NAV_SBAS_SERVICE_TESTMODE_MASK 507,25474
+#define GPS_UBX_NAV_SBAS_SERVICE_TESTMODE_GET(508,25647
+typedef struct GPS_UBX_NAV_SBAS_SVID_s513,25872
+	U1 svid;515,25915
+	U1 flags;516,25960
+	U1 udre;517,26017
+	U1 svSys;518,26074
+	U1 svService;519,26137
+	U1 res0;520,26195
+	I2 prc;521,26243
+	I2 res1;522,26314
+	I2 ic;523,26362
+} GPS_UBX_NAV_SBAS_SVID_t, *GPS_UBX_NAV_SBAS_SVID_pt;GPS_UBX_NAV_SBAS_SVID_pt524,26431
+#define UBXID_NAV_SBAS 526,26488
+typedef struct GPS_UBX_RXM_RAW_s540,26948
+	I4 iTOW;542,26985
+	I2 week;543,27090
+	U1 numSV;544,27174
+	U1 res1;545,27240
+} GPS_UBX_RXM_RAW_t, *GPS_UBX_RXM_RAW_pt;GPS_UBX_RXM_RAW_pt547,27340
+typedef struct GPS_UBX_RXM_RAW_CPMES_s550,27435
+	R8 cpMes;552,27478
+	R8 prMes;553,27555
+	R4 doMes;554,27622
+	U1 sv;555,27686
+	I1 mesQI;556,27746
+	I1 cno;557,27821
+	U1 lli;558,27889
+} GPS_UBX_RXM_RAW_CPMES_t, *GPS_UBX_RXM_RAW_CPMES_pt;GPS_UBX_RXM_RAW_CPMES_pt559,27970
+#define UBXID_RXM_RAW 561,28027
+typedef struct GPS_UBX_RXM_SFRB_s577,29182
+	U1 chn;579,29220
+	U1 svid;580,29274
+	X4 dwrd[dwrd581,29351
+} GPS_UBX_RXM_SFRB_t, *GPS_UBX_RXM_SFRB_pt;GPS_UBX_RXM_SFRB_pt582,29404
+#define UBXID_RXM_SFRB 584,29451
+typedef struct GPS_UBX_RXM_SVSI_s598,29835
+	I4 iTOW;600,29873
+	I2 week;601,29961
+	U1 numVis;602,30029
+	U1 numSV;603,30097
+} GPS_UBX_RXM_SVSI_t, *GPS_UBX_RXM_SVSI_pt;GPS_UBX_RXM_SVSI_pt605,30227
+typedef struct GPS_UBX_RXM_SVSI_SVID_s608,30325
+	U1 svid;610,30368
+	X1 svFlag;611,30420
+	I2 azim;612,30477
+	I1 elev;613,30524
+	X1 age;614,30573
+} GPS_UBX_RXM_SVSI_SVID_t, *GPS_UBX_RXM_SVSI_SVID_pt;GPS_UBX_RXM_SVSI_SVID_pt615,30643
+#define GPS_UBX_RXM_SVSI_SVID_SVFLAG_URA_MASK 619,30770
+#define GPS_UBX_RXM_SVSI_SVID_SVFLAG_URA_GET(620,30937
+#define GPS_UBX_RXM_SVSI_SVID_SVFLAG_HEALTHY_MASK 621,31095
+#define GPS_UBX_RXM_SVSI_SVID_SVFLAG_HEALTHY_GET(622,31266
+#define GPS_UBX_RXM_SVSI_SVID_SVFLAG_EPHVAL_MASK 623,31428
+#define GPS_UBX_RXM_SVSI_SVID_SVFLAG_EPHVAL_GET(624,31598
+#define GPS_UBX_RXM_SVSI_SVID_SVFLAG_ALMVAL_MASK 625,31759
+#define GPS_UBX_RXM_SVSI_SVID_SVFLAG_ALMVAL_GET(626,31929
+#define GPS_UBX_RXM_SVSI_SVID_SVFLAG_NOTAVAIL_MASK 627,32090
+#define GPS_UBX_RXM_SVSI_SVID_SVFLAG_NOTAVAIL_GET(628,32262
+#define GPS_UBX_RXM_SVSI_SVID_AGE_ALMAGE_MASK 633,32500
+#define GPS_UBX_RXM_SVSI_SVID_AGE_ALMAGE_GET(634,32659
+#define GPS_UBX_RXM_SVSI_SVID_AGE_EPHAGE_MASK 635,32809
+#define GPS_UBX_RXM_SVSI_SVID_AGE_EPHAGE_GET(636,32968
+#define UBXID_RXM_SVSI 640,33128
+#define UBXID_INF_ERROR 654,33532
+#define UBXID_INF_WARNING 668,33943
+#define UBXID_INF_NOTICE 682,34363
+#define UBXID_INF_TEST 696,34772
+#define UBXID_INF_DEBUG 710,35180
+typedef struct GPS_UBX_ACK_NAK_s724,35542
+	U1 clsID;726,35579
+	U1 msgID;727,35659
+} GPS_UBX_ACK_NAK_t, *GPS_UBX_ACK_NAK_pt;GPS_UBX_ACK_NAK_pt728,35741
+#define UBXID_ACK_NAK 730,35786
+typedef struct GPS_UBX_ACK_ACK_s744,36140
+	U1 clsID;746,36177
+	U1 msgID;747,36253
+} GPS_UBX_ACK_ACK_t, *GPS_UBX_ACK_ACK_pt;GPS_UBX_ACK_ACK_pt748,36331
+#define UBXID_ACK_ACK 750,36376
+typedef struct GPS_UBX_CFG_PRT_POLL_s764,36920
+	U1 PortID;766,36962
+} GPS_UBX_CFG_PRT_POLL_t, *GPS_UBX_CFG_PRT_POLL_pt;GPS_UBX_CFG_PRT_POLL_pt767,37022
+#define UBXID_CFG_PRT 769,37077
+typedef struct GPS_UBX_CFG_PRT_UART_U5_s784,37833
+	U1 portID;786,37878
+	U1 res0;787,37940
+	U2 res1;788,37988
+	X4 mode;789,38036
+	U4 baudRate;790,38111
+	X2 inProtoMask;791,38174
+	X2 outProtoMask;792,38264
+	X2 flags;793,38356
+	U2 pad;794,38414
+} GPS_UBX_CFG_PRT_UART_U5_t, *GPS_UBX_CFG_PRT_UART_U5_pt;GPS_UBX_CFG_PRT_UART_U5_pt795,38472
+#define GPS_UBX_CFG_PRT_UART_U5_MODE_CHARLEN_MASK 799,38603
+#define GPS_UBX_CFG_PRT_UART_U5_MODE_CHARLEN_GET(800,38776
+#define GPS_UBX_CFG_PRT_UART_U5_MODE_PARITY_MASK 801,38940
+#define GPS_UBX_CFG_PRT_UART_U5_MODE_PARITY_GET(802,39112
+#define GPS_UBX_CFG_PRT_UART_U5_MODE_NSTOPBITS_MASK 803,39275
+#define GPS_UBX_CFG_PRT_UART_U5_MODE_NSTOPBITS_GET(804,39450
+#define GPS_UBX_CFG_PRT_UART_U5_INPROTOMASK_UBX_MASK 809,39701
+#define GPS_UBX_CFG_PRT_UART_U5_INPROTOMASK_UBX_GET(810,39881
+#define GPS_UBX_CFG_PRT_UART_U5_INPROTOMASK_NMEA_MASK 811,40052
+#define GPS_UBX_CFG_PRT_UART_U5_INPROTOMASK_NMEA_GET(812,40233
+#define GPS_UBX_CFG_PRT_UART_U5_INPROTOMASK_RTCM_MASK 813,40405
+#define GPS_UBX_CFG_PRT_UART_U5_INPROTOMASK_RTCM_GET(814,40586
+#define GPS_UBX_CFG_PRT_UART_U5_OUTPROTOMASK_UBX_MASK 819,40844
+#define GPS_UBX_CFG_PRT_UART_U5_OUTPROTOMASK_UBX_GET(820,41025
+#define GPS_UBX_CFG_PRT_UART_U5_OUTPROTOMASK_NMEA_MASK 821,41197
+#define GPS_UBX_CFG_PRT_UART_U5_OUTPROTOMASK_NMEA_GET(822,41379
+#define GPS_UBX_CFG_PRT_UART_U5_OUTPROTOMASK_RAW_MASK 823,41552
+#define GPS_UBX_CFG_PRT_UART_U5_OUTPROTOMASK_RAW_GET(824,41733
+typedef struct GPS_UBX_CFG_PRT_SPI_U5_s843,42673
+	U1 portID;845,42717
+	U1 res0;846,42779
+	U2 res1;847,42827
+	X4 mode;848,42875
+	U4 baudRate;849,42929
+	X2 inProtoMask;850,42985
+	X2 outProtoMask;851,43075
+	X2 flags;852,43167
+	U2 pad;853,43225
+} GPS_UBX_CFG_PRT_SPI_U5_t, *GPS_UBX_CFG_PRT_SPI_U5_pt;GPS_UBX_CFG_PRT_SPI_U5_pt854,43283
+#define GPS_UBX_CFG_PRT_SPI_U5_MODE_SPIMODE_MASK 858,43411
+#define GPS_UBX_CFG_PRT_SPI_U5_MODE_SPIMODE_GET(859,43576
+#define GPS_UBX_CFG_PRT_SPI_U5_MODE_FFCNT_MASK 860,43732
+#define GPS_UBX_CFG_PRT_SPI_U5_MODE_FFCNT_GET(861,43895
+#define GPS_UBX_CFG_PRT_SPI_U5_INPROTOMASK_UBX_MASK 866,44133
+#define GPS_UBX_CFG_PRT_SPI_U5_INPROTOMASK_UBX_GET(867,44309
+#define GPS_UBX_CFG_PRT_SPI_U5_INPROTOMASK_NMEA_MASK 868,44476
+#define GPS_UBX_CFG_PRT_SPI_U5_INPROTOMASK_NMEA_GET(869,44653
+#define GPS_UBX_CFG_PRT_SPI_U5_INPROTOMASK_RTCM_MASK 870,44821
+#define GPS_UBX_CFG_PRT_SPI_U5_INPROTOMASK_RTCM_GET(871,44998
+#define GPS_UBX_CFG_PRT_SPI_U5_OUTPROTOMASK_UBX_MASK 876,45251
+#define GPS_UBX_CFG_PRT_SPI_U5_OUTPROTOMASK_UBX_GET(877,45432
+#define GPS_UBX_CFG_PRT_SPI_U5_OUTPROTOMASK_NMEA_MASK 878,45604
+#define GPS_UBX_CFG_PRT_SPI_U5_OUTPROTOMASK_NMEA_GET(879,45786
+#define GPS_UBX_CFG_PRT_SPI_U5_OUTPROTOMASK_RAW_MASK 880,45959
+#define GPS_UBX_CFG_PRT_SPI_U5_OUTPROTOMASK_RAW_GET(881,46140
+typedef struct GPS_UBX_CFG_PRT_I2C_U5_s900,47080
+	U1 portID;902,47124
+	U1 res0;903,47186
+	U2 res1;904,47234
+	X4 mode;905,47282
+	U4 baudRate;906,47336
+	X2 inProtoMask;907,47392
+	X2 outProtoMask;908,47482
+	X2 flags;909,47574
+	U2 pad;910,47632
+} GPS_UBX_CFG_PRT_I2C_U5_t, *GPS_UBX_CFG_PRT_I2C_U5_pt;GPS_UBX_CFG_PRT_I2C_U5_pt911,47690
+#define GPS_UBX_CFG_PRT_I2C_U5_MODE_SLAVEADDR_MASK 915,47818
+#define GPS_UBX_CFG_PRT_I2C_U5_MODE_SLAVEADDR_GET(916,47989
+#define GPS_UBX_CFG_PRT_I2C_U5_INPROTOMASK_UBX_MASK 921,48235
+#define GPS_UBX_CFG_PRT_I2C_U5_INPROTOMASK_UBX_GET(922,48411
+#define GPS_UBX_CFG_PRT_I2C_U5_INPROTOMASK_NMEA_MASK 923,48578
+#define GPS_UBX_CFG_PRT_I2C_U5_INPROTOMASK_NMEA_GET(924,48755
+#define GPS_UBX_CFG_PRT_I2C_U5_INPROTOMASK_RTCM_MASK 925,48923
+#define GPS_UBX_CFG_PRT_I2C_U5_INPROTOMASK_RTCM_GET(926,49100
+#define GPS_UBX_CFG_PRT_I2C_U5_OUTPROTOMASK_UBX_MASK 931,49353
+#define GPS_UBX_CFG_PRT_I2C_U5_OUTPROTOMASK_UBX_GET(932,49534
+#define GPS_UBX_CFG_PRT_I2C_U5_OUTPROTOMASK_NMEA_MASK 933,49706
+#define GPS_UBX_CFG_PRT_I2C_U5_OUTPROTOMASK_NMEA_GET(934,49888
+#define GPS_UBX_CFG_PRT_I2C_U5_OUTPROTOMASK_RAW_MASK 935,50061
+#define GPS_UBX_CFG_PRT_I2C_U5_OUTPROTOMASK_RAW_GET(936,50242
+typedef struct GPS_UBX_CFG_MSG_POLL_s954,50758
+	U1 msgID;957,50853
+} GPS_UBX_CFG_MSG_POLL_t,958,50911
+} GPS_UBX_CFG_MSG_POLL_t, *GPS_UBX_CFG_MSG_POLL_pt;GPS_UBX_CFG_MSG_POLL_pt958,50911
+#define UBXID_CFG_MSG 960,50966
+typedef struct GPS_UBX_CFG_MSG_s976,51866
+	U1 msgID;979,51956
+	U1 rate[rate980,52014
+} GPS_UBX_CFG_MSG_t,981,52089
+} GPS_UBX_CFG_MSG_t, *GPS_UBX_CFG_MSG_pt;GPS_UBX_CFG_MSG_pt981,52089
+typedef struct GPS_UBX_CFG_MSG_SETCURRENT_s997,52509
+	U1 msgID;1000,52610
+	U1 rate;1001,52668
+} GPS_UBX_CFG_MSG_SETCURRENT_t,1002,52735
+} GPS_UBX_CFG_MSG_SETCURRENT_t, *GPS_UBX_CFG_MSG_SETCURRENT_pt;GPS_UBX_CFG_MSG_SETCURRENT_pt1002,52735
+typedef struct GPS_UBX_CFG_INF_POLL_s1018,53155
+	U1 protocolID;1020,53197
+} GPS_UBX_CFG_INF_POLL_t, *GPS_UBX_CFG_INF_POLL_pt;GPS_UBX_CFG_INF_POLL_pt1021,53356
+#define UBXID_CFG_INF 1023,53411
+typedef struct GPS_UBX_CFG_INF_s1037,54278
+	U1 protocolID;1039,54315
+	U1 res0;1040,54482
+	U2 res1;1041,54530
+	X1 infMsgMask[infMsgMask1042,54578
+} GPS_UBX_CFG_INF_t, *GPS_UBX_CFG_INF_pt;GPS_UBX_CFG_INF_pt1043,54694
+#define GPS_UBX_CFG_INF_INFMSGMASK_ERROR_MASK 1047,54807
+#define GPS_UBX_CFG_INF_INFMSGMASK_ERROR_GET(1048,54972
+#define GPS_UBX_CFG_INF_INFMSGMASK_WARNING_MASK 1049,55128
+#define GPS_UBX_CFG_INF_INFMSGMASK_WARNING_GET(1050,55295
+#define GPS_UBX_CFG_INF_INFMSGMASK_NOTICE_MASK 1051,55453
+#define GPS_UBX_CFG_INF_INFMSGMASK_NOTICE_GET(1052,55619
+#define GPS_UBX_CFG_INF_INFMSGMASK_DEBUG_MASK 1053,55776
+#define GPS_UBX_CFG_INF_INFMSGMASK_DEBUG_GET(1054,55941
+#define GPS_UBX_CFG_INF_INFMSGMASK_TEST_MASK 1055,56097
+#define GPS_UBX_CFG_INF_INFMSGMASK_TEST_GET(1056,56261
+#define GPS_UBX_CFG_INF_INFMSGMASK_USER_MASK 1057,56416
+#define GPS_UBX_CFG_INF_INFMSGMASK_USER_GET(1058,56580
+typedef struct GPS_UBX_CFG_RST_s1076,57086
+	X2 navBbrMask;1078,57123
+	U1 resetMode;1079,57219
+	U1 res;1080,57269
+} GPS_UBX_CFG_RST_t, *GPS_UBX_CFG_RST_pt;GPS_UBX_CFG_RST_pt1081,57317
+#define GPS_UBX_CFG_RST_NAVBBRMASK_EPH_MASK 1085,57430
+#define GPS_UBX_CFG_RST_NAVBBRMASK_EPH_GET(1086,57593
+#define GPS_UBX_CFG_RST_NAVBBRMASK_ALM_MASK 1087,57747
+#define GPS_UBX_CFG_RST_NAVBBRMASK_ALM_GET(1088,57910
+#define GPS_UBX_CFG_RST_NAVBBRMASK_HEALTH_MASK 1089,58064
+#define GPS_UBX_CFG_RST_NAVBBRMASK_HEALTH_GET(1090,58230
+#define GPS_UBX_CFG_RST_NAVBBRMASK_KLOB_MASK 1091,58387
+#define GPS_UBX_CFG_RST_NAVBBRMASK_KLOB_GET(1092,58551
+#define GPS_UBX_CFG_RST_NAVBBRMASK_POS_MASK 1093,58706
+#define GPS_UBX_CFG_RST_NAVBBRMASK_POS_GET(1094,58869
+#define GPS_UBX_CFG_RST_NAVBBRMASK_CLKD_MASK 1095,59023
+#define GPS_UBX_CFG_RST_NAVBBRMASK_CLKD_GET(1096,59187
+#define GPS_UBX_CFG_RST_NAVBBRMASK_OSC_MASK 1097,59342
+#define GPS_UBX_CFG_RST_NAVBBRMASK_OSC_GET(1098,59505
+#define GPS_UBX_CFG_RST_NAVBBRMASK_UTC_MASK 1099,59659
+#define GPS_UBX_CFG_RST_NAVBBRMASK_UTC_GET(1100,59822
+#define GPS_UBX_CFG_RST_NAVBBRMASK_RTC_MASK 1101,59976
+#define GPS_UBX_CFG_RST_NAVBBRMASK_RTC_GET(1102,60139
+#define UBXID_CFG_RST 1106,60303
+#define UBXID_CFG_DAT 1108,60366
+typedef struct GPS_UBX_CFG_DAT_STANDARD_s1122,60766
+	U2 datumNum;1124,60812
+} GPS_UBX_CFG_DAT_STANDARD_t, *GPS_UBX_CFG_DAT_STANDARD_pt;GPS_UBX_CFG_DAT_STANDARD_pt1125,60862
+typedef struct GPS_UBX_CFG_DAT_CUSTOM_s1141,61246
+	R8 majA;1143,61290
+	R8 flat;1144,61401
+	R4 dX;1145,61493
+	R4 dY;1146,61600
+	R4 dZ;1147,61707
+	R4 rotX;1148,61814
+	R4 rotY;1149,61929
+	R4 rotZ;1150,62044
+	R4 scale;1151,62159
+} GPS_UBX_CFG_DAT_CUSTOM_t, *GPS_UBX_CFG_DAT_CUSTOM_pt;GPS_UBX_CFG_DAT_CUSTOM_pt1152,62264
+typedef struct GPS_UBX_CFG_DAT_s1168,62869
+	U2 datumNum;1170,62906
+	CH datumName[datumName1171,63013
+	R8 majA;1172,63085
+	R8 flat;1173,63196
+	R4 dX;1174,63288
+	R4 dY;1175,63395
+	R4 dZ;1176,63502
+	R4 rotX;1177,63609
+	R4 rotY;1178,63724
+	R4 rotZ;1179,63839
+	R4 scale;1180,63954
+} GPS_UBX_CFG_DAT_t, *GPS_UBX_CFG_DAT_pt;GPS_UBX_CFG_DAT_pt1181,64059
+#define UBXID_CFG_TP 1185,64169
+typedef struct GPS_UBX_CFG_TP_s1199,64487
+	U4 interval;1201,64523
+	U4 length;1202,64591
+	I1 status;1203,64651
+	U1 timeRef;1204,64716
+	U1 flags;1205,64784
+	U1 res;1206,64831
+	I2 antennaCableDelay;1207,64879
+	I2 rfGroupDelay;1208,64938
+	I4 userDelay;1209,65001
+} GPS_UBX_CFG_TP_t, *GPS_UBX_CFG_TP_pt;GPS_UBX_CFG_TP_pt1210,65107
+#define GPS_UBX_CFG_TP_FLAGS_SYNCMODE_MASK 1214,65212
+#define GPS_UBX_CFG_TP_FLAGS_SYNCMODE_GET(1215,65367
+#define UBXID_CFG_RATE 1221,65587
+typedef struct GPS_UBX_CFG_RATE_s1237,66348
+	U2 measRate;1239,66386
+	U2 navRate;1240,66498
+	U2 timeRef;1241,66658
+} GPS_UBX_CFG_RATE_t, *GPS_UBX_CFG_RATE_pt;GPS_UBX_CFG_RATE_pt1242,66753
+typedef struct GPS_UBX_CFG_CFG_s1258,67358
+	X4 clearMask;1260,67395
+	X4 saveMask;1261,67515
+	X4 loadMask;1262,67670
+} GPS_UBX_CFG_CFG_t, *GPS_UBX_CFG_CFG_pt;GPS_UBX_CFG_CFG_pt1263,67839
+#define GPS_UBX_CFG_CFG_CLEARMASK_IOPORT_MASK 1267,67951
+#define GPS_UBX_CFG_CFG_CLEARMASK_IOPORT_GET(1268,68116
+#define GPS_UBX_CFG_CFG_CLEARMASK_MSGCONF_MASK 1269,68272
+#define GPS_UBX_CFG_CFG_CLEARMASK_MSGCONF_GET(1270,68438
+#define GPS_UBX_CFG_CFG_CLEARMASK_INFMSG_MASK 1271,68595
+#define GPS_UBX_CFG_CFG_CLEARMASK_INFMSG_GET(1272,68760
+#define GPS_UBX_CFG_CFG_CLEARMASK_NAVCONF_MASK 1273,68916
+#define GPS_UBX_CFG_CFG_CLEARMASK_NAVCONF_GET(1274,69082
+#define GPS_UBX_CFG_CFG_CLEARMASK_RXMCONF_MASK 1275,69239
+#define GPS_UBX_CFG_CFG_CLEARMASK_RXMCONF_GET(1276,69405
+#define GPS_UBX_CFG_CFG_CLEARMASK_LPMCONF_MASK 1277,69562
+#define GPS_UBX_CFG_CFG_CLEARMASK_LPMCONF_GET(1278,69728
+#define GPS_UBX_CFG_CFG_CLEARMASK_ANTCONF_MASK 1279,69885
+#define GPS_UBX_CFG_CFG_CLEARMASK_ANTCONF_GET(1280,70051
+#define UBXID_CFG_CFG 1284,70218
+#define UBXID_CFG_ANT 1286,70281
+typedef struct GPS_UBX_CFG_ANT_s1300,70607
+	X2 flags;1302,70644
+	X2 pins;1303,70701
+} GPS_UBX_CFG_ANT_t, *GPS_UBX_CFG_ANT_pt;GPS_UBX_CFG_ANT_pt1304,70778
+#define GPS_UBX_CFG_ANT_FLAGS_SVCS_MASK 1308,70886
+#define GPS_UBX_CFG_ANT_FLAGS_SVCS_GET(1309,71041
+#define GPS_UBX_CFG_ANT_FLAGS_SCD_MASK 1310,71187
+#define GPS_UBX_CFG_ANT_FLAGS_SCD_GET(1311,71341
+#define GPS_UBX_CFG_ANT_FLAGS_OCD_MASK 1312,71486
+#define GPS_UBX_CFG_ANT_FLAGS_OCD_GET(1313,71640
+#define GPS_UBX_CFG_ANT_FLAGS_PDWNONSCD_MASK 1314,71785
+#define GPS_UBX_CFG_ANT_FLAGS_PDWNONSCD_GET(1315,71945
+#define GPS_UBX_CFG_ANT_FLAGS_RECOVERY_MASK 1316,72096
+#define GPS_UBX_CFG_ANT_FLAGS_RECOVERY_GET(1317,72255
+#define GPS_UBX_CFG_ANT_PINS_PINSWITCH_MASK 1322,72475
+#define GPS_UBX_CFG_ANT_PINS_PINSWITCH_GET(1323,72630
+#define GPS_UBX_CFG_ANT_PINS_PINSCD_MASK 1324,72776
+#define GPS_UBX_CFG_ANT_PINS_PINSCD_GET(1325,72928
+#define GPS_UBX_CFG_ANT_PINS_PINOCD_MASK 1326,73071
+#define GPS_UBX_CFG_ANT_PINS_PINOCD_GET(1327,73223
+typedef struct GPS_UBX_CFG_SBAS_U5_s1345,73899
+	X1 mode;1347,73940
+	X1 usage;1348,73989
+	U1 maxSBAS;1349,74039
+	X1 scanmode2;1350,74147
+	X4 scanmode1;1351,74225
+} GPS_UBX_CFG_SBAS_U5_t, *GPS_UBX_CFG_SBAS_U5_pt;GPS_UBX_CFG_SBAS_U5_pt1352,74311
+#define GPS_UBX_CFG_SBAS_U5_MODE_ENABLED_MASK 1356,74430
+#define GPS_UBX_CFG_SBAS_U5_MODE_ENABLED_GET(1357,74591
+#define GPS_UBX_CFG_SBAS_U5_MODE_TEST_MASK 1358,74743
+#define GPS_UBX_CFG_SBAS_U5_MODE_TEST_GET(1359,74901
+#define GPS_UBX_CFG_SBAS_U5_USAGE_RANGE_MASK 1364,75125
+#define GPS_UBX_CFG_SBAS_U5_USAGE_RANGE_GET(1365,75289
+#define GPS_UBX_CFG_SBAS_U5_USAGE_DIFFCORR_MASK 1366,75444
+#define GPS_UBX_CFG_SBAS_U5_USAGE_DIFFCORR_GET(1367,75611
+#define GPS_UBX_CFG_SBAS_U5_USAGE_INTEGRITY_MASK 1368,75769
+#define GPS_UBX_CFG_SBAS_U5_USAGE_INTEGRITY_GET(1369,75937
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE2_PRN152_MASK 1374,76175
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE2_PRN152_GET(1375,76348
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE2_PRN153_MASK 1376,76512
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE2_PRN153_GET(1377,76685
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE2_PRN154_MASK 1378,76849
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE2_PRN154_GET(1379,77022
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE2_PRN155_MASK 1380,77186
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE2_PRN155_GET(1381,77359
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE2_PRN156_MASK 1382,77523
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE2_PRN156_GET(1383,77696
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE2_PRN157_MASK 1384,77860
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE2_PRN157_GET(1385,78033
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE2_PRN158_MASK 1386,78197
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE2_PRN158_GET(1387,78370
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN120_MASK 1392,78613
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN120_GET(1393,78786
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN121_MASK 1394,78950
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN121_GET(1395,79123
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN122_MASK 1396,79287
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN122_GET(1397,79460
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN123_MASK 1398,79624
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN123_GET(1399,79797
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN124_MASK 1400,79961
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN124_GET(1401,80134
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN125_MASK 1402,80298
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN125_GET(1403,80471
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN126_MASK 1404,80635
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN126_GET(1405,80808
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN127_MASK 1406,80972
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN127_GET(1407,81145
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN128_MASK 1408,81309
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN128_GET(1409,81482
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN129_MASK 1410,81646
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN129_GET(1411,81819
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN130_MASK 1412,81983
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN130_GET(1413,82156
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN131_MASK 1414,82320
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN131_GET(1415,82493
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN132_MASK 1416,82657
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN132_GET(1417,82830
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN133_MASK 1418,82994
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN133_GET(1419,83167
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN134_MASK 1420,83331
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN134_GET(1421,83504
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN135_MASK 1422,83668
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN135_GET(1423,83841
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN136_MASK 1424,84005
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN136_GET(1425,84178
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN137_MASK 1426,84342
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN137_GET(1427,84515
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN138_MASK 1428,84679
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN138_GET(1429,84852
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN139_MASK 1430,85016
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN139_GET(1431,85189
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN140_MASK 1432,85353
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN140_GET(1433,85526
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN141_MASK 1434,85690
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN141_GET(1435,85863
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN142_MASK 1436,86027
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN142_GET(1437,86200
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN143_MASK 1438,86364
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN143_GET(1439,86537
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN144_MASK 1440,86701
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN144_GET(1441,86874
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN145_MASK 1442,87038
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN145_GET(1443,87211
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN146_MASK 1444,87375
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN146_GET(1445,87548
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN147_MASK 1446,87712
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN147_GET(1447,87885
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN148_MASK 1448,88049
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN148_GET(1449,88222
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN149_MASK 1450,88386
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN149_GET(1451,88559
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN150_MASK 1452,88723
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN150_GET(1453,88896
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN151_MASK 1454,89060
+#define GPS_UBX_CFG_SBAS_U5_SCANMODE1_PRN151_GET(1455,89233
+#define UBXID_CFG_SBAS 1459,89407
+#define UBXID_CFG_NMEA 1461,89472
+typedef struct GPS_UBX_CFG_NMEA_s1475,89876
+	X1 filter;1477,89914
+	U1 version;1478,89966
+	U1 numSV;1479,90029
+	X1 flags;1480,90118
+} GPS_UBX_CFG_NMEA_t, *GPS_UBX_CFG_NMEA_pt;GPS_UBX_CFG_NMEA_pt1481,90163
+#define GPS_UBX_CFG_NMEA_FILTER_POSFILT_MASK 1485,90275
+#define GPS_UBX_CFG_NMEA_FILTER_POSFILT_GET(1486,90438
+#define GPS_UBX_CFG_NMEA_FILTER_MSKPOSFILT_MASK 1487,90592
+#define GPS_UBX_CFG_NMEA_FILTER_MSKPOSFILT_GET(1488,90758
+#define GPS_UBX_CFG_NMEA_FILTER_TIMEFILT_MASK 1489,90915
+#define GPS_UBX_CFG_NMEA_FILTER_TIMEFILT_GET(1490,91079
+#define GPS_UBX_CFG_NMEA_FILTER_DATEFILT_MASK 1491,91234
+#define GPS_UBX_CFG_NMEA_FILTER_DATEFILT_GET(1492,91398
+#define GPS_UBX_CFG_NMEA_FILTER_SBASFILT_MASK 1493,91553
+#define GPS_UBX_CFG_NMEA_FILTER_SBASFILT_GET(1494,91717
+#define GPS_UBX_CFG_NMEA_FILTER_TRACKFILT_MASK 1495,91872
+#define GPS_UBX_CFG_NMEA_FILTER_TRACKFILT_GET(1496,92037
+#define GPS_UBX_CFG_NMEA_FLAGS_COMPAT_MASK 1501,92265
+#define GPS_UBX_CFG_NMEA_FLAGS_COMPAT_GET(1502,92422
+#define GPS_UBX_CFG_NMEA_FLAGS_CONSIDER_MASK 1503,92570
+#define GPS_UBX_CFG_NMEA_FLAGS_CONSIDER_GET(1504,92729
+#define UBXID_CFG_USB 1510,92955
+typedef struct GPS_UBX_CFG_USB_s1524,93274
+	U2 vendorID;1526,93311
+	U2 productID;1527,93404
+	U2 reserved1;1528,93505
+	U2 reserved2;1529,93584
+	U2 powerConsumption;1530,93679
+	X2 flags;1531,93753
+	CH vendorString[vendorString1532,93820
+	CH productString[productString1533,93934
+	CH serialNumber[serialNumber1534,94049
+} GPS_UBX_CFG_USB_t, *GPS_UBX_CFG_USB_pt;GPS_UBX_CFG_USB_pt1535,94166
+#define GPS_UBX_CFG_USB_FLAGS_REENUM_MASK 1539,94274
+#define GPS_UBX_CFG_USB_FLAGS_REENUM_GET(1540,94431
+#define GPS_UBX_CFG_USB_FLAGS_POWERMODE_MASK 1541,94579
+#define GPS_UBX_CFG_USB_FLAGS_POWERMODE_GET(1542,94739
+#define UBXID_CFG_TMODE 1548,94965
+typedef struct GPS_UBX_CFG_TMODE_s1563,95409
+	U4 timeMode;1565,95448
+	I4 fixedPosX;1566,95507
+	I4 fixedPosY;1567,95579
+	I4 fixedPosZ;1568,95651
+	U4 fixedPosVar;1569,95723
+	U4 svinMinDur;1570,95789
+	U4 svinVarLimit;1571,95855
+} GPS_UBX_CFG_TMODE_t, *GPS_UBX_CFG_TMODE_pt;GPS_UBX_CFG_TMODE_pt1572,95928
+#define UBXID_CFG_NAV5 1576,96044
+typedef struct GPS_UBX_CFG_NAV5_s1590,96532
+	X2 mask;1592,96570
+	U1 dynModel;1593,96673
+	U1 fixMode;1594,96736
+	I4 fixedAlt;1595,96797
+	U4 fixedAltVar;1596,96868
+	I1 minElev;1597,96944
+	U1 drLimit;1598,97040
+	U2 pDop;1599,97156
+	U2 tDop;1600,97220
+	U2 pAcc;1601,97280
+	U2 tAcc;1602,97342
+	U1 staticHoldThresh;1603,97400
+	U1 res1;1604,97461
+	U4 res2;1605,97519
+	U4 res3;1606,97577
+	U4 res4;1607,97635
+} GPS_UBX_CFG_NAV5_t, *GPS_UBX_CFG_NAV5_pt;GPS_UBX_CFG_NAV5_pt1608,97693
+#define GPS_UBX_CFG_NAV5_MASK_DYN_MASK 1612,97803
+#define GPS_UBX_CFG_NAV5_MASK_DYN_GET(1613,97968
+#define GPS_UBX_CFG_NAV5_MASK_MINEL_MASK 1614,98124
+#define GPS_UBX_CFG_NAV5_MASK_MINEL_GET(1615,98291
+#define GPS_UBX_CFG_NAV5_MASK_FIXMODE_MASK 1616,98449
+#define GPS_UBX_CFG_NAV5_MASK_FIXMODE_GET(1617,98618
+#define GPS_UBX_CFG_NAV5_MASK_DRLIM_MASK 1618,98778
+#define GPS_UBX_CFG_NAV5_MASK_DRLIM_GET(1619,98945
+#define GPS_UBX_CFG_NAV5_MASK_POSMASK_MASK 1620,99103
+#define GPS_UBX_CFG_NAV5_MASK_POSMASK_GET(1621,99272
+#define GPS_UBX_CFG_NAV5_MASK_TIMEMASK_MASK 1622,99432
+#define GPS_UBX_CFG_NAV5_MASK_TIMEMASK_GET(1623,99602
+#define GPS_UBX_CFG_NAV5_MASK_STATICHOLDMASK_MASK 1624,99763
+#define GPS_UBX_CFG_NAV5_MASK_STATICHOLDMASK_GET(1625,99939
+typedef struct GPS_UBX_MON_IO_RXBYTES_s1632,100231
+	U4 rxBytes;1634,100275
+	U4 txBytes;1635,100344
+	U2 parityErrs;1636,100409
+	U2 framingErrs;1637,100493
+	U2 overrunErrs;1638,100578
+	U2 breakCond;1639,100663
+	U1 rxBusy;1640,100750
+	U1 txBusy;1641,100814
+	U2 res;1642,100881
+} GPS_UBX_MON_IO_RXBYTES_t, *GPS_UBX_MON_IO_RXBYTES_pt;GPS_UBX_MON_IO_RXBYTES_pt1643,100929
+#define UBXID_MON_IO 1645,100988
+typedef struct GPS_UBX_MON_VER_s1659,101312
+	CH swVersion[swVersion1661,101349
+	CH hwVersion[hwVersion1662,101428
+	CH extension[extension1663,101507
+} GPS_UBX_MON_VER_t, *GPS_UBX_MON_VER_pt;GPS_UBX_MON_VER_pt1664,101582
+#define UBXID_MON_VER 1666,101627
+typedef struct GPS_UBX_MON_MSGPP_U5_s1680,101968
+	U2 msg1[msg11682,102010
+	U2 msg2[msg21683,102117
+	U2 msg3[msg31684,102224
+	U2 msg4[msg41685,102331
+	U2 msg5[msg51686,102438
+	U2 msg6[msg61687,102545
+	U4 skipped[skipped1688,102652
+} GPS_UBX_MON_MSGPP_U5_t, *GPS_UBX_MON_MSGPP_U5_pt;GPS_UBX_MON_MSGPP_U5_pt1689,102728
+#define UBXID_MON_MSGPP 1691,102783
+typedef struct GPS_UBX_MON_RXBUF_U5_s1705,103118
+	U2 pending[pending1707,103160
+	U1 usage[usage1708,103258
+	U1 peakUsage[peakUsage1709,103373
+} GPS_UBX_MON_RXBUF_U5_t, *GPS_UBX_MON_RXBUF_U5_pt;GPS_UBX_MON_RXBUF_U5_pt1710,103458
+#define UBXID_MON_RXBUF 1712,103513
+typedef struct GPS_UBX_MON_TXBUF_U5_s1726,103851
+	U2 pending[pending1728,103893
+	U1 usage[usage1729,103994
+	U1 peakUsage[peakUsage1730,104112
+	U1 tUsage;1731,104200
+	U1 tPeakusage;1732,104321
+	X1 errors;1733,104412
+	U1 res;1734,104465
+} GPS_UBX_MON_TXBUF_U5_t, *GPS_UBX_MON_TXBUF_U5_pt;GPS_UBX_MON_TXBUF_U5_pt1735,104513
+#define GPS_UBX_MON_TXBUF_U5_ERRORS_LIMIT_MASK 1739,104637
+#define GPS_UBX_MON_TXBUF_U5_ERRORS_LIMIT_GET(1740,104798
+#define GPS_UBX_MON_TXBUF_U5_ERRORS_ALLOC_MASK 1741,104950
+#define GPS_UBX_MON_TXBUF_U5_ERRORS_ALLOC_GET(1742,105111
+#define UBXID_MON_TXBUF 1746,105273
+typedef struct GPS_UBX_MON_HW_s1760,105714
+	X4 pinSel;1762,105750
+	X4 pinBank;1763,105824
+	X4 pinDir;1764,105892
+	X4 pinVal;1765,105964
+	U2 noisePerMS;1766,106031
+	U2 agcCnt;1767,106110
+	U1 aStatus;1768,106203
+	U1 aPower;1769,106333
+	X1 flags;1770,106429
+	U1 res1;1771,106474
+	X4 usedMask;1772,106537
+	U1 VP[VP1773,106630
+	X4 pinIrq;1774,106724
+} GPS_UBX_MON_HW_t, *GPS_UBX_MON_HW_pt;GPS_UBX_MON_HW_pt1776,106849
+#define GPS_UBX_MON_HW_FLAGS_RTCCALIB_MASK 1780,106954
+#define GPS_UBX_MON_HW_FLAGS_RTCCALIB_GET(1781,107109
+typedef struct GPS_UBX_MON_HW_RESH_s1786,107314
+	U4 resH;1788,107355
+	U4 resL;1789,107403
+} GPS_UBX_MON_HW_RESH_t, *GPS_UBX_MON_HW_RESH_pt;GPS_UBX_MON_HW_RESH_pt1790,107451
+#define UBXID_MON_HW 1792,107504
+#define UBXID_AID_REQ 1794,107565
+#define UBXID_AID_INI 1796,107628
+typedef struct GPS_UBX_AID_INI_U5__s1810,107970
+	I4 ecefXOrLat;1812,108011
+	I4 ecefYOrLon;1813,108112
+	I4 ecefZOrAlt;1814,108214
+	U4 posAcc;1815,108315
+	X2 tmCfg;1816,108381
+	U2 wn;1817,108444
+	U4 tow;1818,108502
+	I4 towNs;1819,108561
+	U4 tAccMs;1820,108637
+	U4 tAccNs;1821,108711
+	I4 clkDOrFreq;1822,108784
+	U4 clkDAccOrFreqAcc;1823,108874
+	X4 flags;1824,108976
+} GPS_UBX_AID_INI_U5__t, *GPS_UBX_AID_INI_U5__pt;GPS_UBX_AID_INI_U5__pt1825,109048
+#define GPS_UBX_AID_INI_U5__TMCFG_FEDGE_MASK 1829,109168
+#define GPS_UBX_AID_INI_U5__TMCFG_FEDGE_GET(1830,109324
+#define GPS_UBX_AID_INI_U5__TMCFG_TM1_MASK 1831,109471
+#define GPS_UBX_AID_INI_U5__TMCFG_TM1_GET(1832,109625
+#define GPS_UBX_AID_INI_U5__TMCFG_F1_MASK 1833,109770
+#define GPS_UBX_AID_INI_U5__TMCFG_F1_GET(1834,109923
+#define GPS_UBX_AID_INI_U5__FLAGS_POS_MASK 1839,110142
+#define GPS_UBX_AID_INI_U5__FLAGS_POS_GET(1840,110300
+#define GPS_UBX_AID_INI_U5__FLAGS_TIME_MASK 1841,110449
+#define GPS_UBX_AID_INI_U5__FLAGS_TIME_GET(1842,110608
+#define GPS_UBX_AID_INI_U5__FLAGS_CLOCKD_MASK 1843,110758
+#define GPS_UBX_AID_INI_U5__FLAGS_CLOCKD_GET(1844,110919
+#define GPS_UBX_AID_INI_U5__FLAGS_TP_MASK 1845,111071
+#define GPS_UBX_AID_INI_U5__FLAGS_TP_GET(1846,111228
+#define GPS_UBX_AID_INI_U5__FLAGS_CLOCKF_MASK 1847,111376
+#define GPS_UBX_AID_INI_U5__FLAGS_CLOCKF_GET(1848,111537
+#define GPS_UBX_AID_INI_U5__FLAGS_LLA_MASK 1849,111689
+#define GPS_UBX_AID_INI_U5__FLAGS_LLA_GET(1850,111847
+#define GPS_UBX_AID_INI_U5__FLAGS_ALTINV_MASK 1851,111996
+#define GPS_UBX_AID_INI_U5__FLAGS_ALTINV_GET(1852,112157
+#define GPS_UBX_AID_INI_U5__FLAGS_PREVTM_MASK 1853,112309
+#define GPS_UBX_AID_INI_U5__FLAGS_PREVTM_GET(1854,112470
+#define UBXID_AID_HUI 1860,112697
+typedef struct GPS_UBX_AID_HUI_s1874,113202
+	X4 health;1876,113239
+	R8 utcA1;1877,113362
+	R8 utcA0;1878,113420
+	I4 utcTOW;1879,113478
+	I2 utcWNT;1880,113546
+	I2 utcLS;1881,113613
+	I2 utcWNF;1882,113707
+	I2 utcDN;1883,113799
+	I2 utcLSF;1884,113891
+	I2 utcSpare;1885,113984
+	R4 klobA0;1886,114081
+	R4 klobA1;1887,114140
+	R4 klobA2;1888,114199
+	R4 klobA3;1889,114258
+	R4 klobB0;1890,114317
+	R4 klobB1;1891,114375
+	R4 klobB2;1892,114433
+	R4 klobB3;1893,114491
+	X4 flags;1894,114549
+} GPS_UBX_AID_HUI_t, *GPS_UBX_AID_HUI_pt;GPS_UBX_AID_HUI_pt1895,114594
+#define GPS_UBX_AID_HUI_FLAGS_HEALTH_MASK 1899,114702
+#define GPS_UBX_AID_HUI_FLAGS_HEALTH_GET(1900,114855
+#define GPS_UBX_AID_HUI_FLAGS_UTC_MASK 1901,114999
+#define GPS_UBX_AID_HUI_FLAGS_UTC_GET(1902,115149
+#define GPS_UBX_AID_HUI_FLAGS_KLOB_MASK 1903,115290
+#define GPS_UBX_AID_HUI_FLAGS_KLOB_GET(1904,115441
+#define UBXID_AID_DATA 1910,115658
+#define UBXID_AID_ALM 1912,115723
+typedef struct GPS_UBX_AID_ALM_POLL_SINGLE_s1926,116224
+	U1 svid;1928,116273
+} GPS_UBX_AID_ALM_POLL_SINGLE_t, *GPS_UBX_AID_ALM_POLL_SINGLE_pt;GPS_UBX_AID_ALM_POLL_SINGLE_pt1929,116352
+typedef struct GPS_UBX_AID_ALM_s1948,117460
+	U4 svid;1950,117497
+	U4 week;1951,117557
+} GPS_UBX_AID_ALM_t, *GPS_UBX_AID_ALM_pt;GPS_UBX_AID_ALM_pt1953,117686
+typedef struct GPS_UBX_AID_ALM_DWRD_s1956,117781
+	X4 dwrd[dwrd1958,117823
+} GPS_UBX_AID_ALM_DWRD_t, *GPS_UBX_AID_ALM_DWRD_pt;GPS_UBX_AID_ALM_DWRD_pt1959,117875
+#define UBXID_AID_EPH 1963,117995
+typedef struct GPS_UBX_AID_EPH_POLL_SINGLE_s1977,118505
+	U1 svid;1979,118554
+} GPS_UBX_AID_EPH_POLL_SINGLE_t, *GPS_UBX_AID_EPH_POLL_SINGLE_pt;GPS_UBX_AID_EPH_POLL_SINGLE_pt1980,118633
+typedef struct GPS_UBX_AID_EPH_s1998,119600
+	U4 svid;2000,119637
+	U4 how;2001,119715
+} GPS_UBX_AID_EPH_t, *GPS_UBX_AID_EPH_pt;GPS_UBX_AID_EPH_pt2003,119837
+typedef struct GPS_UBX_AID_EPH_SF1D_s2006,119932
+	X4 sf1d[sf1d2008,119974
+	X4 sf2d[sf2d2009,120030
+	X4 sf3d[sf3d2010,120086
+} GPS_UBX_AID_EPH_SF1D_t, *GPS_UBX_AID_EPH_SF1D_pt;GPS_UBX_AID_EPH_SF1D_pt2011,120142
+typedef struct GPS_UBX_AID_ALPSRV_REQ_s2027,120746
+	U1 idSize;2029,120790
+	U1 type;2030,120917
+	U2 ofs;2031,121044
+	U2 size;2032,121119
+	U2 fileId;2033,121192
+	U2 dataSize;2034,121297
+	U1 id1;2035,121421
+	U1 id2;2036,121476
+	U4 id3;2037,121531
+} GPS_UBX_AID_ALPSRV_REQ_t, *GPS_UBX_AID_ALPSRV_REQ_pt;GPS_UBX_AID_ALPSRV_REQ_pt2038,121586
+#define UBXID_AID_ALPSRV 2040,121645
+typedef struct GPS_UBX_AID_ALPSRV_SRV_s2054,122217
+	U1 idSize;2056,122261
+	U1 type;2057,122316
+	U2 ofs;2058,122375
+	U2 size;2059,122450
+	U2 fileId;2060,122523
+	U2 dataSize;2061,122622
+	U1 id1;2062,122733
+	U1 id2;2063,122788
+	U4 id3;2064,122843
+} GPS_UBX_AID_ALPSRV_SRV_t, *GPS_UBX_AID_ALPSRV_SRV_pt;GPS_UBX_AID_ALPSRV_SRV_pt2066,122959
+typedef struct GPS_UBX_AID_ALPSRV_SRV_DATA_s2069,123075
+	U1 data;2071,123124
+} GPS_UBX_AID_ALPSRV_SRV_DATA_t, *GPS_UBX_AID_ALPSRV_SRV_DATA_pt;GPS_UBX_AID_ALPSRV_SRV_DATA_pt2072,123185
+typedef struct GPS_UBX_AID_ALPSRV_CLI_s2088,123857
+	U1 idSize;2090,123901
+	U1 type;2091,123956
+	U2 ofs;2092,124044
+	U2 size;2093,124109
+	U2 fileId;2094,124172
+} GPS_UBX_AID_ALPSRV_CLI_t, *GPS_UBX_AID_ALPSRV_CLI_pt;GPS_UBX_AID_ALPSRV_CLI_pt2096,124294
+typedef struct GPS_UBX_AID_ALPSRV_CLI_DATA_s2099,124410
+	U2 data;2101,124459
+} GPS_UBX_AID_ALPSRV_CLI_DATA_t, *GPS_UBX_AID_ALPSRV_CLI_DATA_pt;GPS_UBX_AID_ALPSRV_CLI_DATA_pt2102,124546
+typedef struct GPS_UBX_AID_ALP_TX_ALPDATA_s2107,124736
+	U2 alpData;2109,124784
+} GPS_UBX_AID_ALP_TX_ALPDATA_t, *GPS_UBX_AID_ALP_TX_ALPDATA_pt;GPS_UBX_AID_ALP_TX_ALPDATA_pt2110,124835
+#define UBXID_AID_ALP 2112,124902
+typedef struct GPS_UBX_AID_ALP_END_s2126,125565
+	U1 dummy;2128,125606
+} GPS_UBX_AID_ALP_END_t, *GPS_UBX_AID_ALP_END_pt;GPS_UBX_AID_ALP_END_pt2129,125660
+typedef struct GPS_UBX_AID_ALP_ACK_s2145,126337
+	U1 ack;2147,126378
+} GPS_UBX_AID_ALP_ACK_t, *GPS_UBX_AID_ALP_ACK_pt;GPS_UBX_AID_ALP_ACK_pt2148,126427
+typedef struct GPS_UBX_AID_ALP_NAK_s2164,127092
+	U1 nak;2166,127133
+} GPS_UBX_AID_ALP_NAK_t, *GPS_UBX_AID_ALP_NAK_pt;GPS_UBX_AID_ALP_NAK_pt2167,127182
+typedef struct GPS_UBX_AID_ALP_STAT_s2183,127571
+	U4 predTow;2185,127613
+	U4 predDur;2186,127682
+	I4 age;2187,127794
+	U2 predWno;2188,127857
+	U2 almWno;2189,127925
+	U4 res1;2190,128007
+	U1 svs;2191,128070
+	U1 res2;2192,128165
+	U1 res3;2193,128228
+	U1 res4;2194,128291
+} GPS_UBX_AID_ALP_STAT_t, *GPS_UBX_AID_ALP_STAT_pt;GPS_UBX_AID_ALP_STAT_pt2195,128354
+typedef struct GPS_UBX_TIM_TP_s2211,128873
+	U4 towMS;2213,128909
+	U4 towSubMS;2214,128975
+	I4 qErr;2215,129043
+	U2 week;2216,129115
+	X1 flags;2217,129181
+	U1 res;2218,129228
+} GPS_UBX_TIM_TP_t, *GPS_UBX_TIM_TP_pt;GPS_UBX_TIM_TP_pt2219,129274
+#define GPS_UBX_TIM_TP_FLAGS_TIMEBASE_MASK 2223,129379
+#define GPS_UBX_TIM_TP_FLAGS_TIMEBASE_GET(2224,129534
+#define GPS_UBX_TIM_TP_FLAGS_UTC_MASK 2225,129680
+#define GPS_UBX_TIM_TP_FLAGS_UTC_GET(2226,129830
+#define UBXID_TIM_TP 2230,129981
+typedef struct GPS_UBX_TIM_TM2_s2245,130500
+	U1 ch;2247,130537
+	X1 flags;2248,130598
+	U2 count;2249,130645
+	U2 wnR;2250,130698
+	U2 wnF;2251,130769
+	U4 towMsR;2252,130841
+	U4 towSubMsR;2253,130907
+	U4 towMsF;2254,131004
+	U4 towSubMsF;2255,131071
+	U4 accEst;2256,131169
+} GPS_UBX_TIM_TM2_t, *GPS_UBX_TIM_TM2_pt;GPS_UBX_TIM_TM2_pt2257,131226
+#define GPS_UBX_TIM_TM2_FLAGS_MODE_MASK 2261,131334
+#define GPS_UBX_TIM_TM2_FLAGS_MODE_GET(2262,131497
+#define GPS_UBX_TIM_TM2_FLAGS_RUN_MASK 2263,131651
+#define GPS_UBX_TIM_TM2_FLAGS_RUN_GET(2264,131813
+#define GPS_UBX_TIM_TM2_FLAGS_TIMEBASE_MASK 2265,131966
+#define GPS_UBX_TIM_TM2_FLAGS_TIMEBASE_GET(2266,132133
+#define GPS_UBX_TIM_TM2_FLAGS_UTC_MASK 2267,132291
+#define GPS_UBX_TIM_TM2_FLAGS_UTC_GET(2268,132453
+#define GPS_UBX_TIM_TM2_FLAGS_TIME_MASK 2269,132606
+#define GPS_UBX_TIM_TM2_FLAGS_TIME_GET(2270,132769
+#define GPS_UBX_TIM_TM2_FLAGS_NEWRISINGEDGE_MASK 2271,132923
+#define GPS_UBX_TIM_TM2_FLAGS_NEWRISINGEDGE_GET(2272,133095
+#define UBXID_TIM_TM2 2276,133268
+
+inc/USB.h,181
+#define __USB_H__2,19
+	CLOSE_USB_STATE 8,90
+	OPEN_USB_STATE,9,113
+	USB_FULL_INIT_STATE10,131
+} eFlowCmdState;11,153
+	NORMAL_MODE,15,190
+	WYHOOK_MODE16,205
+} USB_MODE;17,219
+
+inc/VibrationMotor.h,394
+#define __VIBRATIONMOTOR_H__24,472
+#define MAX_ON_OFF 29,551
+#define MAX_PATTERNS 30,618
+#define MD_PLS 33,719
+#define LG_PLS 34,821
+#define FIVE_S 37,945
+#define THREE_S 38,1042
+#define ONE5_S 39,1139
+#define VIBRATION_TRACE_LEVEL 41,1241
+#define VIBRATE_FENCE_WARNING 43,1283
+#define VIBRATE_SOS_PATTERN 44,1322
+#define VIBRATE_SOS_ACK 45,1361
+#define VIBRATE_STATUS_ACK 46,1400
+
+inc/WaypointControl.h,234
+#define __WAYPOINT_CONTROL_H__23,434
+	UINT8 utc[utc32,575
+	UINT8 lat[lat33,591
+	UINT8 longi[longi34,607
+	UINT8 epe[epe35,625
+	UINT8 speed[speed36,641
+} HINT_STRUCT_PACKED WAYPOINT;37,717
+#define NUM_WAYPOINT_BYTES 41,801
+
+inc/wyhook_Application.h,810
+#define _WYHOOK_APPLICATION_H_22,933
+typedef enum tagWYHOOK_APPLICATION_APPLICATION_COMMANDS32,1126
+	COMMAND_APPLICATION_XACT_UploadConfig 34,1186
+	COMMAND_APPLICATION_XACT_UploadConfig = 0x00,x0034,1186
+	COMMAND_APPLICATION_XACT_DownloadConfig 35,1234
+	COMMAND_APPLICATION_XACT_DownloadConfig = 0x01,x0135,1234
+	COMMAND_APPLICATION_XACT_UploadFirmware 36,1284
+	COMMAND_APPLICATION_XACT_UploadFirmware = 0x02,x0236,1284
+	COMMAND_APPLICATION_XACT_DownloadWaypoints 37,1334
+	COMMAND_APPLICATION_XACT_DownloadWaypoints = 0x03,x0337,1334
+	COMMAND_APPLICATION_XACT_DisableWyhook 38,1387
+	COMMAND_APPLICATION_XACT_DisableWyhook = 0x04,x0438,1387
+	COMMAND_APPLICATION_XACT_AssistGPS 39,1436
+	COMMAND_APPLICATION_XACT_AssistGPS = 0x05x0539,1436
+} WYHOOK_APPLICATION_APPLICATION_COMMANDS_T;40,1480
+
+inc/wyhook_Message.h,1237
+#define _WYHOOK_MESSAGE_H_22,912
+#define NULL 30,1218
+typedef enum _WYHOOK_BOOL33,1255
+	WYHOOK_FALSE 35,1285
+	WYHOOK_TRUE 36,1305
+} WYHOOK_BOOL;37,1323
+typedef enum _WYHOOK_ERROR_T39,1361
+	WYHOOK_ERR_NONE 41,1394
+	WYHOOK_ERR_PARAM 42,1417
+	WYHOOK_ERR_HARDWARE_FAIL 43,1442
+	WYHOOK_ERR_UNKNOWN 44,1475
+} WYHOOK_ERROR_T;45,1501
+typedef struct tagWYHOOK_MESSAGE_S47,1522
+		unsigned char component_type_id;51,1574
+		unsigned char component_subtype_id;52,1610
+		unsigned char command;53,1649
+		unsigned char component_number;54,1675
+	} header;55,1710
+		unsigned char size;58,1735
+		unsigned char   *pData;pData59,1758
+	} payload;60,1785
+	unsigned char checksum;61,1798
+} WYHOOK_MESSAGE_S;62,1824
+typedef struct tagWYHOOK_TX_PACKET_S64,1847
+	unsigned char size;66,1888
+	unsigned char index;67,1910
+	unsigned char checksum;68,1933
+	WYHOOK_BOOL transmit_packet;69,1959
+	unsigned char buf[buf70,1990
+} WYHOOK_TX_PACKET_S;71,2016
+typedef struct tagWYHOOK_PACKETIZED_DATA_S73,2041
+		unsigned short packet_number;77,2101
+		unsigned short total_packets;78,2134
+		unsigned short payload_length;79,2167
+	} header;80,2201
+		unsigned char *pData;pData83,2226
+	} payload;84,2251
+} WYHOOK_PACKETIZED_DATA_S;85,2264
+
+inc/XactTests.h,30
+#define __XACT_TESTS_H__2,25
+
+inc/XactUtilities.h,342
+#define __XACT_UTILITIES__H__24,452
+#define FW_MINOR_VER 31,683
+#define FW_MAJOR_VER 32,772
+#define HW_MINOR_VER 37,882
+#define HW_MAJOR_VER 38,916
+#define RX_BUFFSIZE 43,1123
+#define SMS_TX_BUFFSIZE 44,1198
+#define LOG_MSG_PER_SEG 45,1274
+	FIX_INF,50,1425
+	FIX_INF, FIX_OOF50,1425
+} e_FenceStatus;51,1444
+#define D_TRACE(65,1932
+
+src/Accelerometer.c,1954
+#define ACCEL_INT_PIN 37,844
+#define EXTINT_TRACE_LEVEL 39,889
+#define MAX_IRQ_CLEAR_ATTEMPTS 42,948
+s32 ExtIntHandle;44,985
+s32 g_LowExtIrqHandle;45,1004
+s32 g_HighExtIrqHandle;46,1028
+s32 cs_handle 47,1053
+s32 test_handle 48,1074
+s32 msgHandle 49,1097
+static s32 SimulateLockUp 51,1120
+  ACCEL_IDLE,57,1256
+  ACCEL_THRESH,58,1271
+  ACCEL_ACTIVE59,1288
+} ACCEL_STATE;60,1304
+static ACCEL_STATE accel_state 63,1324
+static adl_ctxID_e appContext;64,1370
+  POSITIVE_X,67,1420
+  NEGATIVE_X,68,1435
+  POSITIVE_Y,69,1450
+  NEGATIVE_Y,70,1465
+  POSITIVE_Z,71,1480
+  NEGATIVE_Z72,1495
+} ACCEL_ORIENTATION;73,1509
+static adl_rtcTimeStamp_t  FirstIRQTimeStamp;75,1533
+FAST_IDLE_REQ AccelFastIdleReq 89,1996
+TRACKING_MODE_REQ AccelTrackingReq 90,2053
+TRACKING_MODE_REQ AccelBreadCrumbTrackingReq 92,2120
+volatile int InteruptProc 94,2197
+adl_extintConfig_t extintConfig 106,2653
+int SetAccelTriggerThreshold 111,2837
+int SetAccelMeasureMode(117,3001
+int SetAccelLevelMode(124,3126
+static int clear_irq_cnt 142,3390
+static adl_tmr_t* clear_irq_tmr_t 143,3421
+void ClearIRQ(145,3466
+static void ClearIRQTimer(168,4093
+void InitAccelerometer 210,5156
+bool AccelInterrupt(268,6586
+void ExtIntSubscribe(304,7513
+bool AccelInterruptRead(380,10524
+void CheckAccelState(412,11197
+static void SetupMsgHandler 513,14530
+static void AccelMessageHandler(550,15421
+void AccelReadData(718,20893
+static ACCEL_CALIBRATION_DATA cab_data;726,21028
+static int iteration_cnt 727,21069
+void AccelCalibrate(729,21102
+static void AccelCalibrateTimer(744,21458
+static int abs_val(886,26071
+static void display_orient(892,26199
+static bool enable_ota57 922,26959
+void ConfigSettings_setOTA57(923,26994
+static void display_cab_data(928,27069
+ACCEL_ERROR_STATE accel_error_state 951,27926
+void CheckAccelSlowIdle(953,27974
+void AccelSimulateLockUp(980,28719
+void ActivateAccelOnPowerUp(989,28861
+void SimulateAccelTrigger(1013,29682
+
+src/adc.c,869
+DEBUG_TRACE_STORAGE;12,200
+adl_tmr_t * battery_timer 18,288
+adl_tmr_t * Analog_timer 19,323
+s32 g_AvgAnalogVltg;21,359
+s32 g_BatteryVltg;22,381
+s32 g_BoardTemp;23,401
+UINT32 g_TotalRunTime=24,419
+UINT8 g_EngineStatus 27,449
+adl_rtcTime_t EngineStartTime;28,483
+adl_rtcTime_t EngineStopTime;29,517
+static void CheckTemperature(37,702
+        #define TEMP_ADC 43,780
+        #define MIN_TEMP 56,1250
+        #define MAX_TEMP 57,1312
+        #define TemperatureIsInvalid(58,1374
+static void CheckBatteryAndTemperatureTimer(183,5420
+void StartADCReadTimer(195,5794
+void StopADCReadTimer(207,6122
+void ReadAnalogSensorVoltage(215,6307
+	#define ANALOG_SENSOR 217,6367
+	#define TEMP_SENSOR 218,6400
+	#define IGN_ON_THRESHOLD 219,6433
+	#define IGN_OFF_THRESHOLD 220,6497
+void StartAnalogSensorReadTimer(298,8559
+void StopAnalogSensorReadTimer(306,8760
+
+src/adl_main.c,836
+DEBUG_TRACE_STORAGE;55,1175
+u32 const adl_InitIRQLowLevelStackSize 62,1517
+u32 const adl_InitIRQHighLevelStackSize 63,1583
+char g_traceBuf[g_traceBuf69,1828
+char g_IMEI[g_IMEI70,1883
+char const CONFIG_STR[CONFIG_STR71,1901
+const ascii adl_InitApplicationName[adl_InitApplicationName72,1944
+const ascii adl_InitCompanyName[adl_InitCompanyName73,1997
+const ascii adl_InitApplicationVersion[adl_InitApplicationVersion74,2056
+static void CheckResetReason(80,2155
+static void InitializeFlashLogs(112,2905
+static bool WINDHandler(131,3384
+void ClearOnOffFF(137,3477
+static void CmdHandlerVersion(145,3582
+static void InitFunction(162,4047
+static bool WHCNFHandler(396,10690
+static bool IMEIHandler(425,11324
+void MainTask(439,11601
+void MainTask(450,11862
+adl_InitTasks_t const adl_InitTasks[adl_InitTasks504,13285
+
+src/airplane_mode.c,393
+static ascii    *RESTART_STRING RESTART_STRING11,250
+static ascii    *ENTER_AIRPLANE_STRING ENTER_AIRPLANE_STRING12,298
+static ascii    *EXIT_AIRPLANE_STRING EXIT_AIRPLANE_STRING13,355
+static bool in_airplane_mode 15,413
+void evalAirplaneMode(22,545
+static bool WBHVHandler(38,909
+static void AirplaneModeTimer(72,1757
+void AirplaneModeEnter(92,2100
+void AirplaneModeExit(107,2432
+
+src/alarm_suppress.c,478
+#define NUM_SUPPRESS_ALARMS 5,78
+#define GPS_ALARM_SUPPRESS_TIME 7,119
+#define GSM_ALARM_SUPPRESS_TIME 8,166
+#define BAT_ALARM_SUPPRESS_TIME 9,213
+#define ACC_ALARM_SUPPRESS_TIME 10,260
+static adl_rtcTimeStamp_t last_alarm_times[last_alarm_times12,308
+static const unsigned int ALARM_SUPPRESS_TIMES[ALARM_SUPPRESS_TIMES14,421
+ALARM_EXP_STATUS alarm_suppress_status(30,771
+void alarm_suppress_set_alarm_time(68,1678
+static adl_rtcTimeStamp_t f_get_alarm_time(83,2063
+
+src/anolclient.c,1035
+#define BUFFER_SIZE 39,741
+#define MAXFIELDLEN 40,809
+#define ANOL_UDP 42,890
+#define ANOL_TCP 43,985
+typedef struct REQ_s51,1251
+	CH username[username53,1276
+	CH password[password54,1345
+	R8 lat;55,1414
+	R8 lon;56,1507
+	R8 alt;57,1601
+	R8 accuracy;58,1698
+} REQ_t;59,1768
+static AGPS_STATUS agps_stat 61,1780
+static CH buffer[buffer63,1829
+static int useLastFix 65,1884
+static wip_channel_t socket;69,1967
+static unsigned int peerPort;70,1997
+static CH connectTo[connectTo72,2060
+static I proto;73,2121
+static CH       *cmd;cmd74,2138
+static REQ_t    *userInfo;userInfo75,2161
+static I bufferLength;76,2189
+static CH peerName[peerName77,2213
+I getAssistNowOnlineData(85,2373
+static CH request[request121,3029
+void AGPSTxRequeset(130,3231
+static REQ_t req 199,4900
+void performColdStart(211,5148
+static int getLastFixLatLong(239,5953
+void performAGPS(302,7539
+static void agps_evh(375,9391
+void agps_display_float(570,15223
+void set_agps_status(613,15812
+AGPS_STATUS get_agps_status(621,15972
+
+src/button.c,377
+DEBUG_TRACE_STORAGE;11,175
+int const g_inputButton 13,199
+s32 g_InputButtonHandle 14,274
+	bool sw_button_ovrd_en;18,362
+	int sw_button_ovrd_value;19,388
+} SW_BUTTON_OVRD_t;20,416
+SW_BUTTON_OVRD_t sw_button_ovrd 21,437
+bool GetSWButtonOvrd(23,488
+void ClrSWButtonOvrd(30,619
+void SetSWButtonOvrd(37,740
+void ProcessPowerButton(44,900
+bool InputButtonActive(159,5870
+
+src/CallBackMethods.c,229
+bool CREGHandler(41,1367
+bool CCEDHandler(90,2536
+#define RSSI_0 97,2623
+#define RSSI_1 98,2650
+#define RSSI_2 99,2678
+#define RSSI_3 100,2706
+#define RSSI_4 101,2734
+#define RSSI_ERROR 102,2762
+bool CSQHandler(114,3013
+
+src/CommandHandlerXACT.c,552
+#define SECTOR_SIZE 28,590
+DEBUG_TRACE_STORAGE;35,694
+#define RX_BUFFSIZE 37,718
+struct structGGAInformation gGGAInfoTest;49,967
+struct structVTGInformation gVTGInfoTest;50,1010
+int ForceRoamMode 54,1102
+char tmp_str[tmp_str56,1128
+#define CFG_FIRST_PKT_SIZE 58,1150
+#define CFG_SECOND_PKT_SIZE 59,1186
+void CmdHandlerXACT(66,1314
+				zero_buffer,115,3281
+				b_buffer,116,3299
+				inc_buffer,117,3314
+				number_of_buffers118,3331
+			} buffer_t;119,3354
+#define NUMBER_OF_TESTS 178,4871
+#define NUMBER_OF_WAYPOINTS_PER_TEST 179,4934
+
+src/COMMR572.c,191
+char STX 7,48
+char ETX 8,66
+char ACK 9,84
+COMMR572_CMND commr572_cmnd[commr572_cmnd12,106
+unsigned char check_sum(30,716
+bool make_write_command(44,938
+bool make_read_command(72,1569
+
+src/ConfigSettings.c,1694
+#define DEBUG_CONFIG_SETTINGS35,668
+CONFIG g_config;37,701
+DIAG_CONFIG g_DiagConfig[g_DiagConfig38,719
+MODE_CONFIG g_ModeConfig;39,765
+AGPS_DATA g_AGPSData;40,792
+static int special_start_time 46,889
+static int special_stop_time 47,925
+#define RESET_WHEN_MODE_SWITCH 59,1310
+int SetSMSorGPRS(72,1576
+int SetWaypointInterval(160,3312
+int SetTrackingInterval(192,4261
+int GetTrackingInterval(220,5018
+int SetMotionAlarmThresh(310,6536
+int SetAccelerometerThreshWake(347,7495
+int SetAccelerometerDurWake(375,8149
+int SetAccelerometerDurSleep(402,8808
+int SetBreadCrumbMode(429,9453
+int SetMode(506,10871
+int SetFenceNumber(635,14548
+int SetGPSAlert(662,15154
+int SetGSMAlert(693,15779
+int SetBattAlert(723,16524
+int SetPowerDisconAlert(750,17148
+int SetOverSpeedAlertThresh(784,17898
+int SetPowerDownDisable(804,18431
+int SetVibrationMotorPattern(839,19227
+int SetVibrationMotorDelayEn(874,20090
+int SetSOSAlert(904,20776
+int SetWaypointDownload(948,21722
+int SetLEDPattern(1024,23456
+int SetLEDEnable(1060,24188
+int SetTrackingModeDuration(1089,24683
+int SetInvisibleOp(1117,25288
+int SetMagneticSNSEnable(1153,26107
+int SetCriticalConfirmation(1186,26814
+int SetServerPhoneNum(1213,27394
+int SetServerIPAddr(1227,27674
+int SetServerPort(1259,28381
+int SetFenceEnDisSettings(1272,28652
+int WriteFenceCoord(1377,31617
+void SetCurrentFix(1522,35699
+void Config_SetMode(1531,35833
+void DisplayFence(1553,36271
+static bool enable_ota27 1567,36554
+void ConfigSettings_setOTA27(1568,36589
+void DisplayConfig(1578,36750
+void start_reset_timer(1865,45977
+void reset_timer(1876,46265
+void start_invisible_timer(1884,46405
+void invisible_timer(1894,46644
+
+src/diagnose.c,1297
+#define DIAGNOSE_TIME 14,282
+static DIAGNOSE_MODE diag_mode 30,879
+static INDICATOR accessory_button 32,929
+static INDICATOR power_button 33,975
+static INDICATOR magnetic_sensor 34,1017
+static INDICATOR accelerometer 35,1062
+static INDICATOR leds[leds36,1105
+static INDICATOR vibrate_motor 41,1197
+static adl_rtcTimeStamp_t LastATTimeStamp;48,1429
+INDICATOR diagnose_get(56,1589
+static INDICATOR diagnose_get_AB(105,2323
+static INDICATOR diagnose_get_PB(117,2514
+static INDICATOR diagnose_get_MS(129,2707
+static INDICATOR diagnose_get_AC(141,2899
+static INDICATOR diagnose_get_LED1(153,3068
+static INDICATOR diagnose_get_LED2(165,3233
+static INDICATOR diagnose_get_LED3(177,3398
+static INDICATOR diagnose_get_LED4(189,3563
+static INDICATOR diagnose_get_LED5(201,3728
+static INDICATOR diagnose_get_LED6(213,3893
+static INDICATOR diagnose_get_VM(225,4088
+DIAGNOSE_MODE diagnose_get_mode(237,4271
+static void diagnose_dump_usb(251,4500
+void diagnose_activate_indicator(312,5266
+void diagnose_deactivate_indicator(365,5924
+void diagnose_handler(417,6587
+void diagnose_handler_ota(450,7310
+#define NUM_STRINGS 452,7358
+#define MAX_LEN 453,7387
+static int diagnose_proc_diagnose(514,8765
+static void diagnose_check_set_prev_state(648,11835
+void diagnose_timer(689,12817
+
+src/dogwalk.c,171
+dogwalk_t walkmode 3,24
+dogpark_t parkmode 4,64
+void SetDogWalkMode(6,106
+dogwalk_t GetDogWalkMode(11,187
+void SetDogParkMode(17,251
+dogpark_t GetDogParkMode(22,332
+
+src/DOTAOperation.c,816
+char        *gFileBuffer gFileBuffer16,392
+int gFileSize 17,426
+static int gFileBufferOffset 19,468
+static s32 gDAFileCellHandle 20,503
+static s32 gADEventHandler;21,538
+static int gUSBTransferFlag 22,567
+adl_tmr_t   *gUSBTimeout;gUSBTimeout23,601
+int gFileSizeDownloaded 25,630
+volatile int gFileCellReady 26,660
+static void FinishPCUpdate(39,1046
+int recordFileSize(53,1311
+void recordFileSizeOTA(73,1649
+void StartDOTA(87,1880
+void evh_ADmem(122,2602
+int CreateADFile(184,4072
+void CheckTransfer(219,4744
+int ADWriteData(238,5137
+static int crc_tab32_init 350,8081
+static unsigned long crc_tab32[crc_tab32351,8117
+#define                 P_32 352,8155
+static void init_crc32_tab(358,8278
+unsigned long update_crc_32(396,8832
+void CompleteCRCCalc(424,9407
+int CompleteADUpdate(451,10098
+
+src/fence.c,626
+GEOFENCE g_GeoFences[g_GeoFences52,1497
+GEOFENCE g_DogParkFence;53,1532
+unsigned int g_in_safe_fence 60,1657
+static UINT8 fence_status[fence_status69,2010
+#define MONDAY 77,2224
+#define TUESDAY 78,2253
+#define WEDNESDAY 79,2282
+#define THURSDAY 80,2311
+#define FRIDAY 81,2340
+#define SATURDAY 82,2369
+#define SUNDAY 83,2398
+unsigned int IsInSafeFence(85,2429
+static UINT8 check_fence_active(98,2799
+static void init_fence_array(214,4998
+static UINT8 dog_park_eval(230,5272
+UINT8 eval_fix(260,6128
+static UINT8 num_post(467,11559
+static UINT8 circle_fence_status(504,12721
+void init_fence_status(542,13842
+
+src/FlashTest.c,147
+#define FLASH_SIZE 23,396
+s8 FlashSubscribe(32,630
+s8 FlashExists(58,1247
+s8 FlashRead(87,1884
+s8 FlashWrite(117,2712
+s8 FlashErase(165,4782
+
+src/gpioTest.c,1550
+DEBUG_TRACE_STORAGE;42,854
+#define OUTPUT_GPIO_LABEL 47,947
+#define INPUT_GPIO_LABEL 48,998
+#define SOS_BUTTON_GPIO 50,1051
+#define MAG_SOS_GPIO 51,1135
+#define MAG_SENSE_EN 52,1238
+#define ON_BATT_GPIO 53,1329
+#define USB_DET_GPIO 54,1409
+static s32 MagSOSHandle 58,1504
+BOOL IgnAlarmGenerated 59,1571
+static s32 MagEnHandle 64,1712
+static s32 USBConnectedSense 71,1826
+static s32 OnBattSense 72,1861
+#define NUM_SECONDS_CREG_WD 74,1892
+static void eval_gsm_watchdog(80,2018
+		RECORD_NOT_WORKING_TIME 87,2200
+		DIFF_NOT_WORKING_TIME 88,2232
+		GSM_WORKING_DO_NOTHING 89,2262
+		WAIT_FOR_RESET 90,2293
+	} GSM_WATCH_STATE;91,2315
+static void eval_gsm_watchdog(160,4047
+s32 GpioRead(177,4486
+void GpioWrite(258,6655
+static void DetermineOnBatt(329,8363
+void ResetSPIFlash(336,8504
+static s32 SOSHandle 347,8924
+static bool CheckDiagnoseMode(351,9039
+static void CheckDiagnoseMode(440,10890
+static void ProcessAirplaneMode(447,10992
+static void ProcessAirplaneMode(457,11126
+static void ProcessUSBConnectivity(465,11240
+static void ProcessUSBConnectivity(489,11915
+static void ProcessMagneticSensorSOS(496,12023
+static void ProcessMagneticSensorSOS(540,13146
+static void ProcessSOSButton(547,13254
+void GPIOTimer(614,15129
+int IsUSBConnected(643,15753
+int IsOnBatt(651,15821
+int readMagSens(663,16006
+void InitializeUnusedGpio(669,16114
+		int gpio_number;673,16163
+		s32 handle;674,16183
+void TurnOffFF(694,16504
+s32 ReadMagSensorGPIO(703,16709
+s32 ReadSOSGPIO(709,16794
+void ProcessIginitionButton(715,16873
+
+src/GPRS.c,1434
+#define RCV_BUFFER_SIZE 17,322
+#define CREG_POLLING_PERIOD 18,353
+#define GPRS_PINCODE 19,406
+#define MAX_TCP_TRIES 21,438
+#define MAX_BEARER_FAILS 22,464
+static wip_channel_t socket;32,736
+static int HaveBearer 33,766
+int g_DOTAUpdateMode 35,796
+static s8 gWipBearerHandle=37,825
+BOOL NetworkError 39,859
+static int GPRSInit 44,1029
+int g_wip_transmit_trig 55,1334
+int g_wip_transmit_size 56,1364
+int g_DOTAOK 57,1394
+static char rcv_buffer 59,1415
+static int  rcv_offset 60,1458
+static int TCPTryCount 62,1489
+static int FTPTryCount 63,1518
+static TCP_STATUS TCPStatus 66,1551
+wip_bearer_t myBearer;72,1722
+static TCP_OR_UDP connection_type 74,1749
+TCP_OR_UDP GPRS_GetConnectionType(79,1891
+int GPRS_HaveBearer(84,1967
+static int ber_fail_cnt 90,2054
+void myHandler(99,2198
+int myConnectToGPRS(190,4541
+void appli_entry_point(272,6991
+unsigned short int ntohs(315,8150
+int ReverseEndian(328,8359
+void ReInitBearer(349,8775
+void InitBearer(378,9386
+static void evh(456,11482
+static void poll_creg(668,17089
+static bool poll_creg_callback(688,17667
+void StartGPRS(716,18566
+static void ConnectGPRS(754,19285
+static void  launch_app_timer(777,19771
+static void tx_timer(798,20099
+wip_in_addr_t GPRS_get_IPAddr(823,20596
+s8 evhGPRSHandler(843,20995
+void GetTCPStatus(981,25327
+void ClearTCPStatus(989,25478
+int TCPTransmit(1004,25818
+void ConnectFTP(1029,26428
+static void FTPevh(1038,26842
+
+src/GPSCtrl.c,1060
+GPS_POS g_current_fix;44,872
+COORD g_current_fix_32;45,896
+BOOL GPSWaitTimeout 46,921
+TRACKING_MODE TrackingMode 56,1147
+	GPS_OFF,62,1241
+	GPS_START,63,1292
+	GPS_GET_FIX,64,1337
+	GPS_PROC_FIX,65,1388
+	GPS_WAIT_NEXT_FIX,66,1442
+} GPS_STATE;67,1496
+static GPS_STATE gps_state 69,1512
+static adl_rtcTimeStamp_t FixTimeStamp;71,1553
+static adl_rtcTimeStamp_t TrackTimeStamp;72,1594
+static int alarmGenerated 74,1639
+struct structGGAInformation g_GGAInfo;76,1736
+struct structVTGInformation g_VTGInfo;77,1776
+static u8 FirstDogParkFix 82,1898
+static int HadFix 84,1932
+static int AttemptedAGPSNoFix 85,1956
+static POWER_CYCLE_FIX_STATUS power_cycle_fix_status 87,1994
+bool enable_ota38=94,2134
+void ConfigSettings_setOTA38(95,2161
+void DisplayGPSStates(100,2236
+static u8 GPSAlarmGenerated 187,5073
+void NextFixHandler(188,5107
+void Proc2DFix(514,13941
+void SetFixStatus(535,14441
+static void ProcFix(545,14594
+int GetConvertTime(662,18722
+static void CheckCoord(690,19418
+void ShutDownGPS(728,20404
+void GPSTimeoutHandler(736,20533
+
+src/GpsInterface.c,3524
+#define SUCCESS 26,603
+#define NULL_CHARACTER 27,642
+#define MAX_STR_LEN_TO_PARSE 28,681
+#define MAX_SIZE_LAT_LONG 29,722
+#define MAX_SIZE_NMEA_FIELD 30,787
+#define NUM_GPS_SATS 31,827
+#define MAX_NMEA_SENTENCE_LENGTH 32,867
+#define NMEA_SENTENCES_USED 33,931
+#define CHECKSUM_PREFIX 35,1012
+#define RMC_MIN_FIELDS 38,1077
+#define RMC_UTC_TIME 39,1117
+#define RMC_FIX_STATUS 40,1156
+#define RMC_LATITUDE 41,1195
+#define RMC_N_OR_S 42,1234
+#define RMC_LONGITUDE 43,1273
+#define RMC_W_OR_E 44,1312
+#define RMC_SPEED 45,1351
+#define RMC_HEADING 46,1390
+#define RMC_DATE 47,1429
+#define RMC_MAX_FIELD_SIZE 48,1469
+#define ACTUAL_FIX 49,1532
+#define NO_FIX 50,1573
+enum gps_NMEA_t52,1616
+	RMC=54,1636
+	RMC=0, GSV1=54,1636
+	RMC=0, GSV1=1, GSV2=54,1636
+	RMC=0, GSV1=1, GSV2=2, GSV3=54,1636
+	RMC=0, GSV1=1, GSV2=2, GSV3=3, GSV4=54,1636
+static char GotGGAFix 58,1832
+	BOOL dataReady;66,1957
+	UINT32 timeOfLastReport;67,1975
+	UINT32 numSentencesProcessed;68,2002
+	unsigned char nmeaSentences[nmeaSentences71,2077
+	unsigned char latitude[latitude73,2161
+	unsigned char longitude[longitude74,2206
+	unsigned char eastOrWest[eastOrWest75,2252
+	unsigned char northOrSouth[northOrSouth76,2357
+	unsigned char speed[speed77,2390
+	unsigned char heading[heading78,2417
+	unsigned char hdop[hdop79,2446
+	unsigned char utcTime[utcTime80,2472
+	unsigned char date[date81,2501
+	unsigned char satsInView;82,2527
+	int satSNRs[satSNRs83,2555
+	UINT32 ttffSecs;88,2682
+	UINT32 ttffStartTime;89,2701
+	UINT32 timeOfFix;90,2725
+	BOOL currentlyFixed;91,2745
+	BOOL afterFirstFix;92,2768
+	BOOL extAntenna;94,2792
+	BOOL ubloxReady;95,2811
+	BOOL ubloxPowered;96,2830
+} gpsState_t;97,2851
+gpsState_t gps;99,2868
+	NO_SAT_IN_VIEW,112,3272
+	SAT_IN_VIEW113,3290
+} VISIBLE_SATS;114,3304
+static VISIBLE_SATS visible_sats;116,3323
+	int SNRHigh;122,3472
+	int SNRLow;123,3487
+} SNRStruct;124,3501
+static int GPSInitialized 130,3588
+#define OUTPUT_GPIO_LABEL 137,3769
+char NNMEAGGAString[NNMEAGGAString139,3819
+char NNMEAVTGString[NNMEAVTGString140,3855
+char NNMEARMCString[NNMEARMCString141,3891
+char NNMEAGSVString[NNMEAGSVString142,3927
+#define MAX_NUM_SV 144,3965
+static struct structGGAInformation gGGAInfo;148,4025
+struct structVTGInformation gVTGInfo;149,4071
+static NMEA_ERRORS nmea_errors 151,4112
+int g_GPSTestMode 156,4165
+s32 GPIOGPSHandle;170,4468
+static SNRStruct snr_struct;172,4490
+s32 GpsInit(178,4587
+void GetGGAInfo(210,5541
+void GetVGTInfo(240,6393
+void GetSV_SRN(268,7113
+void NMEAFailure(285,7500
+void GetNMEAError(305,7961
+int ParseNMEA(320,8291
+int IsGPSInitialized(345,8869
+void gps_Start(355,8990
+void gps_Stop(373,9210
+void CmdHandlerNMEA(384,9344
+void CmdHandlerGPSON(410,9844
+void CmdHandlerGPSOFF(431,10154
+#define GGA_HDOP 447,10374
+#define GGA_FIX_STATUS 448,10409
+#define GGA_SATS_USED 449,10444
+#define GGA_MAX_FIELD_SIZE 450,10479
+static void processNmeaGGA(457,10609
+#define SNR_0 488,11513
+#define SNR_1 489,11548
+#define SNR_2 490,11584
+#define SNR_3 491,11620
+#define GSV_MAX_FIELD_SIZE 492,11656
+static void processNmeaGSV(494,11694
+static void ClearSNRs(560,13185
+static void processNmeaRMC(572,13362
+int util_NumberOfFields(749,19559
+BOOL util_GetStringField(791,20486
+BOOL util_IsAllDigits(898,23491
+#define MAX_SPEED 924,23955
+#define MAX_DELTA 925,24010
+void FilterSpeed(927,24081
+#define MAX_NO_SAT_STRINGS 997,25706
+static void set_visible_sats(999,25741
+static VISIBLE_SATS get_visible_sats(1027,26280
+
+src/haversine.c,128
+#define PI 33,811
+int points2distance(40,983
+int Intersect(76,2069
+UINT8 quadStatus(138,3712
+UINT8 triangleStatus(184,4628
+
+src/i2c.c,809
+volatile s32	gI2CSignalFlag 15,408
+static u8 gI2CDevice1 19,511
+static u8 gI2CDevice2 20,551
+static u8 gI2CDevice3 21,602
+static s32 gI2CSemHndl 23,653
+    u32 ByteLength;28,737
+    u32 Port;29,789
+} AsyncReadCtxt_t;30,851
+AsyncReadCtxt_t * AsyncReadCtxt;33,906
+u8 portSetting[portSetting35,942
+int busMutex=61,1385
+s32 i2cHandle=62,1402
+s32 pendHandle 63,1438
+static adl_busI2CSettings_t i2cSettings 64,1460
+adl_busAccess_t AccessConfig 72,1739
+s32 appBusLowIrqHandle 79,1824
+s32 appBusHighIrqHandle 80,1853
+bool busHighIrqHandler(89,2171
+bool busLowIrqHandler(112,2682
+int i2c_Subscribe(132,3340
+s32 SetAddressSize(260,7145
+void timer_Handler_1(291,7850
+s32 i2c_write(354,9231
+s32 i2c_read(389,10073
+void putuBoxCmd(444,11532
+u8 CmdToU8(473,12073
+int ioCallToI2CDevice(540,13003
+
+src/i2c_accelerometer.c,2138
+#define I2C_ACCELEROMETER_ADDRESS 32,749
+#define I2C_ACCELEROMETER_REG_XAXIS 36,875
+#define I2C_ACCELEROMETER_REG_INTR_DET 38,961
+#define I2C_ACCELEROMETER_REG_ADDR 40,1045
+#define I2C_ACCELEROMETER_REG_DRIFTX_LOW 43,1133
+#define I2C_ACCELEROMETER_REG_DRIFTX_HIGH 45,1213
+#define I2C_ACCELEROMETER_REG_DRIFTY_LOW 48,1296
+#define I2C_ACCELEROMETER_REG_DRIFTY_HIGH 50,1377
+#define I2C_ACCELEROMETER_REG_DRIFTZ_LOW 53,1461
+#define I2C_ACCELEROMETER_REG_DRIFTZ_HIGH 55,1542
+#define I2C_ACCELEROMETER_REG_MODE 58,1626
+#define I2C_ACCELEROMETER_REG_INTR_RST 60,1724
+#define I2C_ACCELEROMETER_REG_CONTROL_1 62,1774
+#define I2C_ACCELEROMETER_THOPT 63,1820
+#define I2C_ACCELEROMETER_REG_CONTROL_2 65,1860
+#define I2C_ACCELEROMETER_LDPL 66,1906
+#define I2C_ACCELEROMETER_REG_TSHLD 69,1978
+#define I2C_ACCELEROMETER_MODE_LEVEL 73,2081
+#define I2C_ACCELEROMETER_MODE_MEASURE 75,2162
+#define I2C_ACCELEROMETER_GLVL_8G 78,2249
+#define I2C_ACCELEROMETER_GLVL_4G 80,2328
+#define I2C_ACCELEROMETER_GLVL_2G 82,2407
+#define I2C_ACCELEROMETER_DRPD 84,2486
+#define I2C_MAX_FRACTION_BITS 88,2602
+#define I2C_SHIFT_FOR_FIXED1616 90,2693
+char I2C_ACCEL_ADDR_STR[I2C_ACCEL_ADDR_STR96,2861
+typedef struct accelerometerInfo_t110,3304
+    fixed1616  xAxis;112,3343
+    fixed1616  yAxis;113,3427
+    fixed1616  zAxis;114,3511
+    fixed1616  threshold;115,3595
+    NaAccelerometerCallbackFn_t cbFn;117,3724
+    unsigned long context;119,3864
+    bool sampleReady;121,3995
+}accelerometerInfo_t;accelerometerInfo_t122,4062
+static accelerometerInfo_t gfInfo;124,4087
+static fixed1616 calculateAcceleration 134,4311
+unsigned char naAccelReadThreshold(149,4600
+int naReadAccelData(167,5028
+static int writeI2CReg(197,6287
+int naWriteAccelData(212,6732
+int ReadAccelerometer(236,7707
+void naAccelerometerEpoch 286,9109
+int naAcclerometerSetLevelMode(318,10016
+int naAcclerometerSetMeasureMode(338,10607
+int naAcceleromterSetCtrl2(355,11101
+int naAccelerometerSetTriggerThreshold 387,11880
+int naAccelerometerCheckIRQ 427,12988
+int naAccelerometerClearTrigger 457,13722
+#define dfTRACE(510,15262
+#define dfTRACE(512,15298
+
+src/InternalFlash.c,2328
+const ascii g_configStructHandle[g_configStructHandle39,880
+const ascii g_logPacketHandle[g_logPacketHandle40,940
+const ascii g_fencesHandle[g_fencesHandle41,994
+const ascii g_configStringHandle[g_configStringHandle42,1042
+const ascii g_accelCalibHandle[g_accelCalibHandle43,1103
+const ascii g_bandSettingHandle[g_bandSettingHandle44,1159
+const ascii g_APNNameHandle[g_APNNameHandle45,1217
+const ascii g_APNLoginHandle[g_APNLoginHandle46,1261
+const ascii g_APNPasswordHandle[g_APNPasswordHandle47,1307
+const ascii g_NVSHandle[g_NVSHandle48,1359
+const ascii g_RebootAlarmHandle[g_RebootAlarmHandle49,1442
+const ascii g_NVModeHandle[g_NVModeHandle50,1500
+const ascii g_DiagCfgStructHandle[g_DiagCfgStructHandle51,1548
+const ascii g_ModeconfigStructHandle[g_ModeconfigStructHandle52,1610
+const ascii g_AGPSDataHandle[g_AGPSDataHandle53,1672
+static CONFIG flashConfig;55,1726
+SMS_GPRS_MODE prev_SMSorGPRSMode;57,1756
+void LoadFromFlash(65,1920
+BAND_SETTING LoadBandValue(202,6129
+void WriteBandValue(245,7303
+void LoadAccelCalibration(276,8040
+void WriteAccelCalibrationFlash(310,8826
+void FencesToFlash(343,9709
+void ConfigStringToFlash(362,10135
+void LogPktToFlash(383,10561
+void LogPktFromFlash(412,11264
+void StoreToFlash(443,12058
+void DumpFenceFlash(461,12505
+void load_defaults(501,13833
+void ConfigToFlash(511,13965
+void DiagConfigToFlash(523,14335
+void ModeConfigToFlash(543,14905
+void AGPSDataToFlash(558,15304
+void LoadDefaultConfigStruct(578,15750
+int CheckFactorySetup(640,17628
+#define MAX_APN_NAME_LENGTH 656,17855
+#define MAX_APN_LOGIN_LENGTH 657,17896
+#define MAX_APN_PASSWORD_LENGTH 658,17937
+static char APNName[APNName660,17980
+static char APNLogin[APNLogin661,18023
+static char APNPassword[APNPassword662,18068
+int InternalFlash_WriteAPNName(664,18121
+int InternalFlash_LoadNonVolatileStatus(686,18510
+int InternalFlash_WriteNonVolatileStatus(701,18794
+char * InternalFlash_GetAPNName(724,19280
+int InternalFlash_WriteAPNLogin(742,19599
+char * InternalFlash_GetAPNLogin(764,20000
+int InternalFlash_WriteAPNPassword(781,20325
+char * InternalFlash_GetAPNPassword(804,20756
+int InternalFlash_WriteRebootAlarm(821,21105
+char InternalFlash_ReadRebootAlarm(836,21371
+int InternalFlash_WriteNVMode(856,21776
+int InternalFlash_ReadNVMode(872,22065
+
+src/LED.c,944
+#define LED_TRACE_LEVEL 38,752
+static const int LEDGpio[LEDGpio46,903
+static s32 LEDHandles[LEDHandles50,1037
+static GPS_LED_STATUS gps_led_status 55,1124
+static const unsigned int PowerLedRedPatterns[PowerLedRedPatterns66,1520
+static const unsigned int PowerLedGreenPatterns[PowerLedGreenPatterns76,2197
+static const unsigned int GSMLedRedPatterns[GSMLedRedPatterns86,2849
+static const unsigned int GSMLedGreenPatterns[GSMLedGreenPatterns95,3466
+static const unsigned int GPSLedRedPatterns[GPSLedRedPatterns104,4106
+static const unsigned int GPSLedGreenPatterns[GPSLedGreenPatterns113,4777
+static const unsigned int *LEDPatterns[LEDPatterns124,5466
+static unsigned int shutdown_trig 131,5752
+int check_shutdown_start(133,5794
+void ShutOffLED(149,5999
+void TurnOnLED(159,6131
+void TurnOnLEDNum(169,6261
+void TurnOffLEDNum(175,6359
+void BlinkLED(200,6888
+static void EvalLED(332,10139
+void SetGPSLedStatus(495,15128
+
+src/ota_at.c,1205
+	OTA_CMD_DIAG,43,1691
+	OTA_CMD_VERSION,51,1995
+	OTA_CMD_NMEA,52,2029
+	OTA_CMD_XACT_8,54,2081
+	OTA_CMD_XACT_27,55,2102
+	OTA_CMD_XACT_38,56,2136
+	OTA_CMD_XACT_54,57,2155
+	OTA_CMD_XACT_56,58,2174
+	OTA_CMD_XACT_57,59,2207
+	OTA_CMD_XACT_59,60,2241
+	OAT_AT_CMD,61,2260
+	NUM_OTA_CMDS62,2274
+} AT_COMMAND_t;63,2289
+	AT_COMMAND_t command_id;67,2327
+	char            *command;command68,2354
+} OTA_AT_CMDS_s;69,2382
+static OTA_AT_CMDS_s ota_cmds[ota_cmds71,2402
+	char Buf[Buf97,3153
+	UINT8 valid;98,3170
+} OTA_Tx_Buf;99,3185
+#define DIAG_Q_SIZE 101,3202
+OTA_Tx_Buf OTA_Buffer[OTA_Buffer102,3227
+UINT8 g_Pos;103,3264
+#define RESP_BUFFER_LENGTH 106,3282
+static bool inprogress 108,3387
+static s32 time[time109,3420
+static void set_OTA_AT_inProgress(112,3480
+static bool check_command(120,3666
+static AT_COMMAND_t find_command_id(138,4066
+void send_ota_response(154,4363
+static char resp_buffer[resp_buffer211,5630
+void OTAAT_handle_at_cmd_response(214,5740
+static bool ota_at_handler(271,7658
+void OTAAT_eval(280,7906
+void QueSMS(383,10786
+void SendOTAResponse(405,11274
+void test_otaat_tmr(446,11926
+void DConfig_Rpt_handler(474,12463
+void ResetDiagTxTimerCount(501,13085
+
+src/PowerCtrl.c,1704
+DEBUG_TRACE_STORAGE;29,529
+static ascii *SLOW_IDLE_MODE SLOW_IDLE_MODE31,553
+static ascii *DISABLE_UART_1 DISABLE_UART_132,600
+static ascii *DISABLE_UART_2 DISABLE_UART_233,649
+static ascii *DISABLE_USB DISABLE_USB34,698
+static ascii *ENABLE_UART_1 ENABLE_UART_136,746
+static ascii *ENABLE_UART_2 ENABLE_UART_237,794
+static ascii *ENABLE_USB ENABLE_USB38,842
+static ascii *FAST_IDLE_MODE FAST_IDLE_MODE39,887
+static ascii *SHUTDOWN_STR SHUTDOWN_STR40,932
+static int InSlowIdle 42,977
+static adl_tmr_t *pTmrPtr pTmrPtr54,1366
+static FAST_IDLE_REQ TimedWakeupFastIdleReq 58,1485
+TRACKING_MODE_REQ TimedWakeupTrackingReq 64,1631
+int g_ShutDownReq 69,1769
+int g_AppearPowerDown 70,1793
+	POWER_UP,74,1840
+	WAIT_GPS,75,1852
+	WAIT_TCP,76,1864
+	SLOW_IDLE,77,1876
+	FAST_IDLE,78,1889
+	FAST_IDLE_TW_PCTL,79,1902
+} POWER_STATE;80,1923
+static POWER_STATE state 82,1941
+static TRANSMIT_MODE ActualTransmitMode 84,1981
+void EnterSlowIdleMode(90,2090
+void ExitSlowIdleMode(145,3216
+int GetSlowIdleMode(206,4860
+void DisplayPowerState(218,5041
+void PowerCtrlFSM(267,6181
+static void SetupPowerCtrlMsgHandler(384,8835
+TRANSMIT_MODE PowerCtrl_GetTXMode(401,9263
+static void PowerCtrl_SetTXMode(415,9597
+static void PowerCtrlMessageHandler(513,11152
+void InitPowerCtrl(531,11441
+void SubscribeFSMTimer(547,11827
+	POWER_UP_TW,584,12804
+	WAIT_DURATION,585,12819
+	WAIT_FAST_IDLE,586,12836
+	FAST_IDLE_TW587,12854
+} TIMED_WAKEUP_STATE;588,12869
+static void TimedWakeUpTimer(599,13194
+static void SubscribeTimedWakeUpTimer(714,16137
+static void CheckShutDown(724,16389
+static void ShutDown(737,16563
+static int PowerCtrl_StayFastIdle(755,16986
+void PowerOffModem(826,18431
+
+src/protocol.c,1047
+UINT8 g_rx[g_rx43,1190
+UINT8 g_last_config[g_last_config44,1297
+FAST_IDLE_REQ PacketRXFastIdleReq 45,1394
+SMS_WAYPOINT_PAYLOAD sms_waypoint_data;46,1454
+static CONFIG temp_config;48,1497
+static MODE_CONFIG temp_ModeConfig;49,1612
+u8 PREV_Mode 51,1651
+ascii FTPAddress[FTPAddress52,1679
+s32 GPIO_5_Handle 54,1704
+s32 GPIO_7_Handle 55,1735
+UINT8 g_DiagCmdOffset;56,1763
+struct structGGAInformation g_GGAInfo;58,1789
+static char ConvertBool_to_NY(96,3055
+static char AddModeStatus(116,3454
+void make_packet(165,4216
+			#define SOS_BUTTON_GPIO 416,12171
+			#define MAG_SOS_GPIO 417,12204
+int eval_packet(700,22018
+static int parse_config_pkt(1003,30618
+SINT8 temp_to_uint(1282,38697
+UINT8 uint_to_temp(1312,39427
+static int check_latin_1(1346,40001
+bool last_config_send_ack 1362,40183
+static void set_LastConfigSendAck(1363,40219
+bool get_LastConfigSendAck(1369,40304
+void SetInitialConfiguration(1375,40379
+BOOL parse_DiagnosticPacket(1383,40714
+int parse_ModeConfigPacket(1432,42026
+void IPacketTxHandler(1498,44003
+
+src/SimOperations.c,114
+int g_sim_full_init_stat 44,1855
+static int SimInit 46,1888
+void evhSimHandler(60,2241
+int IsSimInit(127,4191
+
+src/SMShandling.c,1442
+#define RX_BUFFSIZE 34,1067
+#define NUM_SERVER_FR 35,1110
+#define STD_PHNNUM_LENGTH 36,1151
+#define CRITICAL_RETRY_INTERVAL 37,1193
+s8 g_smsHandle;44,1530
+UINT8 g_sms_tx[g_sms_tx45,1593
+UINT8 g_sms_tx_critical[g_sms_tx_critical46,1627
+BOOL WaitOn 47,1735
+WAYPOINT waypoint_data;48,1757
+WAYPOINT first_waypoint_data;49,1782
+static int waypoint_pkt_offset 50,1813
+int current_waypoint 51,1914
+int waypointPktNum 52,1941
+int g_NeedSOSAck 53,1966
+u8 gx_rx[gx_rx54,1989
+ascii SMS_PHN_NUM[SMS_PHN_NUM55,2061
+STATUS g_tx_status;57,2170
+	REG_NOT 86,3009
+	REG_HOME,87,3024
+	REG_NOT_SEARCH,88,3036
+	REG_DENY,89,3054
+	REG_UNKNOWN,90,3066
+	REG_ROAMING91,3081
+} REG_STATUS;92,3095
+static REG_STATUS registration_status;94,3112
+	BOOL startup_tracking_mode;98,3173
+	unsigned int duration_remaining;99,3203
+} TRACKING_INTERVAL_STATUS;100,3238
+TRACKING_INTERVAL_STATUS tracking_interval_status;102,3269
+static bool CheckCreateLog(105,3367
+void CmdHandlerSMS(130,3881
+bool sms_service_start(171,4780
+void sms_service_stop(201,5485
+void SMS_ctrl_Handler(247,6497
+bool SMS_Handler(318,9258
+void ClearSMSHandler(392,11234
+void SMS_TX_Handler(431,12998
+void makeAllZeroWaypoint(895,27842
+static void display_tx_debug(914,28151
+static bool CheckRoamingNoTransmit(936,28918
+UINT8 sms_send(963,29760
+void SMSHandling_DisplayRegStatus(1167,35425
+static bool CREGHandler(1174,35582
+void SetStartupTrackingMode(1225,36555
+
+src/status.c,186
+STATUS g_status;15,253
+void InitStatus(25,435
+int ClearAlarms(85,2052
+void Status_setGSMStatus(178,4391
+GSM_STATUS Status_getGSMStatus(191,4560
+void Status_setResetReason(204,4714
+
+src/TempoCasesTask.c,1229
+#define SEC_2_TICKS(15,256
+#define SLEEP_TIME_SEC	16,312
+#define BATT_ALARM_THRESHOLD1	17,342
+#define BATT_ALARM_THRESHOLD2	18,388
+#define BATT_ALARM_THRESHOLD3	19,434
+#define BATT_ALARM_THRESHOLD5	20,480
+#define BATT_ALARM_THRESHOLD10	21,526
+#define BATT_ALARM_THRESHOLD20	22,574
+#define	BATTALARM_THRESH20	24,624
+#define	BATTALARM_THRESH10	25,695
+#define	BATTALARM_THRESH5	26,766
+#define	BATTALARM_THRESH3	27,835
+#define	BATTALARM_THRESH2	28,904
+#define	BATTALARM_THRESH1	29,973
+volatile u8 g_battalarm_status 33,1070
+u8   g_fcm_Handle;34,1107
+bool g_uart_ready 35,1127
+bool g_atmel_ready 36,1155
+volatile int g_atmel_schedule 37,1184
+ascii g_alert[g_alert39,1222
+unsigned int g_adCount;40,1253
+unsigned char g_VoltagePct;41,1278
+adl_tmr_t *pTempoCasesTmrPtr;pTempoCasesTmrPtr42,1307
+bool g_new_alert 44,1340
+TC_ATMEL_STATE g_atmelState 48,1415
+ALERT_BITS_MINUTES alert_bits_minutes[alert_bits_minutes50,1467
+unsigned int TC_packet_scheduler(70,2426
+void DumpMessageTC(111,3609
+ static void TempoCasesTaskTimer(124,3951
+static void SubscribeTempoTaskTimer(171,5262
+void UnsubscribeTempoTaskTimer 179,5554
+void TempoCasesTask(192,5864
+bool TC_CtrlHandler(209,6237
+u8 TC_DataHandler(249,7573
+
+src/Timers.c,1538
+static adl_tmr_t    *g_nextFixTimer g_nextFixTimer72,2442
+static adl_tmr_t    *g_LEDTimer g_LEDTimer73,2487
+static adl_tmr_t    *g_VibrationTimer g_VibrationTimer74,2528
+static adl_tmr_t    *g_startAccelStateTimer g_startAccelStateTimer75,2575
+static adl_tmr_t    *g_GPIOTimer g_GPIOTimer76,2628
+static adl_tmr_t    *g_TxHandlerTimer g_TxHandlerTimer77,2670
+static adl_tmr_t    *g_GPSTimeoutTimer g_GPSTimeoutTimer78,2717
+static adl_tmr_t    *g_DiagTimeoutTimer g_DiagTimeoutTimer79,2765
+static adl_tmr_t    *g_DiagRepeatTimer g_DiagRepeatTimer80,2814
+void startTimers(128,4113
+void stopTimers(160,4768
+void stopTimersFWUpdate(195,5222
+void startNextFixTimer(242,5916
+void stopNextFixTimer(264,6348
+static void startLEDTimer(295,6904
+static void stopLEDTimer(317,7247
+static void startVibrationTimer(346,7762
+static void stopVibrationTimer(368,8149
+static void startGPIOTimer(397,8695
+static void stopGPIOTimer(412,8924
+static void startAccelStateTimer(437,9439
+static void stopAccelStateTimer(455,9786
+static void startTxHandlerTimer(488,10402
+void singleTxHandlerTimer(510,10850
+static void stopTxHandlerTimer(525,11157
+void BatteryCheckTimerHandler(556,11728
+void StartGPSAvailabilityTimer(563,11830
+void StopGPSAvailabilityTimer(585,12617
+void StartFTPTimer(607,13105
+void StartIPktTxTimer(616,13314
+void startDiagMsgHandlerTimer(628,13717
+void stopDiagMsgHandlerTimer(642,14057
+void startDiagMsgRepeatTimer(657,14410
+void stopDiagMsgRepeatTimer(673,14757
+void StartPowerOffTimer(688,15106
+
+src/Traces.c,376
+#undef __DEBUG_APP__7,95
+#undef __DEBUG_FULL__10,154
+DEBUG_TRACE_STORAGE;17,261
+#define GrabAccess(19,285
+#define ReleaseAccess(20,307
+char const FAIL_STRING[FAIL_STRING22,334
+#define fail(24,395
+void abort(26,464
+static void trace_output(39,574
+static void trace_banner(75,1604
+void trace_puts_(93,1990
+void trace_printf_(117,2453
+void trace_hex_dump_(147,3037
+
+src/ublox.c,1011
+#define UBLOX_BAUD_RATE 30,954
+#define CR 32,994
+#define END_OF_NMEA_MESSAGE 33,1030
+#define STRING_TERMINATOR 34,1066
+#define UBLOX_POWER_GPIO 36,1106
+char GPS_CONFIG_STRING[GPS_CONFIG_STRING38,1187
+	long numSentencesProcessed;55,1669
+	bool showNMEA;56,1699
+	bool ubloxPowered;57,1716
+	bool initialized;58,1737
+	s32 gpsPowerGpioHandle;59,1757
+	adl_ioDefs_t gpioConfig;60,1783
+gpsUblox;62,1813
+s8 ubloxDataFcmHandle;65,1882
+void ublox_InitGPIO(84,2601
+void ublox_Start(104,3167
+void ublox_SetupRXchannel(133,3833
+void ublox_SendStartupCommands(152,4390
+void ublox_InitSerialPort(188,5174
+void ublox_stop(242,6779
+bool ublox_isON(268,7363
+void ublox_ShowData(283,7713
+static void initGpsStruct(304,8329
+static bool serialInitResponseHandler(319,8699
+static void continueUbloxSerialInit(343,9393
+bool isValidNMEAchar(357,9697
+static bool ubloxDataCtrlHandler(385,10346
+static u8 ubloxDataHandler(429,11482
+static void processNmeaSentence(536,14225
+static u8 checkChecksum(591,15620
+
+src/USB.c,663
+bool g_DebugEnable=23,429
+static s8 g_USBCommFCMDataMode 26,456
+struct commSocket_s g_USBCommStruct;28,495
+eFlowCmdState g_USBFlowCmdState 30,535
+s32 gUSBApplicationUpdateFlag 37,794
+USB_MODE g_wyhook_mode 40,907
+#define RX_BUFFSIZE 43,963
+void clrUSBLoadFile(56,1204
+void setUSBLoadFile(69,1424
+bool USBFlowCmdHandler(84,1696
+void USBInterface(114,2185
+s8 CommInit(157,3464
+void USBInterfaceCmdHandler(230,5387
+void EnterAlarmMode(592,17262
+bool evhUSBCommFcmCtrlHandler(676,20218
+static int usb_byte_cnt 743,21810
+bool evhUSBCommFcmDataHandler(753,22018
+bool parseSLIPPacket(809,23267
+s8 ChangeV24State(864,24343
+s8 ChangeV24State(929,26150
+
+src/VibrationMotor.c,288
+FAST_IDLE_REQ VibrateFastIdleReq 17,279
+static const unsigned int VibratePatterns[VibratePatterns21,427
+static const int MOTOR_GPIO 34,1550
+s32 MotorGPIOHandle 35,1628
+int VibrateDone 37,1707
+void VibrateTimer(49,1969
+void vibrate_turn_on(138,4337
+void vibrate_turn_off(150,4558
+
+src/WaypointControl.c,1562
+#define CHUNK_SIZE 41,1051
+#define NUMBER_OF_CHUNKS 42,1090
+#define ChunkWrite(44,1137
+#define ChunkRead(45,1217
+#define CHUNK_SIZE 50,1364
+#define NUMBER_OF_CHUNKS 51,1405
+#define ChunkWrite(53,1454
+#define ChunkRead(54,1536
+static WAYPOINT blank_waypoint_wrapped;56,1619
+static WAYPOINT blank_waypoint_unwrapped;57,1660
+#define FIRST_CHUNK 60,1713
+#define NUM_WAYPOINTS 61,1787
+#define FACTORY_INIT_MAGIC 62,1875
+DEBUG_TRACE_STORAGE;64,1921
+static unsigned int const WAYPOINTS_PER_CHUNK 66,1945
+static int current_write_chunk 72,2254
+static unsigned int waypoint_offset 73,2362
+static unsigned int number_of_waypoints 74,2490
+static unsigned int oldest_chunk 75,2597
+static unsigned int oldest_chunk_waypoint_offset 76,2704
+static bool32_t bufferHasWrapped 77,2811
+static u8 ChunkRdBuf[ChunkRdBuf79,2926
+#define STATIC_INIT_BLANK_8_BYTE_ARRAY(81,2963
+#define STATIC_INIT_BLANK_2_BYTE_ARRAY(82,3075
+static WAYPOINT const blank_waypoint 83,3151
+static char const WRAPPED_FLASH_HANDLE[WRAPPED_FLASH_HANDLE92,3403
+int WriteWaypoint(121,4376
+int ReadWaypoint(242,7661
+void DisplayWaypoint(396,11740
+int GetNumWaypoints(469,13356
+void InitSpiFlash(475,13423
+int CheckFactorySetupSpiFlash(524,14562
+void SpiFlashFactoryInit(562,15249
+int FindFlashLocation(613,16287
+void DisplayPointers(744,19456
+void DisplayWaypointUSB(782,20619
+void DisplayNumWaypointsUSB(845,21838
+static unsigned int waypoint_cnt 859,22188
+void DumpWaypointsUSB(861,22229
+static void DumpWaypointsUSBTimer(878,22680
+void WriteWaypointFromFix(987,24677
+
+src/wyhook_Application.c,294
+#define RX_BUFFSIZE 36,1202
+void wyhook_ProcessSubTypeApplication_Application(61,2018
+void wyhook_XACTApplication_UploadConfig(100,2929
+void wyhook_XACTApplication_DownloadConfig(125,3567
+void wyhook_XACTApplication_AssistGPS(162,4684
+void wyhook_XACTApplication_AssistGPSWorker(176,5166
+
+src/wyhook_HAL.c,403
+#define pWyHookUart 29,1142
+const char  *wyhook_ClientName wyhook_ClientName46,2131
+const char  *wyhook_ProjectName wyhook_ProjectName47,2173
+const char  *wyhook_BoardName_0 wyhook_BoardName_048,2219
+const char  *wyhook_BoardName_1 wyhook_BoardName_149,2258
+const char  *wyhook_HardwareVersion wyhook_HardwareVersion50,2297
+const char  *wyhook_SoftwareVersion wyhook_SoftwareVersion51,2343
+
+src/wyhook_Message.c,5097
+typedef enum tagWYHOOK_PACKET_OFFSET_T46,1919
+	OFFSET_COMPONENT_TYPE_ID 48,1962
+	OFFSET_COMPONENT_SUBTYPE_ID 49,1994
+	OFFSET_COMMAND 50,2029
+	OFFSET_COMPONENT_NUMBER 51,2051
+	OFFSET_PAYLOAD 52,2082
+} WYHOOK_PACKET_OFFSET_T;53,2103
+typedef enum tagWYHOOK_PACKETIZED_DATA_OFFSET_T59,2254
+	OFFSET_PACKET_NUMBER 61,2306
+	OFFSET_TOTAL_PACKETS 62,2334
+	OFFSET_TOTAL_LENGTH 63,2362
+	OFFSET_PACKET_PAYLOAD 64,2389
+} WYHOOK_PACKETIZED_DATA_OFFSET_T;65,2417
+typedef enum tagSLIP_CHARACTERS_T71,2571
+	SLIP_CHAR_END 73,2609
+	SLIP_CHAR_ESC 74,2632
+	SLIP_CHAR_ESC_END 75,2655
+	SLIP_CHAR_ESC_ESC 76,2682
+} SLIP_CHARACTERS_T;77,2708
+typedef enum tagWYHOOK_COMPONENT_TYPE_ID_T83,2832
+	TYPE_ENTIRE_DEVICE 85,2879
+	TYPE_ENTIRE_DEVICE = 0x00,x0085,2879
+	TYPE_RADIO 86,2908
+	TYPE_RADIO = 0x01,x0186,2908
+	TYPE_MEMORY 87,2929
+	TYPE_MEMORY = 0x02,x0287,2929
+	TYPE_DIGITAL_INPUT 88,2951
+	TYPE_DIGITAL_INPUT = 0x03,x0388,2951
+	TYPE_DIGITAL_OUTPUT 89,2980
+	TYPE_DIGITAL_OUTPUT = 0x04,x0489,2980
+	TYPE_ANALOG_INPUT 90,3010
+	TYPE_ANALOG_INPUT = 0x05,x0590,3010
+	TYPE_ANALOG_OUTPUT 91,3038
+	TYPE_ANALOG_OUTPUT = 0x06,x0691,3038
+	TYPE_APPLICATION 92,3067
+	TYPE_APPLICATION = 0x07x0792,3067
+} WYHOOK_COMPONENT_TYPE_ID_T;93,3093
+typedef enum tagWYHOOK_ENTIRE_DEVICE_SUBTYPES_T99,3232
+	SUBTYPE_ENTIRE_DEVICE_EntireDevice 101,3284
+	SUBTYPE_ENTIRE_DEVICE_EntireDevice = 0x00x00101,3284
+} WYHOOK_ENTIRE_DEVICE_SUBTYPES_T;102,3328
+typedef enum tagWYHOOK_RADIO_SUBTYPES_T108,3464
+	SUBTYPE_RADIO_AllRadios 110,3508
+	SUBTYPE_RADIO_AllRadios = 0x00,x00110,3508
+	SUBTYPE_RADIO_ISMRadio 111,3542
+	SUBTYPE_RADIO_ISMRadio = 0x01,x01111,3542
+	SUBTYPE_RADIO_GSMRadio 112,3575
+	SUBTYPE_RADIO_GSMRadio = 0x02,x02112,3575
+	SUBTYPE_RADIO_GPSRadio 113,3608
+	SUBTYPE_RADIO_GPSRadio = 0x03,x03113,3608
+	SUBTYPE_RADIO_CDMARadio 114,3641
+	SUBTYPE_RADIO_CDMARadio = 0x04,x04114,3641
+	SUBTYPE_RADIO_PacketRadio 115,3675
+	SUBTYPE_RADIO_PacketRadio = 0x05,x05115,3675
+	SUBTYPE_RADIO_VoiceRadio 116,3711
+	SUBTYPE_RADIO_VoiceRadio = 0x06x06116,3711
+} WYHOOK_RADIO_SUBTYPES_T;117,3745
+typedef enum tagWYHOOK_MEMORY_SUBTYPES_T123,3873
+	SUBTYPE_MEMORY_AllMemory 125,3918
+	SUBTYPE_MEMORY_AllMemory = 0x00,x00125,3918
+	SUBTYPE_MEMORY_VolatileMemory 126,3953
+	SUBTYPE_MEMORY_VolatileMemory = 0x01,x01126,3953
+	SUBTYPE_MEMORY_NonVolatileMemory 127,3993
+	SUBTYPE_MEMORY_NonVolatileMemory = 0x02x02127,3993
+} WYHOOK_MEMORY_SUBTYPES_T;128,4035
+typedef enum tagWYHOOK_DIGITAL_INPUT_SUBTYPES_T134,4172
+	SUBTYPE_DIGITAL_INPUT_AllDigitalInputs 136,4224
+	SUBTYPE_DIGITAL_INPUT_AllDigitalInputs = 0x00,x00136,4224
+	SUBTYPE_DIGITAL_INPUT_DigitalSwitches 137,4273
+	SUBTYPE_DIGITAL_INPUT_DigitalSwitches = 0x01,x01137,4273
+	SUBTYPE_DIGITAL_INPUT_DigitalGates 138,4321
+	SUBTYPE_DIGITAL_INPUT_DigitalGates = 0x02x02138,4321
+} WYHOOK_DIGITAL_INPUT_SUBTYPES_T;139,4365
+typedef enum tagWYHOOK_DIGITAL_OUTPUT_SUBTYPES_T145,4511
+	SUBTYPE_DIGITAL_OUTPUT_AllDigitalOutputs 147,4564
+	SUBTYPE_DIGITAL_OUTPUT_AllDigitalOutputs = 0x00,x00147,4564
+	SUBTYPE_DIGITAL_OUTPUT_StatusLED 148,4615
+	SUBTYPE_DIGITAL_OUTPUT_StatusLED = 0x01,x01148,4615
+	SUBTYPE_DIGITAL_OUTPUT_Buzzer 149,4658
+	SUBTYPE_DIGITAL_OUTPUT_Buzzer = 0x02,x02149,4658
+	SUBTYPE_DIGITAL_OUTPUT_8SegmentDisplays 150,4698
+	SUBTYPE_DIGITAL_OUTPUT_8SegmentDisplays = 0x03x03150,4698
+} WYHOOK_DIGITAL_OUTPUT_SUBTYPES_T;151,4747
+typedef enum tagWYHOOK_ANALOG_INPUT_SUBTYPES_T157,4890
+	SUBTYPE_ANALOG_INPUT_AllAnalogInputs 159,4941
+	SUBTYPE_ANALOG_INPUT_AllAnalogInputs = 0x00,x00159,4941
+	SUBTYPE_ANALOG_INPUT_AnalogToDigitalConvertor 160,4988
+	SUBTYPE_ANALOG_INPUT_AnalogToDigitalConvertor = 0x01x01160,4988
+} WYHOOK_ANALOG_INPUT_SUBTYPES_T;161,5043
+typedef enum tagWYHOOK_ANALOG_OUTPUT_SUBTYPES_T167,5187
+	SUBTYPE_ANALOG_OUTPUT_AllAnalogOutputs 169,5239
+	SUBTYPE_ANALOG_OUTPUT_AllAnalogOutputs = 0x00,x00169,5239
+	SUBTYPE_ANALOG_OUTPUT_Speaker 170,5288
+	SUBTYPE_ANALOG_OUTPUT_Speaker = 0x01,x01170,5288
+	SUBTYPE_ANALOG_OUTPUT_Meter 171,5328
+	SUBTYPE_ANALOG_OUTPUT_Meter = 0x02,x02171,5328
+	SUBTYPE_ANALOG_OUTPUT_StatusLight 172,5366
+	SUBTYPE_ANALOG_OUTPUT_StatusLight = 0x03x03172,5366
+} WYHOOK_ANALOG_OUTPUT_SUBTYPES_T;173,5409
+typedef enum tagWYHOOK_APPLICATION_SUBTYPES_T179,5553
+	SUBTYPE_APPLICATION_Application 181,5603
+	SUBTYPE_APPLICATION_Application = 0x00x00181,5603
+} WYHOOK_APPLICATION_SUBTYPES_T;182,5644
+typedef struct tagWYHOOK_ERROR_COUNTERS_T188,5804
+	unsigned char queue_overflows;190,5850
+	unsigned char SLIP_protocol_errors;191,5883
+	unsigned char assert_fails;192,5921
+	unsigned char protocol_errors;193,5951
+	unsigned char checksum_errors;194,5984
+} WYHOOK_ERROR_COUNTERS_T;195,6017
+static WYHOOK_ERROR_COUNTERS_T wyhook_error_counters;200,6284
+static void wyhook_IncrementError(231,7531
+static WYHOOK_BOOL wyhook_IsChecksumValid(255,8029
+void wyhook_ProcessPacketBuffer(328,10121
+WYHOOK_BOOL wyhook_Assert(390,11876
+static void wyhook_ProcessTypeApplication(409,12227
+unsigned char wyhook_Checksum(435,12809
+void wyhook_ProccessPacketizedDataBuffer(462,13327
+
+src/XactTests.c,759
+UINT8  g_DogParkMode;10,190
+static struct structGGAInformation gGGAInfoTest;13,262
+static struct structVTGInformation gVTGInfoTest;14,311
+void GPSWaypointTest(17,390
+#define NUM_WAYPOINT_TEST 19,440
+void DogParkTest(75,2520
+    GET_SOME_FIXES,79,2615
+    ENABLE_DOG_PARK_MODE,80,2635
+    MOVE_THE_DEVICE,81,2661
+    TEST_DONE,82,2682
+  } DOG_PARK_TEST_STATES;83,2697
+#define NUM_FIXES_BEFORE_PARK 94,2963
+#define NUM_TOTAL_FIXES 95,2995
+#define LAT_INCR 96,3022
+void DogParkTestV2(144,4173
+    GET_SOME_FIXES,148,4270
+    ENABLE_DOG_PARK_MODE,149,4290
+    MOVE_THE_DEVICE,150,4316
+    TEST_DONE,151,4337
+  } DOG_PARK_TEST_STATES;152,4352
+#define NUM_FIXES_BEFORE_PARK 163,4632
+#define NUM_TOTAL_FIXES 164,4664
+#define LAT_INCR 165,4691
+
+src/XactUtilities.c,154
+UINT32 hex_ascii_2_uint(54,1415
+void uint_2_hex_ascii(150,3485
+void DumpMessage(256,6527
+void DumpMessageUSB(277,6923
+void DisplayErrorCode(302,7368
+
+src/gpioconfig.c,0
+
+inc/serialcomm.h,0
+
+inc/queryapp.h,0
+
+inc/maindoc.h,0
+
+inc/gpioconfig.h,0
+
+inc/eTypes.h,0
+
+inc/eRideNmea.h,0
+
+inc/eRide.h,0
+
+inc/eOs.h,0
+
+inc/debug.h,0
+
+inc/cgpsrtc.h,0
+
+inc/cgpscore.h,0
+
+inc/caPrivate.h,0
+
+inc/appconfig.h,0
+
+inc/appcommon.h,0
